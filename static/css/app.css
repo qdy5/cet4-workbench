@@ -329,3 +329,7 @@ span.pbtn{border:0;color:#8fb3a7;padding-left:0}
 #aud{display:none}
 label.pbtn{cursor:pointer}
 .seek-meta span{font-variant-numeric:tabular-nums}
+
+/* 浅色卡片里的原文高亮 */
+.card .script .line{opacity:.72;border-radius:8px;padding:6px 10px}
+.card .script .line.on{opacity:1;background:var(--accent-soft);color:var(--ink)}

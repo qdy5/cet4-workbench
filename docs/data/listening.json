@@ -86,6 +86,18 @@
    "fine",
    "reserve"
   ],
+  "times": [
+   0.0,
+   4.12,
+   8.21,
+   15.47,
+   19.74,
+   26.85,
+   31.84,
+   38.95,
+   44.94,
+   52.16
+  ],
   "audio_url": "audio/listen_1.mp3"
  },
  {
@@ -167,7 +179,17 @@
    "reasonable",
    "opportunity"
   ],
-  "audio_url": null
+  "times": [
+   0.0,
+   5.94,
+   13.06,
+   20.9,
+   27.58,
+   34.92,
+   39.85,
+   46.73
+  ],
+  "audio_url": "audio/listen_2.mp3"
  },
  {
   "id": 3,
@@ -248,7 +270,17 @@
    "price difference",
    "passport"
   ],
-  "audio_url": null
+  "times": [
+   0.0,
+   4.5,
+   12.32,
+   18.95,
+   24.13,
+   29.18,
+   34.0,
+   39.6
+  ],
+  "audio_url": "audio/listen_3.mp3"
  },
  {
   "id": 4,
@@ -329,7 +361,17 @@
    "medicine",
    "continue"
   ],
-  "audio_url": null
+  "times": [
+   0.0,
+   2.92,
+   7.71,
+   10.67,
+   17.46,
+   24.53,
+   27.35,
+   35.47
+  ],
+  "audio_url": "audio/listen_4.mp3"
  },
  {
   "id": 5,
@@ -414,6 +456,17 @@
    "narrow",
    "flexible"
   ],
-  "audio_url": null
+  "times": [
+   0.0,
+   3.95,
+   8.86,
+   15.57,
+   18.39,
+   23.83,
+   32.17,
+   37.8,
+   42.54
+  ],
+  "audio_url": "audio/listen_5.mp3"
  }
 ]
