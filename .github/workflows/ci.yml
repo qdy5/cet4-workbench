@@ -1,0 +1,37 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          npm ci
+
+      - name: 验收（测试 + 构建 + 产物审计）
+        run: python tools/verify.py
+
+      - name: 产物必须与提交一致
+        run: |
+          if [ -n "$(git status --porcelain docs)" ]; then
+            echo "docs/ 和构建结果不一致，请本地跑 python build_static.py 后提交"
+            git status --porcelain docs
+            exit 1
+          fi

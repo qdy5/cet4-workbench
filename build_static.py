@@ -1,49 +1,163 @@
 # -*- coding: utf-8 -*-
-"""生成 GitHub Pages 用的静态数据（docs/data），并从词库合并音标/例句。"""
-import io, json, os, shutil, sys
+"""构建 GitHub Pages 用的静态站（docs/）。
+
+单源：web/ 是唯一前端源码，data/ 是唯一内容源。
+产出：docs/ = 可直接离线运行、可直接 Pages 托管的 PWA，且不依赖任何外部域名。
+"""
+import hashlib
+import io
+import json
+import os
+import shutil
+import sys
+
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-
 ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(ROOT, 'tools'))
+
+from enrich import enrich  # noqa: E402
+
+WEB = os.path.join(ROOT, 'web')
 DOCS = os.path.join(ROOT, 'docs')
-DATA = os.path.join(DOCS, 'data')
-os.makedirs(DATA, exist_ok=True)
+AUDIO = os.path.join(ROOT, 'audio')
 
-words = json.load(open(os.path.join(ROOT, 'data', 'words.json'), encoding='utf-8'))
-detail = json.load(open(os.path.join(ROOT, 'data', 'detail.json'), encoding='utf-8'))
+SW_TEMPLATE = '''/* 自动生成，勿手改。build {build} */
+const VER = 'cet4-{build}';
+const ASSETS = {assets};
 
-out = []
-for w in words:
-    d = detail.get(w['word'], {})
-    out.append({
-        'w': w['word'], 'p': w['pos'], 'c': w['cn'],
-        'k': w.get('coll', ''), 'ch': w.get('chapter', ''),
-        'ph': d.get('phonetic', ''), 'e': d.get('example', ''),
-        'ec': d.get('example_cn', ''), 'a': d.get('audio', ''),
-    })
-json.dump(out, open(os.path.join(DATA, 'words.json'), 'w', encoding='utf-8'),
-          ensure_ascii=False, separators=(',', ':'))
-print('words:', len(out), f'{os.path.getsize(os.path.join(DATA, "words.json"))/1024:.0f}KB')
+self.addEventListener('install', e => {{
+  e.waitUntil(caches.open(VER).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+}});
 
-for name in ('reading.json', 'translation.json', 'writing.json'):
-    shutil.copy(os.path.join(ROOT, 'data', name), os.path.join(DATA, name))
-    print('copied', name)
+self.addEventListener('activate', e => {{
+  e.waitUntil(
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(k => k !== VER).map(k => caches.delete(k))))
+      .then(() => self.clients.claim())
+  );
+}});
 
-# 听力：带上导入的音频（相对路径）
-listen = json.load(open(os.path.join(ROOT, 'data', 'listening.json'), encoding='utf-8'))
-adir = os.path.join(ROOT, 'audio')
-os.makedirs(os.path.join(DOCS, 'audio'), exist_ok=True)
-for x in listen:
-    x['audio_url'] = None
-    for ext in ('.mp3', '.m4a', '.wav', '.ogg'):
-        src = os.path.join(adir, f"listen_{x['id']}{ext}")
-        if os.path.exists(src):
-            shutil.copy(src, os.path.join(DOCS, 'audio', f"listen_{x['id']}{ext}"))
-            x['audio_url'] = f"audio/listen_{x['id']}{ext}"
-            break
-json.dump(listen, open(os.path.join(DATA, 'listening.json'), 'w', encoding='utf-8'),
-          ensure_ascii=False, indent=1)
-print('listening with audio:', sum(1 for x in listen if x['audio_url']))
+function isData(url) {{ return url.pathname.includes('/data/'); }}
 
-# app.css 复制
-shutil.copy(os.path.join(ROOT, 'static', 'css', 'app.css'), os.path.join(DOCS, 'app.css'))
-print('css copied')
+self.addEventListener('fetch', e => {{
+  const req = e.request;
+  if (req.method !== 'GET') return;
+  const url = new URL(req.url);
+  if (url.origin !== location.origin) return;
+
+  if (req.mode === 'navigate') {{
+    e.respondWith(
+      fetch(req).then(res => {{
+        const copy = res.clone();
+        caches.open(VER).then(c => c.put('./index.html', copy)).catch(() => {{}});
+        return res;
+      }}).catch(() => caches.match('./index.html'))
+    );
+    return;
+  }}
+
+  if (isData(url)) {{
+    e.respondWith((async () => {{
+      const cache = await caches.open(VER);
+      const hit = await cache.match(req);
+      const net = fetch(req).then(res => {{
+        cache.put(req, res.clone()).catch(() => {{}});
+        return res;
+      }}).catch(() => null);
+      return hit || (await net) || new Response('[]', {{ headers: {{ 'Content-Type': 'application/json' }} }});
+    }})());
+    return;
+  }}
+
+  e.respondWith((async () => {{
+    const cache = await caches.open(VER);
+    const hit = await cache.match(req);
+    if (hit) {{
+      fetch(req).then(res => cache.put(req, res)).catch(() => {{}});
+      return hit;
+    }}
+    const res = await fetch(req).catch(() => null);
+    if (res) cache.put(req, res.clone()).catch(() => {{}});
+    return res || new Response('', {{ status: 504 }});
+  }})());
+}});
+'''
+
+
+def file_hash(path):
+    h = hashlib.sha1()
+    with open(path, 'rb') as f:
+        for chunk in iter(lambda: f.read(65536), b''):
+            h.update(chunk)
+    return h.hexdigest()[:10]
+
+
+def copy_tree(src, dst):
+    for name in os.listdir(src):
+        s = os.path.join(src, name)
+        d = os.path.join(dst, name)
+        if os.path.isdir(s):
+            os.makedirs(d, exist_ok=True)
+            copy_tree(s, d)
+        else:
+            shutil.copy2(s, d)
+
+
+def write_json(path, data, indent=None):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, separators=(',', ':') if indent is None else None,
+                  indent=indent)
+    return os.path.getsize(path)
+
+
+def main():
+    content = enrich()
+    build = content['meta']['build']
+
+    if os.path.isdir(DOCS):
+        shutil.rmtree(DOCS)
+    os.makedirs(os.path.join(DOCS, 'data'), exist_ok=True)
+
+    # 前端
+    copy_tree(WEB, DOCS)
+
+    # 数据
+    sizes = {}
+    sizes['meta'] = write_json(os.path.join(DOCS, 'data', 'meta.json'), content['meta'])
+    sizes['words'] = write_json(os.path.join(DOCS, 'data', 'words.json'), content['words'])
+    sizes['info'] = write_json(os.path.join(DOCS, 'data', 'info.json'), content['info'])
+    for key in ('reading', 'listening', 'translation', 'writing'):
+        sizes[key] = write_json(os.path.join(DOCS, 'data', f'{key}.json'), content[key])
+
+    # 音频
+    if os.path.isdir(AUDIO):
+        os.makedirs(os.path.join(DOCS, 'audio'), exist_ok=True)
+        for name in os.listdir(AUDIO):
+            if name.lower().endswith(('.mp3', '.m4a', '.wav', '.ogg')):
+                shutil.copy2(os.path.join(AUDIO, name), os.path.join(DOCS, 'audio', name))
+
+    # 收集需要预缓存的资源（排除 sw.js 自己）
+    assets = []
+    for dirpath, _dirnames, filenames in os.walk(DOCS):
+        for name in filenames:
+            if name == 'sw.js' or name.startswith('.'):
+                continue
+            rel = os.path.relpath(os.path.join(dirpath, name), DOCS).replace('\\', '/')
+            assets.append('./' + rel)
+    assets.sort()
+
+    sw = SW_TEMPLATE.format(build=build, assets=json.dumps(assets, ensure_ascii=False, indent=1))
+    with open(os.path.join(DOCS, 'sw.js'), 'w', encoding='utf-8') as f:
+        f.write(sw)
+
+    # GitHub Pages 不需要 Jekyll
+    open(os.path.join(DOCS, '.nojekyll'), 'w').close()
+
+    total = sum(os.path.getsize(os.path.join(dp, n)) for dp, _d, ns in os.walk(DOCS) for n in ns)
+    print(f'build {build} → docs/  {total / 1024 / 1024:.2f} MB, {len(assets)} 个文件预缓存')
+    for k, v in sizes.items():
+        print(f'  data/{k}.json  {v / 1024:.0f} KB')
+
+
+if __name__ == '__main__':
+    main()

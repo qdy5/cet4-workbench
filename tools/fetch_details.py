@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-"""用有道 jsonapi 补音标 + 双语例句；保留 dictionaryapi 抓到的发音音频。
-可重复运行，已处理过的词会跳过（除非 --force）。"""
+"""用有道 jsonapi 补音标 + 双语例句，写进 data/details.json。
+
+可重复运行，已抓过的词跳过（--force 强制重抓）。
+只抓音标和例句，不再保存外部发音链接（那批域名已经挂了）。
+"""
 import io
 import json
 import os
@@ -10,13 +13,15 @@ from concurrent.futures import ThreadPoolExecutor
 
 import requests
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-ROOT = os.path.dirname(os.path.abspath(__file__))
-DETAIL = os.path.join(ROOT, 'data', 'detail.json')
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DETAIL = os.path.join(ROOT, 'data', 'details.json')
+WORDS = os.path.join(ROOT, 'data', 'words.json')
 FORCE = '--force' in sys.argv
 
-cache = json.load(open(DETAIL, encoding='utf-8'))
-words = [w['word'] for w in json.load(open(os.path.join(ROOT, 'data', 'words.json'), encoding='utf-8'))]
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
+cache = json.load(open(DETAIL, encoding='utf-8')) if os.path.exists(DETAIL) else {}
+words = [w['word'] for w in json.load(open(WORDS, encoding='utf-8'))]
 todo = [w for w in words if FORCE or not cache.get(w, {}).get('example')]
 print(f'总词 {len(words)}，待补 {len(todo)}')
 
@@ -56,14 +61,13 @@ with ThreadPoolExecutor(max_workers=16) as pool:
             'phonetic': ph or old.get('phonetic', ''),
             'example': en or old.get('example', ''),
             'example_cn': cn or old.get('example_cn', ''),
-            'audio': old.get('audio', ''),
         }
         done += 1
         if done % 300 == 0:
             json.dump(cache, open(DETAIL, 'w', encoding='utf-8'), ensure_ascii=False)
-            print(f'{done}/{len(todo)}  {time.time()-t0:.0f}s', flush=True)
+            print(f'{done}/{len(todo)}  {time.time() - t0:.0f}s', flush=True)
 
 json.dump(cache, open(DETAIL, 'w', encoding='utf-8'), ensure_ascii=False)
-print('phrase', sum(1 for v in cache.values() if v.get('phonetic')),
-      'sentence', sum(1 for v in cache.values() if v.get('example')),
-      'cn', sum(1 for v in cache.values() if v.get('example_cn')))
+print('有音标', sum(1 for v in cache.values() if v.get('phonetic')),
+      '| 有例句', sum(1 for v in cache.values() if v.get('example')))
+print('接着跑 python build_static.py')

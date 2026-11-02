@@ -1,0 +1,4 @@
+* text=auto
+# 构建产物按字节保存，避免 CRLF 转换让 CI 的「产物一致性」检查误报
+docs/** -text
+audio/** -text

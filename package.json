@@ -1,0 +1,14 @@
+{
+  "name": "cet4-workbench",
+  "private": true,
+  "type": "module",
+  "version": "2.0.0",
+  "scripts": {
+    "test": "node --test tests/js/",
+    "build": "python build_static.py"
+  },
+  "devDependencies": {
+    "fake-indexeddb": "^6.0.0",
+    "jsdom": "^25.0.1"
+  }
+}

@@ -1,74 +1,108 @@
 # CET4 学习工作台
 
-一个给自己用的四级备考工作台：单词、听力、阅读、翻译、写作、数据统计。
-两套形态，共用一份内容：
+给自己用的四级备考工作台：单词、听力、阅读、翻译、写作、数据。
 
-- **桌面版**：Flask + SQLite，带本地 AI 答疑（Ollama qwen2.5:1.5b），进度存在数据库里。
-- **离线版（手机）**：纯静态 PWA，放在 `docs/`，进度存在浏览器 localStorage，装到桌面后断网也能用。
+两种用法，共用**同一份前端 + 同一份内容**：
 
-在线版：<https://qdy5.github.io/cet4-workbench/>
+| | 跑在哪 | 进度存哪 | 断网可用 |
+|---|---|---|---|
+| 本机版 | `python app.py` → http://127.0.0.1:5173 | 电脑上的 SQLite（`workbench.db`） | 可以（同一台电脑） |
+| 离线版 | GitHub Pages / 任意静态服务器（`docs/`） | 浏览器 IndexedDB | 可以，装到主屏幕后**电脑关机也能用** |
 
-## 功能
+在线地址：<https://qdy5.github.io/cet4-workbench/>
 
-| 模块 | 内容 |
-|---|---|
-| 单词 | 4,559 词，选择题猜意思；答对推后 1/2/4/7/15/30 天，答错明天重来；带音标、例句、真人发音（缺音频时用浏览器 TTS） |
-| 听力 | 5 组对话，逐句朗读 + 高亮，原文可隐藏，选择题带解析 |
-| 阅读 | 4 篇 CET4 题材文章，重点词、计时、20 题带解析 |
-| 翻译 | 10 句汉译英，参考译文 + 关键词命中率 + 句型提示 |
-| 写作 | 6 篇（议论文/图表/书信），倒计时、词数、提纲、范文 |
-| 答疑（仅桌面版） | 本地 Ollama 跑 qwen2.5:1.5b，回答语法和用法问题，不联网 |
+## 先看这里：它解决了什么
 
-考试信息按 2026-12-01、目标 450 分写死在 [docs/app.js](docs/app.js) 和 [app.py](app.py) 里，改这两处即可。
+1. **复习排程用 FSRS-5，不是固定 7 盒**。答错 1 分钟后重来（不会当场又被抽到），答对按稳定度推 1 天到几个月，每天有 30 个新词额度。
+2. **一套前端源码，两种后端**。`web/adapters/api.js` 走 Flask + SQLite，`web/adapters/local.js` 走静态 JSON + IndexedDB。视图层不知道自己在哪种模式下跑，所以两个版本不会悄悄分叉。
+3. **统计口径只有一套**。所有练习写进事件流，连续天数、7 日曲线、模块正确率、薄弱词全部由事件派生——只背单词的日子也算活跃。
+4. **离线版零外网请求**。词库、音频、图标全部随站点打包，Service Worker 预缓存整套资源，版本号带构建哈希，升级时会清旧缓存。
+5. **日期按本地时区算**。不用 `toISOString()` 取日期，凌晨 0–8 点不会把今天算成昨天。
 
-## 桌面版
+## 目录
 
-```bash
-pip install flask requests
-python app.py          # http://127.0.0.1:5173
+```
+web/                 唯一的前端源码（ES modules，无框架、无构建步骤）
+  core/date.js       本地日期工具
+  core/fsrs.js       FSRS-5 调度器（排程只在这里算）
+  core/stats.js      事件流 → 统计
+  core/scoring.js    翻译采分点 / 写作自查
+  core/quiz.js       选择题选项组装
+  adapters/          api.js（Flask）/ local.js（IndexedDB）/ idb.js
+  views/             8 个页面
+app.py               本机服务：发内容、存进度、流式接本地模型
+docs/                构建产物，GitHub Pages 直接托管这一层
+data/                内容源（词表、阅读、听力、翻译、写作、meta.json）
+  details.json       音标/例句，构建时并进 info.json
+audio/               听力 mp3（构建时复制进 docs/audio）
+tools/enrich.py      内容整形：干扰项、拆包、音频路径
+tools/verify.py      一键验收
+tools/gen_content.py 用本地模型批量补阅读/翻译/写作（可选）
+tests/js/            node --test：日期、FSRS、统计、评分 + jsdom 端到端
+tests/py/            接口测试（临时数据库，不碰真实进度）
 ```
 
-本地答疑需要先装好 Ollama 并拉过模型：
+## 本机版
 
 ```bash
-ollama pull qwen2.5:1.5b
+pip install -r requirements.txt
+python app.py            # 或双击 启动.bat
+```
+
+答疑用本机 Ollama（可选）：
+
+```bash
+ollama pull qwen2.5:1.5b  # 机器够力就换 7b，模型名可在 设置 页调整
 ollama serve
 ```
 
-## 离线版
+没装也能用，只是「让 AI 点评」按钮会提示连不上。
 
-`docs/` 是完整的静态站点，直接用任意静态服务器打开即可：
+## 离线版 / 部署
 
 ```bash
-cd docs && python -m http.server 8765
+python build_static.py      # 产出 docs/
+cd docs && python -m http.server 8765   # 本地预览
 ```
 
 部署到 GitHub Pages：仓库 Settings → Pages → Branch 选 `main`、目录选 `/docs`。
+推到 `main` 之后 `docs/` 就是线上版本；手机打开后「添加到主屏幕」，首次加载完即可断网使用。
 
-手机浏览器打开后「添加到主屏幕」，首次加载完会由 service worker 缓存，之后断网可用。
+## 手机和电脑之间搬进度
 
-## 数据与构建
+设置页 →「导出进度」得到一个 JSON，另一台设备「导入合并」。
+合并规则：同一次答题不重复计，单词卡取复习次数多的那份。
 
-```
-data/words.json       合并后的词库
-data/highfreq.json    本地整理的高频词（带搭配）
-data/detail.json      音标 / 例句 / 中文翻译 / 音频地址（构建产物，不入库）
-data/reading.json     4 篇文章 + 题目
-docs/data/*.json      离线版用的同源数据
-```
-
-重新构建：
+## 验收
 
 ```bash
-python prepare_data.py      # 合并词库 + 生成 reading.json
-python fetch_examples.py    # 用有道补音标和双语例句（可重复跑，已抓过的跳过）
-python build_static.py      # 生成 docs/data
+python tools/verify.py
 ```
 
-外部依赖：`C:\tmp\cet4_github.txt`（大纲词表）、`C:\tmp\cet4_qwerty.json`（音标兜底）。
-缺了会退化成只用本地词库，不会崩。
+跑 JS 测试（含 jsdom 里的端到端：打开 → 背单词 → 落库）、接口测试、重新构建，再审计产物：
+预缓存清单是否齐全、静态包有没有外网依赖、干扰项是否合法且长度对齐、参考译文能否命中全部采分点、
+前端有没有退回 localStorage / UTC 日期。任何一条不过都算没交付。
 
-## 说明
+```bash
+node --test                                # 只跑前端逻辑测试
+python -m unittest discover -s tests/py     # 只跑接口测试
+```
 
-- 词库和阅读素材来自自有整理 + 开源词表（KyleBing/english-vocabulary、qwerty-learner）；音标和例句抓自公开词典接口，仅供个人学习使用。
-- 桌面版数据库文件 `workbench.db` 不入库，删掉会重建并重新排复习计划。
+## 内容怎么改
+
+- 考试日期、目标分、新词上限、保持率：`data/meta.json`（改一处，两端同步）
+- 单词表：`data/words.json`；音标例句：`data/details.json`
+- 阅读/听力/翻译/写作：`data/*.json`，改完跑 `python build_static.py`
+- 听力音频：`audio/listen_<id>.mp3`，重新生成用 `python tools/generate_audio.py`（需要 `pip install edge-tts` 和 ffmpeg）
+
+## 已知取舍
+
+- 干扰项按**词性 + 释义长度 + 共用汉字**在构建期生成，不是语义模型选的；偶尔会出现「一眼能排除」的选项，但不会再出现「正确答案总是最短」的破绽。
+- 翻译只看**采分点覆盖 + 硬检查**（中文残留、a/an、标点、长度、重复词），不合成一个假分数；真要有人评语得点「让 AI 点评」（仅本机版）。
+- 静态版没有 AI 点评：浏览器里跑不了模型，不假装能跑。
+- 听力是本机合成的对话（edge-tts），不是真题原声，练的是句子理解不是口音适应。
+- 单词发音用系统 TTS；原先抓的那批外链发音地址已经 502，全部弃用。
+
+## 词库来源
+
+自有整理的高频词 + 开源词表（KyleBing/english-vocabulary、qwerty-learner），音标和例句抓自公开词典接口，仅供个人学习。

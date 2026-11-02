@@ -3,114 +3,589 @@
   "id": 1,
   "zh": "随着互联网的发展，越来越多的人选择在线学习。",
   "ref": "With the development of the Internet, more and more people choose to study online.",
-  "keys": [
-   "With the development of",
-   "more and more",
-   "choose to",
-   "online"
-  ],
-  "tip": "「随着……」用 with + 名词短语；「越来越多」more and more。"
+  "tip": "「随着……」用 with + 名词短语；「越来越多」more and more。",
+  "points": [
+   {
+    "label": "随着……发展",
+    "any": [
+     "with the development of the internet",
+     "as the internet develops",
+     "with the growth of the internet"
+    ]
+   },
+   {
+    "label": "越来越多",
+    "any": [
+     "more and more",
+     "an increasing number of",
+     "a growing number of"
+    ]
+   },
+   {
+    "label": "选择",
+    "any": [
+     "choose to",
+     "opt to",
+     "prefer to"
+    ]
+   },
+   {
+    "label": "在线学习",
+    "any": [
+     "online",
+     "on the internet",
+     "study online",
+     "learn online"
+    ]
+   }
+  ]
  },
  {
   "id": 2,
   "zh": "这道题太难了，我花了半个小时才做出来。",
   "ref": "The problem was so difficult that it took me half an hour to work it out.",
-  "keys": [
-   "so ... that",
-   "it took me",
-   "half an hour",
-   "work out"
-  ],
-  "tip": "「花时间做某事」用 it takes sb. some time to do sth.。"
+  "tip": "「花时间做某事」用 it takes sb. some time to do sth.。",
+  "points": [
+   {
+    "label": "so...that 结构",
+    "any": [],
+    "re": "\\bso\\b[^.]{2,45}\\bthat\\b"
+   },
+   {
+    "label": "花了我",
+    "any": [
+     "it took me",
+     "it cost me",
+     "i spent"
+    ]
+   },
+   {
+    "label": "半小时",
+    "any": [
+     "half an hour",
+     "30 minutes",
+     "thirty minutes"
+    ]
+   },
+   {
+    "label": "解出",
+    "any": [
+     "work out",
+     "work it out",
+     "figure out",
+     "solve"
+    ]
+   }
+  ]
  },
  {
   "id": 3,
   "zh": "他不仅会说英语，还会说法语。",
   "ref": "He can speak not only English but also French.",
-  "keys": [
-   "not only",
-   "but also"
-  ],
-  "tip": "not only ... but also ... 连接并列成分，注意结构对称。"
+  "tip": "not only ... but also ... 连接并列成分，注意结构对称。",
+  "points": [
+   {
+    "label": "not only...but also",
+    "any": [],
+    "re": "not only\\b[^.]{0,90}\\bbut also"
+   },
+   {
+    "label": "英语",
+    "any": [
+     "english"
+    ]
+   },
+   {
+    "label": "法语",
+    "any": [
+     "french"
+    ]
+   }
+  ]
  },
  {
   "id": 4,
   "zh": "我们应该重视环境保护，否则后果不堪设想。",
   "ref": "We should attach importance to environmental protection; otherwise, the consequences would be too terrible to imagine.",
-  "keys": [
-   "attach importance to",
-   "environmental protection",
-   "otherwise",
-   "consequences"
-  ],
-  "tip": "「重视」attach importance to；「不堪设想」beyond imagination / too terrible to imagine。"
+  "tip": "「重视」attach importance to；「不堪设想」beyond imagination / too terrible to imagine。",
+  "points": [
+   {
+    "label": "重视",
+    "any": [
+     "attach importance to",
+     "pay attention to",
+     "take ... seriously"
+    ]
+   },
+   {
+    "label": "环境保护",
+    "any": [
+     "environmental protection",
+     "protect the environment",
+     "environment protection"
+    ]
+   },
+   {
+    "label": "否则",
+    "any": [
+     "otherwise",
+     "or else",
+     "if not"
+    ]
+   },
+   {
+    "label": "后果",
+    "any": [
+     "consequence",
+     "result",
+     "outcome"
+    ]
+   }
+  ]
  },
  {
   "id": 5,
   "zh": "昨天我见到的那个人是我以前的老师。",
   "ref": "The person I met yesterday was my former teacher.",
-  "keys": [
-   "I met yesterday",
-   "former teacher"
-  ],
-  "tip": "定语从句省略关系代词：the person (that) I met。"
+  "tip": "定语从句省略关系代词：the person (that) I met。",
+  "points": [
+   {
+    "label": "昨天见到的人（定语从句）",
+    "any": [],
+    "re": "\\b(i|who|whom|that)\\b[^.]{0,60}\\bmet\\b[^.]{0,30}\\byesterday"
+   },
+   {
+    "label": "以前的老师",
+    "any": [
+     "former teacher",
+     "old teacher",
+     "teacher i used to have"
+    ]
+   }
+  ]
  },
  {
   "id": 6,
   "zh": "如果没有你的帮助，我不可能按时完成这项工作。",
   "ref": "Without your help, I could not have finished the work on time.",
-  "keys": [
-   "Without your help",
-   "could not have finished",
-   "on time"
-  ],
-  "tip": "对过去的虚拟：could not have done。"
+  "tip": "对过去的虚拟：could not have done。",
+  "points": [
+   {
+    "label": "如果没有你的帮助",
+    "any": [
+     "without your help",
+     "if it had not been for your help",
+     "but for your help",
+     "if you had not helped me"
+    ]
+   },
+   {
+    "label": "本不可能完成",
+    "any": [
+     "could not have finished",
+     "couldn't have finished",
+     "would not have finished",
+     "could not finish"
+    ]
+   },
+   {
+    "label": "按时",
+    "any": [
+     "on time",
+     "in time"
+    ]
+   }
+  ]
  },
  {
   "id": 7,
   "zh": "中国有许多名胜古迹，每年吸引大量游客。",
   "ref": "China has many places of interest, which attract a large number of tourists every year.",
-  "keys": [
-   "places of interest",
-   "which attract",
-   "a large number of",
-   "tourists"
-  ],
-  "tip": "非限制性定语从句用 which，逗号不能丢。"
+  "tip": "非限制性定语从句用 which，逗号不能丢。",
+  "points": [
+   {
+    "label": "名胜古迹",
+    "any": [
+     "places of interest",
+     "scenic spots",
+     "historic sites"
+    ]
+   },
+   {
+    "label": "定语从句",
+    "any": [],
+    "re": "\\bwhich\\b[^.]{0,40}\\battract"
+   },
+   {
+    "label": "大量",
+    "any": [
+     "a large number of",
+     "a great many",
+     "large numbers of",
+     "plenty of"
+    ]
+   },
+   {
+    "label": "游客",
+    "any": [
+     "tourists",
+     "visitors",
+     "travelers"
+    ]
+   }
+  ]
  },
  {
   "id": 8,
   "zh": "他习惯于每天早上跑步，这使他保持健康。",
   "ref": "He is used to running every morning, which keeps him healthy.",
-  "keys": [
-   "is used to",
-   "running",
-   "which keeps",
-   "healthy"
-  ],
-  "tip": "be used to doing 表示「习惯于」；which 指代前面整句。"
+  "tip": "be used to doing 表示「习惯于」；which 指代前面整句。",
+  "points": [
+   {
+    "label": "习惯于",
+    "any": [
+     "is used to",
+     "has got used to",
+     "is accustomed to"
+    ]
+   },
+   {
+    "label": "跑步",
+    "any": [
+     "running",
+     "jogging"
+    ]
+   },
+   {
+    "label": "使他保持健康",
+    "any": [
+     "keeps him healthy",
+     "keep him healthy",
+     "keeps him fit",
+     "makes him healthy"
+    ]
+   }
+  ]
  },
  {
   "id": 9,
   "zh": "我们应该学会独立思考，而不是盲目跟随别人。",
   "ref": "We should learn to think independently instead of following others blindly.",
-  "keys": [
-   "learn to",
-   "think independently",
-   "instead of",
-   "blindly"
-  ],
-  "tip": "「而不是」instead of，后面接动名词。"
+  "tip": "「而不是」instead of，后面接动名词。",
+  "points": [
+   {
+    "label": "学会",
+    "any": [
+     "learn to",
+     "should learn to"
+    ]
+   },
+   {
+    "label": "独立思考",
+    "any": [
+     "think independently",
+     "think for ourselves",
+     "think for yourself",
+     "independent thinking"
+    ]
+   },
+   {
+    "label": "而不是",
+    "any": [
+     "instead of",
+     "rather than"
+    ]
+   },
+   {
+    "label": "盲目",
+    "any": [
+     "blindly",
+     "blind"
+    ]
+   }
+  ]
  },
  {
   "id": 10,
   "zh": "这本书值得一读，它对我们了解历史很有帮助。",
   "ref": "The book is worth reading; it is very helpful for us to understand history.",
-  "keys": [
-   "is worth reading",
-   "helpful",
-   "understand history"
+  "tip": "be worth doing，主动形式表被动意义。",
+  "points": [
+   {
+    "label": "值得一读",
+    "any": [
+     "is worth reading",
+     "deserves to be read",
+     "is worth a read"
+    ]
+   },
+   {
+    "label": "有帮助",
+    "any": [
+     "helpful",
+     "useful",
+     "of great help"
+    ]
+   },
+   {
+    "label": "了解历史",
+    "any": [
+     "understand history",
+     "learn about history",
+     "know history"
+    ]
+   }
+  ]
+ },
+ {
+  "id": 11,
+  "zh": "中国的高铁网络是世界上最长的，它把大多数城市连接了起来。",
+  "ref": "China's high-speed rail network is the longest in the world, connecting most of its major cities.",
+  "tip": "「把……连接起来」用现在分词 connecting 作结果状语，比 and it connects 更像四级高分句。",
+  "points": [
+   {
+    "label": "高铁网络",
+    "any": [
+     "high-speed rail network",
+     "high-speed railway network",
+     "high speed rail network"
+    ]
+   },
+   {
+    "label": "世界上最长的",
+    "any": [
+     "the longest in the world",
+     "the world's longest"
+    ]
+   },
+   {
+    "label": "连接",
+    "any": [
+     "connecting",
+     "connects",
+     "which connect",
+     "linking"
+    ]
+   },
+   {
+    "label": "大多数城市",
+    "any": [
+     "most cities",
+     "most of the major cities",
+     "most major cities",
+     "most of its cities"
+    ]
+   }
   ],
-  "tip": "be worth doing，主动形式表被动意义。"
+  "source": "hand"
+ },
+ {
+  "id": 12,
+  "zh": "越来越多的人意识到，保护环境不仅是政府的责任，也是每个人的责任。",
+  "ref": "More and more people realize that protecting the environment is not only the government's responsibility but also everyone's.",
+  "tip": "宾语从句里主语用动名词 protecting，后面 not only...but also 连接两个并列成分。",
+  "points": [
+   {
+    "label": "越来越多",
+    "any": [
+     "more and more",
+     "an increasing number of",
+     "a growing number of"
+    ]
+   },
+   {
+    "label": "意识到",
+    "any": [
+     "realize",
+     "are aware",
+     "have realized",
+     "come to realize"
+    ]
+   },
+   {
+    "label": "不仅……也",
+    "any": [],
+    "re": "not only\\b[^.]{0,80}\\bbut also"
+   },
+   {
+    "label": "政府的责任",
+    "any": [
+     "government's responsibility",
+     "responsibility of the government",
+     "the government's duty"
+    ]
+   }
+  ],
+  "source": "hand"
+ },
+ {
+  "id": 13,
+  "zh": "虽然这项技术还很不成熟，但它已经改变了我们的生活方式。",
+  "ref": "Although the technology is still far from mature, it has already changed the way we live.",
+  "tip": "让步状语从句 + 现在完成时；「生活方式」用 the way we live 比 lifestyle 更自然。",
+  "points": [
+   {
+    "label": "虽然",
+    "any": [
+     "although",
+     "though",
+     "even though"
+    ]
+   },
+   {
+    "label": "还很不成熟",
+    "any": [
+     "far from mature",
+     "not mature yet",
+     "still immature",
+     "far from being mature"
+    ]
+   },
+   {
+    "label": "已经改变",
+    "any": [
+     "has already changed",
+     "has changed",
+     "has already transformed"
+    ]
+   },
+   {
+    "label": "生活方式",
+    "any": [
+     "the way we live",
+     "our lifestyle",
+     "our way of life",
+     "the way of life"
+    ]
+   }
+  ],
+  "source": "hand"
+ },
+ {
+  "id": 14,
+  "zh": "他花了整整一个下午才把这篇论文翻译完，累得连晚饭都不想吃。",
+  "ref": "It took him a whole afternoon to finish translating the paper, and he was too tired to eat dinner.",
+  "tip": "It took sb. some time to do sth. 是本句骨架；「累得不想……」用 too...to 结构最省事。",
+  "points": [
+   {
+    "label": "花了整整一个下午",
+    "any": [
+     "it took him a whole afternoon",
+     "he spent a whole afternoon",
+     "took him the whole afternoon"
+    ]
+   },
+   {
+    "label": "翻译完",
+    "any": [
+     "finish translating",
+     "get the paper translated",
+     "translate the paper",
+     "finish the translation"
+    ]
+   },
+   {
+    "label": "累得",
+    "any": [
+     "too tired to",
+     "so tired that",
+     "tired enough to skip"
+    ]
+   },
+   {
+    "label": "晚饭",
+    "any": [
+     "dinner",
+     "supper",
+     "the evening meal"
+    ]
+   }
+  ],
+  "source": "hand"
+ },
+ {
+  "id": 15,
+  "zh": "这本书讲的是一个普通家庭如何在困难中互相支持的故事。",
+  "ref": "The book tells the story of how an ordinary family supported each other through hard times.",
+  "tip": "how 引导的宾语从句作 of 的宾语；「普通家庭」用 ordinary family 最稳。",
+  "points": [
+   {
+    "label": "讲的是……故事",
+    "any": [
+     "tells the story of",
+     "is about",
+     "tells how"
+    ]
+   },
+   {
+    "label": "普通家庭",
+    "any": [
+     "ordinary family",
+     "average family",
+     "common family",
+     "ordinary household"
+    ]
+   },
+   {
+    "label": "互相支持",
+    "any": [
+     "supported each other",
+     "support one another",
+     "helped each other"
+    ]
+   },
+   {
+    "label": "困难",
+    "any": [
+     "hard times",
+     "difficulties",
+     "hardship",
+     "difficult times"
+    ]
+   }
+  ],
+  "source": "hand"
+ },
+ {
+  "id": 16,
+  "zh": "参加会议的人中，有一半以上是第一次来中国。",
+  "ref": "More than half of the people attending the conference were visiting China for the first time.",
+  "tip": "后置定语 attending the conference 比定语从句简洁；「第一次做某事」用 for the first time。",
+  "points": [
+   {
+    "label": "一半以上",
+    "any": [
+     "more than half",
+     "over half",
+     "more than 50 percent"
+    ]
+   },
+   {
+    "label": "参加会议的人",
+    "any": [
+     "people attending the conference",
+     "those who attended the conference",
+     "the attendees",
+     "people at the conference"
+    ]
+   },
+   {
+    "label": "第一次",
+    "any": [
+     "for the first time",
+     "the first time"
+    ]
+   },
+   {
+    "label": "来中国",
+    "any": [
+     "visit china",
+     "visiting china",
+     "come to china",
+     "came to china"
+    ]
+   }
+  ],
+  "source": "hand"
  }
 ]

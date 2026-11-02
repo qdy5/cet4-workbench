@@ -1,6 +1,10 @@
 __pycache__/
 *.pyc
-screens/
-workbench.db
-data/detail.json
 .tmp/
+screens/
+node_modules/
+workbench.db
+workbench.db-wal
+workbench.db-shm
+.DS_Store
+.pushcache.json

@@ -1,0 +1,20 @@
+{
+ "exam": {
+  "date": "2026-12-12",
+  "target": 450,
+  "total": 710,
+  "minutes": 125,
+  "note": "按历年第二个周六推算，官方公布后改这一处即可",
+  "parts": [
+   { "name": "写作", "ratio": 15, "time": 30, "note": "120-180 词短文，议论文/说明文/应用文" },
+   { "name": "听力", "ratio": 35, "time": 25, "note": "短篇新闻 7% / 长对话 8% / 听力篇章 20%" },
+   { "name": "阅读", "ratio": 35, "time": 40, "note": "词汇理解 5% / 长篇阅读 10% / 仔细阅读 20%" },
+   { "name": "翻译", "ratio": 15, "time": 30, "note": "汉译英段落，中国文化/社会/经济" }
+  ]
+ },
+ "schedule": {
+  "retention": 0.9,
+  "newPerDay": 30,
+  "learningSteps": [1, 10]
+ }
+}
