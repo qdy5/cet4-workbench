@@ -91,6 +91,7 @@ python tools/verify.py
 前端有没有退回 localStorage / UTC 日期。任何一条不过都算没交付。
 
 ```bash
+node tools/check_live.mjs                  # 发布后冒烟：拉线上站点跑一遍，查音标/选项/落库/站外请求
 node --test                                # 只跑前端逻辑测试
 python -m unittest discover -s tests/py     # 只跑接口测试
 ```
