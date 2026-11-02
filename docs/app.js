@@ -210,22 +210,46 @@ R.listening = () => {
 function openListen(id) {
   const x = S.listening.find(v => v.id === id);
   if (!x) return;
+  const N = x.lines.length;
+  const words = [...new Set(x.lines.map(l => l.en).join(' ').match(/[A-Za-z]{4,}/g) || [])];
+  const optsFor = i => {
+    const bank = [x.blanks[i], ...x.blanks.filter((b, k) => k !== i)];
+    for (const w of words) { if (!bank.includes(w)) bank.push(w); if (bank.length >= 4) break; }
+    const arr = bank.slice(0, 4);
+    for (let k = arr.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [arr[k], arr[j]] = [arr[j], arr[k]]; }
+    return arr;
+  };
+  const picks = {};
   $('#page-sub').textContent = x.scene;
   $('#app').innerHTML = `
-  <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start">
+  <div class="listen-grid">
     <div>
       <div class="audio-card">
-        <div class="t">${esc(x.title)}</div><div class="s">${esc(x.scene)}</div>
+        <div class="t">${esc(x.title)}</div><div class="s">${esc(x.scene)} · 共 ${N} 句</div>
         <div class="player">
           <button class="play" id="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
-          <select id="rate" style="background:transparent;border:1px solid rgba(255,255,255,.25);color:#dfeae5;padding:3px 6px;border-radius:6px">
-            <option value="0.75">0.75×</option><option value="1" selected>1.0×</option><option value="1.25">1.25×</option>
-          </select>
+          <div class="seek-wrap">
+            <input type="range" id="seek" min="0" max="${N - 1}" value="0" step="1">
+            <div class="seek-meta"><span id="pos">1 / ${N}</span>
+              <select id="rate" class="rate-sel"><option value="0.75">0.75×</option><option value="1" selected>1.0×</option><option value="1.25">1.25×</option></select>
+            </div>
+          </div>
+        </div>
+        <div class="player-foot">
+          <button class="pbtn" id="prev">上一句</button><button class="pbtn" id="next">下一句</button>
+          <span class="pbtn">拖动进度条可跳到任意一句</span>
         </div>
       </div>
       <div class="card card-pad" style="margin-top:14px">
-        <div class="section-head"><b>原文</b><button class="btn ghost small" id="showScript">显示 / 隐藏</button></div>
-        <div class="script" id="script" style="display:none">
+        <div class="section-head"><b>选词填空</b><span class="mini-note">点选，不用打字</span></div>
+        <div id="blanks">${x.blanks.map((b, i) => `<div class="blank-item" data-i="${i}">
+          <span class="blank-no">第 ${i + 1} 空</span>
+          <div class="chips">${optsFor(i).map(o => `<button class="chip" data-w="${esc(o)}">${esc(o)}</button>`).join('')}</div>
+        </div>`).join('')}</div>
+        <div class="meta-row"><button class="btn ghost small" id="checkBlank">对答案</button>
+          <span class="mini-note" id="blankRes"></span>
+          <button class="btn ghost small" id="showScript" style="margin-left:auto">显示 / 隐藏原文</button></div>
+        <div class="script" id="script" style="display:none;margin-top:12px">
           ${x.lines.map((l, i) => `<div class="line" data-i="${i}"><span class="sp">${esc(l.sp)}</span>${esc(l.en)}</div>`).join('')}
         </div>
       </div>
@@ -238,26 +262,64 @@ function openListen(id) {
       <button class="btn primary" id="lsubmit" style="width:100%">提交并看解析</button>
     </div>
   </div>`;
+
+  let playIdx = 0, playing = false;
+  const seek = $('#seek'), posEl = $('#pos'), playBtn = $('#play');
+  const icon = on => on
+    ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>'
+    : '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  const paint = () => {
+    $$('.line').forEach(l => l.classList.toggle('on', +l.dataset.i === playIdx));
+    seek.value = playIdx; posEl.textContent = `${playIdx + 1} / ${N}`;
+  };
+  const speakFrom = i => {
+    speechSynthesis.cancel();
+    let k = i;
+    const step = () => {
+      if (!playing || k >= N) { if (k >= N) { playing = false; playBtn.innerHTML = icon(false); } return; }
+      playIdx = k; paint();
+      const u = new SpeechSynthesisUtterance(x.lines[k].en);
+      u.lang = 'en-US'; u.rate = +$('#rate').value;
+      u.onend = () => { if (playing) { k += 1; step(); } };
+      speechSynthesis.speak(u);
+    };
+    step();
+  };
+  playBtn.addEventListener('click', () => {
+    playing = !playing; playBtn.innerHTML = icon(playing);
+    if (playing) speakFrom(playIdx); else speechSynthesis.cancel();
+  });
+  seek.addEventListener('input', () => { playIdx = +seek.value; paint(); if (playing) speakFrom(playIdx); });
+  $('#prev').addEventListener('click', () => { playIdx = Math.max(0, playIdx - 1); paint(); if (playing) speakFrom(playIdx); });
+  $('#next').addEventListener('click', () => { playIdx = Math.min(N - 1, playIdx + 1); paint(); if (playing) speakFrom(playIdx); });
+  $('#rate').addEventListener('change', () => { if (playing) speakFrom(playIdx); });
+  $$('.line').forEach(l => l.addEventListener('click', () => { playIdx = +l.dataset.i; paint(); if (playing) speakFrom(playIdx); }));
+
+  $$('#blanks .blank-item').forEach(item => item.addEventListener('click', e => {
+    const chip = e.target.closest('.chip'); if (!chip) return;
+    $$('.chip', item).forEach(c => c.classList.remove('on'));
+    chip.classList.add('on'); picks[+item.dataset.i] = chip.dataset.w;
+  }));
+  $('#checkBlank').addEventListener('click', () => {
+    let ok = 0;
+    $$('#blanks .blank-item').forEach(item => {
+      const i = +item.dataset.i, right = (picks[i] || '').toLowerCase() === x.blanks[i].toLowerCase();
+      item.classList.toggle('good', right); item.classList.toggle('bad', !right && !!picks[i]);
+      if (right) ok++;
+      $$('.chip', item).forEach(c => { if (c.dataset.w.toLowerCase() === x.blanks[i].toLowerCase()) c.classList.add('ok'); });
+    });
+    $('#blankRes').textContent = `  填空 ${ok} / ${x.blanks.length}`;
+  });
+  $('#showScript').addEventListener('click', () => { const s = $('#script'); s.style.display = s.style.display === 'none' ? 'block' : 'none'; });
+
   const answers = [];
   $$('#lqs .q').forEach(qe => qe.addEventListener('click', e => {
     const o = e.target.closest('.opt'); if (!o || qe.dataset.done) return;
     $$('.opt', qe).forEach(x => x.classList.remove('on')); o.classList.add('on');
     answers[+qe.dataset.q] = +o.dataset.i;
   }));
-  $('#showScript').addEventListener('click', () => { const s = $('#script'); s.style.display = s.style.display === 'none' ? 'block' : 'none'; });
-  $('#play').addEventListener('click', () => {
-    speechSynthesis.cancel();
-    let i = 0; const rate = +$('#rate').value;
-    const next = () => {
-      if (i >= x.lines.length) return;
-      $$('.line').forEach(l => l.classList.toggle('on', +l.dataset.i === i));
-      const u = new SpeechSynthesisUtterance(x.lines[i].en);
-      u.lang = 'en-US'; u.rate = rate; u.onend = () => { i++; next(); };
-      speechSynthesis.speak(u);
-    };
-    next();
-  });
   $('#lsubmit').addEventListener('click', () => {
+    speechSynthesis.cancel(); playing = false; playBtn.innerHTML = icon(false);
     let score = 0;
     x.qs.forEach((q, i) => {
       const qe = $(`.q[data-q="${i}"]`); qe.dataset.done = '1';
