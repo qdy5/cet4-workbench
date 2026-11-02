@@ -64,7 +64,8 @@ export const ctx = {
   get cfg() { return S.cfg; },
   word(id) { return byId.get(Number(id)); },
   async info() {
-    if (!S.info) S.info = await store.wordInfo();
+    // 空数组说明上次没拿到，别缓存失败结果，下次再试
+    if (!S.info || !S.info.length) S.info = await store.wordInfo();
     return S.info;
   },
   infoFor(word) {

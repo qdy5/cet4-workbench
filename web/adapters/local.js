@@ -9,11 +9,23 @@ const cache = new Map();
 
 async function json(name) {
   if (cache.has(name)) return cache.get(name);
-  const res = await fetch(base() + name, { cache: 'no-cache' });
-  if (!res.ok) throw new Error(`加载 ${name} 失败（${res.status}）`);
-  const data = await res.json();
-  cache.set(name, data);
-  return data;
+  // 加超时：弱网下卡住不该把整个页面钉死
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 16000);
+    try {
+      const res = await fetch(base() + name, { cache: 'no-cache', signal: ctl.signal });
+      if (!res.ok) throw new Error(`加载 ${name} 失败（${res.status}）`);
+      const data = await res.json();
+      cache.set(name, data);
+      return data;
+    } catch (err) {
+      if (attempt === 1) throw err;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  throw new Error(`加载 ${name} 失败`);
 }
 
 export function createLocalAdapter() {
