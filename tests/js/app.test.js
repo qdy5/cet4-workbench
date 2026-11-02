@@ -76,6 +76,15 @@ test('离线模式能启动、能背单词、进度落到 IndexedDB', async () =
   const answers = [...opts].map(o => o.textContent.trim());
   assert.equal(new Set(answers).size, 4, '选项不能重复');
 
+  // 音标要真的渲染出来（info.json 下标错位过一次，加断言防回退）
+  const words = JSON.parse(readFileSync(`${DOCS}data/words.json`, 'utf-8'));
+  const info = JSON.parse(readFileSync(`${DOCS}data/info.json`, 'utf-8'));
+  const shown = document.querySelector('.word-en2').textContent.trim();
+  const idx = words.findIndex(w => w.w === shown);
+  assert.ok(idx >= 0, `词表里找不到 ${shown}`);
+  assert.equal(document.querySelector('.word-ph2').textContent.trim(), (info[idx][0] || '').trim(),
+    '音标应与 info.json 对应项一致');
+
   // 作答
   click(opts[0]);
   const ans = await waitFor(() => document.querySelector('.answer'), { label: '答题反馈' });

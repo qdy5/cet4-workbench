@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 """网络到 github.com:443 不通时，用 GitHub REST Git Data API 提交并更新 main。
-只在本机 git push 连不上时用一次；走 api.github.com（可连通）。
+
+用法：python tools/publish_api.py "提交说明"
+走 api.github.com（可连通），凭证复用 git credential manager 里存的 token。
+提交前先 git add -A 并本地 commit，脚本按 git 索引里的文件生成 tree。
 """
 import base64
 import json
@@ -11,7 +14,7 @@ import time
 import urllib.error
 import urllib.request
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OWNER, REPO, BRANCH = 'qdy5', 'cet4-workbench', 'main'
 API = f'https://api.github.com/repos/{OWNER}/{REPO}'
 

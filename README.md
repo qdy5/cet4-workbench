@@ -66,6 +66,13 @@ cd docs && python -m http.server 8765   # 本地预览
 ```
 
 部署到 GitHub Pages：仓库 Settings → Pages → Branch 选 `main`、目录选 `/docs`。
+
+如果本机到 `github.com:443` 连不上（git push 超时）但 `api.github.com` 能通，用 API 提交：
+
+```bash
+git add -A && git commit -m "..."
+python tools/publish_api.py "提交说明"    # blob → tree → commit → 更新 main
+```
 推到 `main` 之后 `docs/` 就是线上版本；手机打开后「添加到主屏幕」，首次加载完即可断网使用。
 
 ## 手机和电脑之间搬进度

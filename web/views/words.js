@@ -112,8 +112,8 @@ async function paint(ctx) {
   const { word } = item;
   const card = ctx.S.cards.get(word.id);
   const opts = buildOptions(word, ctx.content.words, id => ctx.word(id));
-  const info = await ctx.info();
-  const extra = info[Number(word.id) - 1] || {};
+  await ctx.info();
+  const extra = ctx.infoFor(word);
   const st = describe(card || { state: 'new' }, Date.now(), ctx.cfg);
 
   box.innerHTML = `

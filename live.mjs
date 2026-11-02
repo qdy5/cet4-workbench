@@ -16,6 +16,12 @@ process.on('unhandledRejection', e => console.log('UNHANDLED', e && e.stack || e
 dom.window.addEventListener('error', e => console.log('WINDOW ERROR', e.message));
 const origErr = console.error; console.error = (...a) => origErr('CONSOLE', ...a);
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+const _f = globalThis.fetch;
+globalThis.fetch = async (u, o) => {
+  const t0 = Date.now();
+  try { const r = await _f(u, o); console.log('FETCH', String(u).slice(-40), r.status, (Date.now()-t0)+'ms'); return r; }
+  catch (e) { console.log('FETCH FAIL', String(u).slice(-40), e.message); throw e; }
+};
 await import('./web/app.js');
 for (let i = 0; i < 100 && !document.querySelector('.hero'); i++) await sleep(100);
 const hero = document.querySelector('.hero');

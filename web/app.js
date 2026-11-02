@@ -68,10 +68,13 @@ export const ctx = {
     if (!S.info || !S.info.length) S.info = await store.wordInfo();
     return S.info;
   },
+  /** info.json 是「[音标, 例句, 例句中文, 搭配]」数组，这里统一转成对象 */
   infoFor(word) {
-    if (!S.info || !word) return {};
-    const i = Number(word.id) - 1;
-    return S.info[i] || {};
+    if (!S.info || !word || !S.info.length) return {};
+    const row = S.info[Number(word.id) - 1];
+    if (!row) return {};
+    if (!Array.isArray(row)) return row;
+    return { ph: row[0] || '', e: row[1] || '', ec: row[2] || '', k: row[3] || '' };
   },
   dueWords(now = Date.now()) {
     const out = [];
