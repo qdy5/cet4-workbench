@@ -21,8 +21,8 @@ WEB = os.path.join(ROOT, 'web')
 DOCS = os.path.join(ROOT, 'docs')
 AUDIO = os.path.join(ROOT, 'audio')
 
-SW_TEMPLATE = '''/* 自动生成，勿手改。build {build} */
-const VER = 'cet4-{build}';
+SW_TEMPLATE = '''/* 自动生成，勿手改。assets {ver} (data build {build}) */
+const VER = 'cet4-{ver}';
 const ASSETS = {assets};
 
 self.addEventListener('install', e => {{
@@ -92,6 +92,9 @@ def file_hash(path):
     return h.hexdigest()[:10]
 
 
+TEXT_EXT = {'.js', '.css', '.html', '.json', '.webmanifest', '.md', '.txt', '.svg'}
+
+
 def copy_tree(src, dst):
     for name in os.listdir(src):
         s = os.path.join(src, name)
@@ -99,12 +102,20 @@ def copy_tree(src, dst):
         if os.path.isdir(s):
             os.makedirs(d, exist_ok=True)
             copy_tree(s, d)
+            continue
+        ext = os.path.splitext(name)[1].lower()
+        if ext in TEXT_EXT:
+            # 统一 LF：Windows 上检出是 CRLF，直接复制会让 CI 的「产物一致」检查误报
+            with open(s, 'rb') as f:
+                data = f.read().replace(b'\r\n', b'\n')
+            with open(d, 'wb') as f:
+                f.write(data)
         else:
             shutil.copy2(s, d)
 
 
 def write_json(path, data, indent=None):
-    with open(path, 'w', encoding='utf-8') as f:
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:
         json.dump(data, f, ensure_ascii=False, separators=(',', ':') if indent is None else None,
                   indent=indent)
     return os.path.getsize(path)
@@ -146,15 +157,23 @@ def main():
             assets.append('./' + rel)
     assets.sort()
 
-    sw = SW_TEMPLATE.format(build=build, assets=json.dumps(assets, ensure_ascii=False, indent=1))
-    with open(os.path.join(DOCS, 'sw.js'), 'w', encoding='utf-8') as f:
+    # 版本号取全部资源的哈希：改代码或改数据都会让缓存整体换新，不会出现「改了但手机还是旧的」
+    digest = hashlib.sha1()
+    for rel in assets:
+        digest.update(rel.encode())
+        digest.update(file_hash(os.path.join(DOCS, rel[2:])).encode())
+    ver = digest.hexdigest()[:10]
+
+    sw = SW_TEMPLATE.format(ver=ver, build=build,
+                            assets=json.dumps(assets, ensure_ascii=False, indent=1))
+    with open(os.path.join(DOCS, 'sw.js'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(sw)
 
     # GitHub Pages 不需要 Jekyll
     open(os.path.join(DOCS, '.nojekyll'), 'w').close()
 
     total = sum(os.path.getsize(os.path.join(dp, n)) for dp, _d, ns in os.walk(DOCS) for n in ns)
-    print(f'build {build} → docs/  {total / 1024 / 1024:.2f} MB, {len(assets)} 个文件预缓存')
+    print(f'assets {ver} (data {build}) → docs/  {total / 1024 / 1024:.2f} MB, {len(assets)} 个文件预缓存')
     for k, v in sizes.items():
         print(f'  data/{k}.json  {v / 1024:.0f} KB')
 
