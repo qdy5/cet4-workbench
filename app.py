@@ -16,6 +16,8 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(ROOT, 'data')
 DB = os.path.join(ROOT, 'workbench.db')
+AUDIO_DIR = os.path.join(ROOT, 'audio')
+os.makedirs(AUDIO_DIR, exist_ok=True)
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.json.ensure_ascii = False
@@ -371,18 +373,52 @@ def reading_submit():
     return jsonify({'score': score, 'total': len(data['questions']), 'detail': detail})
 
 
+
+
+def audio_for(lid):
+    for ext in ('.mp3', '.m4a', '.wav', '.ogg'):
+        p = os.path.join(AUDIO_DIR, f'listen_{lid}{ext}')
+        if os.path.exists(p):
+            return f'/audio/listen_{lid}{ext}'
+    return None
+
 @app.route('/api/listening')
 def listening_list():
     return jsonify([{'id': x['id'], 'title': x['title'], 'scene': x['scene'],
-                     'lines': len(x['lines']), 'questions': len(x['qs'])} for x in load('listening.json')])
+                     'lines': len(x['lines']), 'questions': len(x['qs']),
+                     'has_audio': bool(audio_for(x['id']))} for x in load('listening.json')])
 
 
 @app.route('/api/listening/<int:lid>')
 def listening_one(lid):
     for x in load('listening.json'):
         if x['id'] == lid:
-            return jsonify({**x, 'qs': [{'q': q['q'], 'opts': q['opts']} for q in x['qs']]})
+            return jsonify({**x, 'audio_url': audio_for(lid),
+                            'qs': [{'q': q['q'], 'opts': q['opts']} for q in x['qs']]})
     return jsonify({'error': 'not found'}), 404
+
+
+
+@app.route('/api/listening/<int:lid>/audio', methods=['POST'])
+def upload_audio(lid):
+    f = request.files.get('file')
+    if not f or not f.filename:
+        return jsonify({'error': '没有文件'}), 400
+    ext = os.path.splitext(f.filename)[1].lower()
+    if ext not in ('.mp3', '.m4a', '.wav', '.ogg'):
+        return jsonify({'error': '只支持 mp3 / m4a / wav / ogg'}), 400
+    for e in ('.mp3', '.m4a', '.wav', '.ogg'):
+        old = os.path.join(AUDIO_DIR, f'listen_{lid}{e}')
+        if os.path.exists(old):
+            os.remove(old)
+    name = f'listen_{lid}{ext}'
+    f.save(os.path.join(AUDIO_DIR, name))
+    return jsonify({'ok': True, 'url': f'/audio/{name}'})
+
+
+@app.route('/audio/<path:name>')
+def audio_file(name):
+    return send_from_directory(AUDIO_DIR, name, conditional=True)
 
 
 @app.route('/api/listening/submit', methods=['POST'])

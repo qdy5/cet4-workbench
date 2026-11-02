@@ -85,7 +85,8 @@
    "overdue",
    "fine",
    "reserve"
-  ]
+  ],
+  "audio_url": "audio/listen_1.mp3"
  },
  {
   "id": 2,
@@ -165,7 +166,8 @@
    "shift",
    "reasonable",
    "opportunity"
-  ]
+  ],
+  "audio_url": null
  },
  {
   "id": 3,
@@ -245,7 +247,8 @@
    "change",
    "price difference",
    "passport"
-  ]
+  ],
+  "audio_url": null
  },
  {
   "id": 4,
@@ -325,7 +328,8 @@
    "stay awake",
    "medicine",
    "continue"
-  ]
+  ],
+  "audio_url": null
  },
  {
   "id": 5,
@@ -409,6 +413,7 @@
    "medical note",
    "narrow",
    "flexible"
-  ]
+  ],
+  "audio_url": null
  }
 ]

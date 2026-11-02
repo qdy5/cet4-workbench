@@ -229,15 +229,16 @@ function openListen(id) {
         <div class="player">
           <button class="play" id="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
           <div class="seek-wrap">
-            <input type="range" id="seek" min="0" max="${N - 1}" value="0" step="1">
-            <div class="seek-meta"><span id="pos">1 / ${N}</span>
-              <select id="rate" class="rate-sel"><option value="0.75">0.75×</option><option value="1" selected>1.0×</option><option value="1.25">1.25×</option></select>
+            <input type="range" id="seek" min="0" max="${x.audio_url ? 100 : N - 1}" value="0" step="${x.audio_url ? 0.1 : 1}">
+            <div class="seek-meta"><span id="tcur">${x.audio_url ? '0:00' : '1 / ' + N}</span>
+              ${x.audio_url ? '<span id="tdur">--:--</span>' :
+                '<select id="rate" class="rate-sel"><option value="0.75">0.75×</option><option value="1" selected>1.0×</option><option value="1.25">1.25×</option></select>'}
             </div>
           </div>
         </div>
+        ${x.audio_url ? `<audio id="aud" src="${x.audio_url}" preload="metadata"></audio>` : ''}
         <div class="player-foot">
-          <button class="pbtn" id="prev">上一句</button><button class="pbtn" id="next">下一句</button>
-          <span class="pbtn">拖动进度条可跳到任意一句</span>
+          <span class="pbtn">${x.audio_url ? '拖动进度条可跳到任意位置' : '未导入音频，用设备朗读代替'}</span>
         </div>
       </div>
       <div class="card card-pad" style="margin-top:14px">
@@ -263,37 +264,52 @@ function openListen(id) {
     </div>
   </div>`;
 
-  let playIdx = 0, playing = false;
-  const seek = $('#seek'), posEl = $('#pos'), playBtn = $('#play');
+  const playBtn = $('#play');
   const icon = on => on
     ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>'
     : '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
-  const paint = () => {
-    $$('.line').forEach(l => l.classList.toggle('on', +l.dataset.i === playIdx));
-    seek.value = playIdx; posEl.textContent = `${playIdx + 1} / ${N}`;
-  };
-  const speakFrom = i => {
-    speechSynthesis.cancel();
-    let k = i;
-    const step = () => {
-      if (!playing || k >= N) { if (k >= N) { playing = false; playBtn.innerHTML = icon(false); } return; }
-      playIdx = k; paint();
-      const u = new SpeechSynthesisUtterance(x.lines[k].en);
-      u.lang = 'en-US'; u.rate = +$('#rate').value;
-      u.onend = () => { if (playing) { k += 1; step(); } };
-      speechSynthesis.speak(u);
+  const fmtT = s => (isFinite(s) ? Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0') : '--:--');
+
+  if (x.audio_url) {
+    const aud = $('#aud'), seek = $('#seek');
+    aud.addEventListener('loadedmetadata', () => { seek.max = Math.max(1, aud.duration); $('#tdur').textContent = fmtT(aud.duration); });
+    aud.addEventListener('timeupdate', () => {
+      if (document.activeElement !== seek) seek.value = aud.currentTime;
+      $('#tcur').textContent = fmtT(aud.currentTime);
+    });
+    aud.addEventListener('ended', () => { playBtn.innerHTML = icon(false); });
+    seek.addEventListener('input', () => { aud.currentTime = +seek.value; $('#tcur').textContent = fmtT(+seek.value); });
+    playBtn.addEventListener('click', () => {
+      if (aud.paused) { aud.play(); playBtn.innerHTML = icon(true); } else { aud.pause(); playBtn.innerHTML = icon(false); }
+    });
+  } else {
+    let playIdx = 0, playing = false;
+    const seek = $('#seek'), posEl = $('#tcur');
+    const paint = () => {
+      $$('.line').forEach(l => l.classList.toggle('on', +l.dataset.i === playIdx));
+      seek.value = playIdx; posEl.textContent = `${playIdx + 1} / ${N}`;
     };
-    step();
-  };
-  playBtn.addEventListener('click', () => {
-    playing = !playing; playBtn.innerHTML = icon(playing);
-    if (playing) speakFrom(playIdx); else speechSynthesis.cancel();
-  });
-  seek.addEventListener('input', () => { playIdx = +seek.value; paint(); if (playing) speakFrom(playIdx); });
-  $('#prev').addEventListener('click', () => { playIdx = Math.max(0, playIdx - 1); paint(); if (playing) speakFrom(playIdx); });
-  $('#next').addEventListener('click', () => { playIdx = Math.min(N - 1, playIdx + 1); paint(); if (playing) speakFrom(playIdx); });
-  $('#rate').addEventListener('change', () => { if (playing) speakFrom(playIdx); });
-  $$('.line').forEach(l => l.addEventListener('click', () => { playIdx = +l.dataset.i; paint(); if (playing) speakFrom(playIdx); }));
+    const speakFrom = i => {
+      speechSynthesis.cancel();
+      let k = i;
+      const step = () => {
+        if (!playing || k >= N) { if (k >= N) { playing = false; playBtn.innerHTML = icon(false); } return; }
+        playIdx = k; paint();
+        const u = new SpeechSynthesisUtterance(x.lines[k].en);
+        u.lang = 'en-US'; u.rate = +$('#rate').value;
+        u.onend = () => { if (playing) { k += 1; step(); } };
+        speechSynthesis.speak(u);
+      };
+      step();
+    };
+    playBtn.addEventListener('click', () => {
+      playing = !playing; playBtn.innerHTML = icon(playing);
+      if (playing) speakFrom(playIdx); else speechSynthesis.cancel();
+    });
+    seek.addEventListener('input', () => { playIdx = +seek.value; paint(); if (playing) speakFrom(playIdx); });
+    $('#rate').addEventListener('change', () => { if (playing) speakFrom(playIdx); });
+    $$('.line').forEach(l => l.addEventListener('click', () => { playIdx = +l.dataset.i; paint(); if (playing) speakFrom(playIdx); }));
+  }
 
   $$('#blanks .blank-item').forEach(item => item.addEventListener('click', e => {
     const chip = e.target.closest('.chip'); if (!chip) return;
@@ -319,7 +335,8 @@ function openListen(id) {
     answers[+qe.dataset.q] = +o.dataset.i;
   }));
   $('#lsubmit').addEventListener('click', () => {
-    speechSynthesis.cancel(); playing = false; playBtn.innerHTML = icon(false);
+    speechSynthesis.cancel();
+    const aud = document.getElementById('aud'); if (aud) aud.pause();
     let score = 0;
     x.qs.forEach((q, i) => {
       const qe = $(`.q[data-q="${i}"]`); qe.dataset.done = '1';

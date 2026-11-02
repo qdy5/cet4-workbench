@@ -325,3 +325,7 @@ span.pbtn{border:0;color:#8fb3a7;padding-left:0}
 /* 听力两栏：窄屏折成单栏 */
 .listen-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;align-items:start}
 @media (max-width:1100px){.listen-grid{grid-template-columns:1fr}}
+
+#aud{display:none}
+label.pbtn{cursor:pointer}
+.seek-meta span{font-variant-numeric:tabular-nums}

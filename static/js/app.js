@@ -327,8 +327,7 @@ window.openListening = async id => {
   const N = x.lines.length;
   const words = [...new Set(x.lines.map(l => l.en).join(' ').match(/[A-Za-z]{4,}/g) || [])];
   const optsFor = i => {
-    const pool = x.blanks.filter((b, k) => k !== i);
-    const bank = [x.blanks[i], ...pool];
+    const bank = [x.blanks[i], ...x.blanks.filter((b, k) => k !== i)];
     for (const w of words) { if (!bank.includes(w)) bank.push(w); if (bank.length >= 4) break; }
     const arr = bank.slice(0, 4);
     for (let k = arr.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [arr[k], arr[j]] = [arr[j], arr[k]]; }
@@ -341,21 +340,30 @@ window.openListening = async id => {
     <div>
       <div class="audio-card">
         <div class="t">${esc(x.title)}</div><div class="s">${esc(x.scene)} · 共 ${N} 句</div>
+        ${x.audio_url ? `
+        <div class="player">
+          <button class="play" id="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+          <div class="seek-wrap">
+            <input type="range" id="seek" min="0" max="100" value="0" step="0.1">
+            <div class="seek-meta"><span id="tcur">0:00</span><span id="tdur">--:--</span></div>
+          </div>
+        </div>
+        <audio id="aud" src="${x.audio_url}" preload="metadata"></audio>
+        ` : `
         <div class="player">
           <button class="play" id="play"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
           <div class="seek-wrap">
             <input type="range" id="seek" min="0" max="${N - 1}" value="0" step="1">
             <div class="seek-meta"><span id="pos">1 / ${N}</span>
-              <select id="rate" class="rate-sel">
-                <option value="0.75">0.75×</option><option value="1" selected>1.0×</option><option value="1.25">1.25×</option>
-              </select>
+              <select id="rate" class="rate-sel"><option value="0.75">0.75×</option><option value="1" selected>1.0×</option><option value="1.25">1.25×</option></select>
             </div>
           </div>
         </div>
+        `}
         <div class="player-foot">
-          <button class="pbtn" id="prev">上一句</button>
-          <button class="pbtn" id="next">下一句</button>
-          <span class="pbtn" id="hint">拖动进度条可跳到任意一句</span>
+          <label class="pbtn" for="pick">${x.audio_url ? '替换 MP3' : '导入 MP3'}</label>
+          <input type="file" id="pick" accept=".mp3,.m4a,.wav,.ogg,audio/*" hidden>
+          ${x.audio_url ? '<span class="pbtn">拖动进度条可跳到任意位置</span>' : '<span class="pbtn">导入 MP3 后可按秒拖动</span>'}
         </div>
       </div>
 
@@ -389,54 +397,70 @@ window.openListening = async id => {
     </div>
   </div>`;
 
-  /* ---- 播放器：可拖动进度条 ---- */
-  let playIdx = 0, playing = false;
-  const seek = $('#seek'), posEl = $('#pos'), playBtn = $('#play');
-
-  const paintLine = () => {
-    $$('.line').forEach(l => l.classList.toggle('on', +l.dataset.i === playIdx));
-    seek.value = playIdx;
-    posEl.textContent = `${playIdx + 1} / ${N}`;
-  };
-
-  const speakFrom = i => {
-    speechSynthesis.cancel();
-    let k = i;
-    const step = () => {
-      if (!playing || k >= N) { if (k >= N) { playing = false; playBtn.innerHTML = playIcon(false); } return; }
-      playIdx = k; paintLine();
-      const u = new SpeechSynthesisUtterance(x.lines[k].en);
-      u.lang = 'en-US';
-      u.rate = +$('#rate').value;
-      u.onend = () => { if (playing) { k += 1; step(); } };
-      speechSynthesis.speak(u);
-    };
-    step();
-  };
-
-  const playIcon = on => on
+  /* ---- 播放 ---- */
+  const playBtn = $('#play');
+  const icon = on => on
     ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>'
     : '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+  const fmtT = s => (isFinite(s) ? Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0') : '--:--');
 
-  playBtn.addEventListener('click', () => {
-    playing = !playing;
-    playBtn.innerHTML = playIcon(playing);
-    if (playing) speakFrom(playIdx); else speechSynthesis.cancel();
+  if (x.audio_url) {
+    const aud = $('#aud'), seek = $('#seek');
+    aud.addEventListener('loadedmetadata', () => { seek.max = Math.max(1, aud.duration); $('#tdur').textContent = fmtT(aud.duration); });
+    aud.addEventListener('timeupdate', () => {
+      if (document.activeElement !== seek) seek.value = aud.currentTime;
+      $('#tcur').textContent = fmtT(aud.currentTime);
+    });
+    aud.addEventListener('ended', () => { playBtn.innerHTML = icon(false); });
+    seek.addEventListener('input', () => { aud.currentTime = +seek.value; $('#tcur').textContent = fmtT(+seek.value); });
+    playBtn.addEventListener('click', () => {
+      if (aud.paused) { aud.play(); playBtn.innerHTML = icon(true); }
+      else { aud.pause(); playBtn.innerHTML = icon(false); }
+    });
+  } else {
+    let playIdx = 0, playing = false;
+    const seek = $('#seek'), posEl = $('#pos');
+    const paint = () => {
+      $$('.line').forEach(l => l.classList.toggle('on', +l.dataset.i === playIdx));
+      seek.value = playIdx; posEl.textContent = `${playIdx + 1} / ${N}`;
+    };
+    const speakFrom = i => {
+      speechSynthesis.cancel();
+      let k = i;
+      const step = () => {
+        if (!playing || k >= N) { if (k >= N) { playing = false; playBtn.innerHTML = icon(false); } return; }
+        playIdx = k; paint();
+        const u = new SpeechSynthesisUtterance(x.lines[k].en);
+        u.lang = 'en-US'; u.rate = +$('#rate').value;
+        u.onend = () => { if (playing) { k += 1; step(); } };
+        speechSynthesis.speak(u);
+      };
+      step();
+    };
+    playBtn.addEventListener('click', () => {
+      playing = !playing; playBtn.innerHTML = icon(playing);
+      if (playing) speakFrom(playIdx); else speechSynthesis.cancel();
+    });
+    seek.addEventListener('input', () => { playIdx = +seek.value; paint(); if (playing) speakFrom(playIdx); });
+    $('#rate').addEventListener('change', () => { if (playing) speakFrom(playIdx); });
+    $$('.line').forEach(l => l.addEventListener('click', () => { playIdx = +l.dataset.i; paint(); if (playing) speakFrom(playIdx); }));
+  }
+
+  /* ---- 导入 MP3 ---- */
+  $('#pick').addEventListener('change', async e => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    const fd = new FormData();
+    fd.append('file', f);
+    toast('上传中…');
+    try {
+      await api.post(`/api/listening/${x.id}/audio`, fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+      toast('已导入');
+      openListening(x.id);
+    } catch (err) {
+      toast('导入失败：' + (err.response?.data?.error || err.message));
+    }
   });
-
-  seek.addEventListener('input', () => {
-    playIdx = +seek.value;
-    paintLine();
-    if (playing) speakFrom(playIdx);
-  });
-  $('#prev').addEventListener('click', () => { playIdx = Math.max(0, playIdx - 1); paintLine(); if (playing) speakFrom(playIdx); });
-  $('#next').addEventListener('click', () => { playIdx = Math.min(N - 1, playIdx + 1); paintLine(); if (playing) speakFrom(playIdx); });
-  $('#rate').addEventListener('change', () => { if (playing) speakFrom(playIdx); });
-
-  /* 点原文句子也能跳 */
-  $$('.line').forEach(l => l.addEventListener('click', () => {
-    playIdx = +l.dataset.i; paintLine(); if (playing) speakFrom(playIdx);
-  }));
 
   /* ---- 选词填空 ---- */
   $$('#blanks .blank-item').forEach(item => {
@@ -466,7 +490,7 @@ window.openListening = async id => {
     const s = $('#script'); s.style.display = s.style.display === 'none' ? 'block' : 'none';
   });
 
-  /* ---- 题目（点击式，提交逻辑不变） ---- */
+  /* ---- 题目 ---- */
   const answers = [];
   $$('#lqs .q').forEach(qEl => {
     qEl.addEventListener('click', e => {
@@ -477,7 +501,8 @@ window.openListening = async id => {
     });
   });
   $('#lsubmit').addEventListener('click', async () => {
-    speechSynthesis.cancel(); playing = false; playBtn.innerHTML = playIcon(false);
+    speechSynthesis.cancel();
+    const aud = $('#aud'); if (aud) aud.pause();
     const { data: r } = await api.post('/api/listening/submit', { id: x.id, answers });
     r.detail.forEach((d, i) => {
       const qEl = $(`.q[data-q="${i}"]`); if (!qEl) return;
