@@ -1,0 +1,116 @@
+[
+ {
+  "id": 1,
+  "zh": "随着互联网的发展，越来越多的人选择在线学习。",
+  "ref": "With the development of the Internet, more and more people choose to study online.",
+  "keys": [
+   "With the development of",
+   "more and more",
+   "choose to",
+   "online"
+  ],
+  "tip": "「随着……」用 with + 名词短语；「越来越多」more and more。"
+ },
+ {
+  "id": 2,
+  "zh": "这道题太难了，我花了半个小时才做出来。",
+  "ref": "The problem was so difficult that it took me half an hour to work it out.",
+  "keys": [
+   "so ... that",
+   "it took me",
+   "half an hour",
+   "work out"
+  ],
+  "tip": "「花时间做某事」用 it takes sb. some time to do sth.。"
+ },
+ {
+  "id": 3,
+  "zh": "他不仅会说英语，还会说法语。",
+  "ref": "He can speak not only English but also French.",
+  "keys": [
+   "not only",
+   "but also"
+  ],
+  "tip": "not only ... but also ... 连接并列成分，注意结构对称。"
+ },
+ {
+  "id": 4,
+  "zh": "我们应该重视环境保护，否则后果不堪设想。",
+  "ref": "We should attach importance to environmental protection; otherwise, the consequences would be too terrible to imagine.",
+  "keys": [
+   "attach importance to",
+   "environmental protection",
+   "otherwise",
+   "consequences"
+  ],
+  "tip": "「重视」attach importance to；「不堪设想」beyond imagination / too terrible to imagine。"
+ },
+ {
+  "id": 5,
+  "zh": "昨天我见到的那个人是我以前的老师。",
+  "ref": "The person I met yesterday was my former teacher.",
+  "keys": [
+   "I met yesterday",
+   "former teacher"
+  ],
+  "tip": "定语从句省略关系代词：the person (that) I met。"
+ },
+ {
+  "id": 6,
+  "zh": "如果没有你的帮助，我不可能按时完成这项工作。",
+  "ref": "Without your help, I could not have finished the work on time.",
+  "keys": [
+   "Without your help",
+   "could not have finished",
+   "on time"
+  ],
+  "tip": "对过去的虚拟：could not have done。"
+ },
+ {
+  "id": 7,
+  "zh": "中国有许多名胜古迹，每年吸引大量游客。",
+  "ref": "China has many places of interest, which attract a large number of tourists every year.",
+  "keys": [
+   "places of interest",
+   "which attract",
+   "a large number of",
+   "tourists"
+  ],
+  "tip": "非限制性定语从句用 which，逗号不能丢。"
+ },
+ {
+  "id": 8,
+  "zh": "他习惯于每天早上跑步，这使他保持健康。",
+  "ref": "He is used to running every morning, which keeps him healthy.",
+  "keys": [
+   "is used to",
+   "running",
+   "which keeps",
+   "healthy"
+  ],
+  "tip": "be used to doing 表示「习惯于」；which 指代前面整句。"
+ },
+ {
+  "id": 9,
+  "zh": "我们应该学会独立思考，而不是盲目跟随别人。",
+  "ref": "We should learn to think independently instead of following others blindly.",
+  "keys": [
+   "learn to",
+   "think independently",
+   "instead of",
+   "blindly"
+  ],
+  "tip": "「而不是」instead of，后面接动名词。"
+ },
+ {
+  "id": 10,
+  "zh": "这本书值得一读，它对我们了解历史很有帮助。",
+  "ref": "The book is worth reading; it is very helpful for us to understand history.",
+  "keys": [
+   "is worth reading",
+   "helpful",
+   "understand history"
+  ],
+  "tip": "be worth doing，主动形式表被动意义。"
+ }
+]

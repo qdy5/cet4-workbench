@@ -1,0 +1,136 @@
+[
+ {
+  "id": 1,
+  "type": "议论文",
+  "title": "Say No to Food Waste on Campus",
+  "zh": "校园食物浪费",
+  "minutes": 30,
+  "words": "120-180",
+  "prompt": "Write an essay on food waste on campus. You should include: 1) the phenomenon; 2) the reasons; 3) your suggestions.",
+  "outline": [
+   "现象：食堂剩饭剩菜普遍",
+   "原因：点太多 / 口味不合 / 缺乏意识",
+   "建议：按需取餐、小份菜、宣传与监督"
+  ],
+  "useful": [
+   "a common sight",
+   "leftovers",
+   "raise awareness",
+   "take only what you need",
+   "smaller portions"
+  ],
+  "sample": "Food waste has become a common sight on campus. Every day, large amounts of rice and vegetables are thrown away in the dining hall.\n\nThe reasons are not hard to find. Some students order more than they can eat, some dislike the taste, and many simply do not realize how serious the problem is. What they forget is that every bowl of rice costs water, land and labour.\n\nTo change this, canteens can offer smaller portions at lower prices, and students should take only what they need. Posters and volunteer checks may also help. Waste is a habit, and habits can be replaced."
+ },
+ {
+  "id": 2,
+  "type": "议论文",
+  "title": "Do Smartphones Help or Harm Our Study?",
+  "zh": "手机对学习的影响",
+  "minutes": 30,
+  "words": "120-180",
+  "prompt": "Some say smartphones are useful learning tools; others say they distract students. Write an essay stating your view with examples.",
+  "outline": [
+   "双面性：查资料/背单词 vs 短视频/消息",
+   "关键是自控力与方法",
+   "结论：工具中性，取决于使用方式"
+  ],
+  "useful": [
+   "a double-edged sword",
+   "distraction",
+   "self-control",
+   "in the long run",
+   "make full use of"
+  ],
+  "sample": "The smartphone is a double-edged sword for students. On one hand, it puts a dictionary, a vocabulary app and a library in our pocket. On the other hand, a short video can swallow an entire evening.\n\nIn my experience, the difference lies not in the phone but in the user. When I set a timer and put the phone face down, it becomes a tool. When I hold it \"just to check a message\", it becomes a trap.\n\nTherefore, we should not blame the device. We should learn to control the way we use it, because in the long run self-control matters more than any app."
+ },
+ {
+  "id": 3,
+  "type": "议论文",
+  "title": "Should College Students Take Part-time Jobs?",
+  "zh": "大学生该不该做兼职",
+  "minutes": 30,
+  "words": "120-180",
+  "prompt": "Write an essay on whether college students should take part-time jobs. Give your reasons.",
+  "outline": [
+   "支持：接触社会、赚生活费、练沟通",
+   "反对：耽误学业、被廉价劳动消耗",
+   "我的观点：有选择地做，优先与专业相关"
+  ],
+  "useful": [
+   "gain working experience",
+   "earn pocket money",
+   "strike a balance",
+   "interpersonal skills",
+   "at the cost of"
+  ],
+  "sample": "Whether students should take part-time jobs has long been debated. Supporters say such jobs offer working experience and pocket money; critics warn that they may take time away from study.\n\nBoth sides have a point. A job in a cafe teaches communication, but carrying plates for ten hours a week at the cost of sleep is not education. The key is to strike a balance.\n\nIn my view, students should choose jobs that are related to their major or that develop a skill they lack. A part-time job is a supplement to study, never a substitute for it."
+ },
+ {
+  "id": 4,
+  "type": "图表作文",
+  "title": "How Students Read: Paper or Screen?",
+  "zh": "阅读方式变化（2020-2025）",
+  "minutes": 30,
+  "words": "120-180",
+  "prompt": "The chart shows how students in one university read between 2020 and 2025: paper reading fell from 70% to 35%, while screen reading rose from 30% to 65%. Describe the trend and give your comments.",
+  "outline": [
+   "描述趋势：纸质下降、电子上升、2022 年前后交叉",
+   "原因：手机普及、电子书便宜、碎片时间",
+   "评论：便利但伤眼、深度阅读仍需纸质"
+  ],
+  "useful": [
+   "rise from ... to ...",
+   "drop sharply",
+   "account for",
+   "a growing tendency",
+   "in contrast"
+  ],
+  "sample": "The chart reveals a clear shift in the way students read. In 2020, paper reading accounted for 70% and screen reading only 30%. By 2025, the figures had almost reversed, with screen reading rising to 65%.\n\nSeveral factors explain the trend. Smartphones make texts available anywhere, e-books are cheaper, and fragmented time is easier to fill with a screen. In contrast, paper books require a desk and a quiet hour.\n\nConvenience, however, is not the whole story. Screens tire the eyes and encourage skimming. For serious reading, I still believe paper deserves a place."
+ },
+ {
+  "id": 5,
+  "type": "书信",
+  "title": "An Email to Your Foreign Teacher",
+  "zh": "给外教写邮件",
+  "minutes": 25,
+  "words": "100-150",
+  "prompt": "Write an email to your foreign teacher, Mr. Smith, asking to join the English Corner and explaining what you can offer.",
+  "outline": [
+   "称呼与来意",
+   "自我介绍 + 想加入的原因",
+   "能贡献什么（组织/摄影/话题）",
+   "期待回复 + 落款"
+  ],
+  "useful": [
+   "I am writing to",
+   "I would like to",
+   "be willing to",
+   "look forward to",
+   "Yours sincerely"
+  ],
+  "sample": "Dear Mr. Smith,\n\nI am writing to ask whether I could join the English Corner this term. I am a second-year student and I would like to practise speaking in a real conversation rather than in front of a mirror.\n\nI am willing to help with organization: I can design topics, take photos, and arrive early to set up the room. Last year I helped run a reading club, so I know how to keep a discussion going.\n\nI look forward to your reply.\n\nYours sincerely,\nLi Ming"
+ },
+ {
+  "id": 6,
+  "type": "议论文",
+  "title": "Will AI Take Away Our Jobs?",
+  "zh": "人工智能与就业",
+  "minutes": 30,
+  "words": "120-180",
+  "prompt": "Write an essay on whether artificial intelligence will take away human jobs. State your opinion with reasons.",
+  "outline": [
+   "担忧：重复性工作被替代",
+   "反驳：历史上技术也创造新岗位",
+   "真正的问题：转型期的错配与再培训",
+   "结论：与其恐惧，不如学习"
+  ],
+  "useful": [
+   "replace",
+   "repetitive tasks",
+   "create new positions",
+   "in the transition",
+   "adapt to"
+  ],
+  "sample": "The rise of artificial intelligence has raised a familiar fear: machines will take our jobs. The fear is understandable, since AI already writes, translates and answers questions.\n\nHistory, however, suggests a more complicated story. Technology removes some tasks but creates new positions, and the people who adapt usually do better than those who wait. The real problem is not the total number of jobs but the mismatch during the transition.\n\nTherefore, the answer is not to slow down technology but to learn faster. In a changing job market, the safest skill is the ability to learn."
+ }
+]

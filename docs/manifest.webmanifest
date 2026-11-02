@@ -1,0 +1,16 @@
+{
+  "name": "CET4 学习工作台",
+  "short_name": "CET4",
+  "description": "四级单词、听力、阅读、翻译、写作，离线可用",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f3ec",
+  "theme_color": "#141c22",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

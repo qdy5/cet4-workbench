@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CET4 学习工作台 · 离线版</title>
+<meta name="theme-color" content="#141c22">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">C4</div>
+      <div class="brand-text"><b>学习工作台</b><span>OFFLINE</span></div>
+    </div>
+    <nav class="nav" id="nav">
+      <button data-view="home" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><span>总览</span></button>
+      <button data-view="words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h7v15H4z"/><path d="M13 5h7v15h-7z"/></svg><span>单词</span></button>
+      <button data-view="listening"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="13" width="4" height="7" rx="2"/><rect x="17" y="13" width="4" height="7" rx="2"/></svg><span>听力</span></button>
+      <button data-view="reading"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M8 7h8M8 11h6"/></svg><span>阅读</span></button>
+      <button data-view="translation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h9M8.5 5c0 5-2 9-4.5 11"/><path d="M6 10c1.5 3 4 5 7 6"/><path d="M14 20l3.5-9 3.5 9"/><path d="M15.2 17h4.6"/></svg><span>翻译</span></button>
+      <button data-view="writing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.5 4.5 19.5 8.5 8 20H4v-4z"/><path d="M13.5 6.5l4 4"/></svg><span>写作</span></button>
+      <button data-view="stats"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>数据</span></button>
+    </nav>
+    <div class="side-foot">
+      <div>连续学习 <b id="sf-streak">0</b> 天</div>
+      <div>待复习 <b id="sf-due">0</b> 词</div>
+      <div style="margin-top:8px;opacity:.6">离线可用 · 数据在本机</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1 id="page-title">总览</h1>
+        <div class="sub" id="page-sub">今天先把该复习的复习掉</div>
+      </div>
+      <div class="top-right">
+        <span class="pill" id="pill-date">--</span>
+        <span class="pill accent" id="pill-due">待复习 0</span>
+        <span class="pill warm" id="pill-streak">连续 0 天</span>
+      </div>
+    </div>
+    <div id="app"><div class="empty">加载中…</div></div>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

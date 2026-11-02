@@ -1,0 +1,2418 @@
+[
+ {
+  "no": "1",
+  "word": "abandon",
+  "pos": "v.",
+  "cn": "放弃，抛弃",
+  "coll": "abandon oneself to 沉溺于",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "2",
+  "word": "acquire",
+  "pos": "v.",
+  "cn": "获得，学到（知识/技能）",
+  "coll": "acquire knowledge 获取知识",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "3",
+  "word": "adapt",
+  "pos": "v.",
+  "cn": "适应；改编",
+  "coll": "adapt to 适应；be adapted from 改编自",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "4",
+  "word": "adequate",
+  "pos": "a.",
+  "cn": "足够的，胜任的",
+  "coll": "be adequate for 足以应付",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "5",
+  "word": "analyze",
+  "pos": "v.",
+  "cn": "分析",
+  "coll": "analysis n.分析",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "6",
+  "word": "apply",
+  "pos": "v.",
+  "cn": "申请；应用",
+  "coll": "apply for 申请 / apply…to 把…应用于",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "7",
+  "word": "approach",
+  "pos": "n.",
+  "cn": "方法 v.靠近",
+  "coll": "an approach to （做）…的方法",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "8",
+  "word": "assess",
+  "pos": "v.",
+  "cn": "评估，估价",
+  "coll": "assessment n.评估",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "9",
+  "word": "assume",
+  "pos": "v.",
+  "cn": "假定；承担",
+  "coll": "assume responsibility 承担责任",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "10",
+  "word": "concentrate",
+  "pos": "v.",
+  "cn": "集中，专心",
+  "coll": "concentrate on 专注于",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "11",
+  "word": "conclude",
+  "pos": "v.",
+  "cn": "得出结论；结束",
+  "coll": "draw a conclusion 得出结论",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "12",
+  "word": "consult",
+  "pos": "v.",
+  "cn": "咨询；查阅",
+  "coll": "consult sb about sth 就某事请教某人",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "13",
+  "word": "distinguish",
+  "pos": "v.",
+  "cn": "区分，辨别",
+  "coll": "distinguish A from B",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "14",
+  "word": "enroll",
+  "pos": "v.",
+  "cn": "登记，注册",
+  "coll": "enroll in 选修（课程）",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "15",
+  "word": "essential",
+  "pos": "a.",
+  "cn": "必要的，本质的",
+  "coll": "be essential to/for 对…必不可少",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "16",
+  "word": "evaluate",
+  "pos": "v.",
+  "cn": "评价，评估\n",
+  "coll": "",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "17",
+  "word": "focus",
+  "pos": "v./n.",
+  "cn": "集中；焦点",
+  "coll": "focus on 聚焦于",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "18",
+  "word": "fundamental",
+  "pos": "a.",
+  "cn": "基本的 n.基本原理\n",
+  "coll": "",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "19",
+  "word": "grasp",
+  "pos": "v./n.",
+  "cn": "抓住；理解",
+  "coll": "grasp the meaning 领会含义",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "20",
+  "word": "review",
+  "pos": "n./v.",
+  "cn": "复习；评论\n  【主题二】成长·品质：\n",
+  "coll": "",
+  "chapter": "主题一校园·学习"
+ },
+ {
+  "no": "21",
+  "word": "ambition",
+  "pos": "n.",
+  "cn": "雄心，抱负",
+  "coll": "ambitious a.有抱负的",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "22",
+  "word": "confident",
+  "pos": "a.",
+  "cn": "自信的",
+  "coll": "be confident of/about 对…有信心",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "23",
+  "word": "conscious",
+  "pos": "a.",
+  "cn": "意识到的",
+  "coll": "be conscious of 意识到",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "24",
+  "word": "courage",
+  "pos": "n.",
+  "cn": "勇气",
+  "coll": "encourage v.鼓励",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "25",
+  "word": "curious",
+  "pos": "a.",
+  "cn": "好奇的",
+  "coll": "be curious about 对…好奇",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "26",
+  "word": "diligent",
+  "pos": "a.",
+  "cn": "勤奋的",
+  "coll": "diligence n.勤奋",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "27",
+  "word": "discipline",
+  "pos": "n.",
+  "cn": "纪律 v.训练\n",
+  "coll": "",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "28",
+  "word": "generous",
+  "pos": "a.",
+  "cn": "慷慨的",
+  "coll": "be generous with/to 对…大方",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "29",
+  "word": "gratitude",
+  "pos": "n.",
+  "cn": "感激",
+  "coll": "express gratitude to sb 向某人致谢",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "30",
+  "word": "honest",
+  "pos": "a.",
+  "cn": "诚实的",
+  "coll": "to be honest 说实话（作文万能插入语）",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "31",
+  "word": "humble",
+  "pos": "a.",
+  "cn": "谦逊的 v.使谦卑\n",
+  "coll": "",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "32",
+  "word": "independent",
+  "pos": "a.",
+  "cn": "独立的",
+  "coll": "be independent of 不依赖于",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "33",
+  "word": "initiative",
+  "pos": "n.",
+  "cn": "主动性",
+  "coll": "take the initiative to do 主动做",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "34",
+  "word": "integrity",
+  "pos": "n.",
+  "cn": "正直，诚信\n",
+  "coll": "",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "35",
+  "word": "mature",
+  "pos": "a.",
+  "cn": "成熟的 v.成熟\n",
+  "coll": "",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "36",
+  "word": "modest",
+  "pos": "a.",
+  "cn": "谦虚的；适度的\n",
+  "coll": "",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "37",
+  "word": "optimistic",
+  "pos": "a.",
+  "cn": "乐观的",
+  "coll": "be optimistic about 对…乐观",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "38",
+  "word": "patient",
+  "pos": "a.",
+  "cn": "有耐心的 n.病人",
+  "coll": "be patient with 对…耐心",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "39",
+  "word": "persist",
+  "pos": "v.",
+  "cn": "坚持",
+  "coll": "persist in doing 坚持做某事",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "40",
+  "word": "reliable",
+  "pos": "a.",
+  "cn": "可靠的",
+  "coll": "rely on 依赖",
+  "chapter": "主题二成长·品质"
+ },
+ {
+  "no": "41",
+  "word": "applicant",
+  "pos": "n.",
+  "cn": "申请人\n",
+  "coll": "",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "42",
+  "word": "assign",
+  "pos": "v.",
+  "cn": "分配；指派",
+  "coll": "assign sth to sb 把某事分派给某人",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "43",
+  "word": "candidate",
+  "pos": "n.",
+  "cn": "候选人，应试者\n",
+  "coll": "",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "44",
+  "word": "capable",
+  "pos": "a.",
+  "cn": "有能力的",
+  "coll": "be capable of doing 能够做",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "45",
+  "word": "colleague",
+  "pos": "n.",
+  "cn": "同事\n",
+  "coll": "",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "46",
+  "word": "competent",
+  "pos": "a.",
+  "cn": "能胜任的",
+  "coll": "competence n.能力",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "47",
+  "word": "cooperate",
+  "pos": "v.",
+  "cn": "合作",
+  "coll": "cooperate with 与…合作",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "48",
+  "word": "deadline",
+  "pos": "n.",
+  "cn": "截止日期",
+  "coll": "meet the deadline 赶上期限",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "49",
+  "word": "efficiency",
+  "pos": "n.",
+  "cn": "效率",
+  "coll": "efficient a.高效的",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "50",
+  "word": "employee",
+  "pos": "n.",
+  "cn": "雇员",
+  "coll": "↔ employer 雇主",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "51",
+  "word": "enterprise",
+  "pos": "n.",
+  "cn": "企业；事业心\n",
+  "coll": "",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "52",
+  "word": "negotiate",
+  "pos": "v.",
+  "cn": "谈判，协商",
+  "coll": "negotiate with 与…谈判",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "53",
+  "word": "opportunity",
+  "pos": "n.",
+  "cn": "机会",
+  "coll": "take the opportunity to do 借机做",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "54",
+  "word": "promotion",
+  "pos": "n.",
+  "cn": "晋升；促销\n",
+  "coll": "",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "55",
+  "word": "profession",
+  "pos": "n.",
+  "cn": "职业",
+  "coll": "professional a.专业的",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "56",
+  "word": "profit",
+  "pos": "n.",
+  "cn": "利润 v.获益",
+  "coll": "profit from 从…中获益",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "57",
+  "word": "qualify",
+  "pos": "v.",
+  "cn": "（使）合格",
+  "coll": "be qualified for 胜任…",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "58",
+  "word": "recommend",
+  "pos": "v.",
+  "cn": "推荐，建议",
+  "coll": "recommend doing / recommend that sb (should) do",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "59",
+  "word": "resign",
+  "pos": "v.",
+  "cn": "辞职",
+  "coll": "resign from 辞去…职务",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "60",
+  "word": "responsibility",
+  "pos": "n.",
+  "cn": "责任",
+  "coll": "take responsibility for 对…负责",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "61",
+  "word": "superior",
+  "pos": "a.",
+  "cn": "更好的；上级的",
+  "coll": "be superior to 优于",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "62",
+  "word": "vacant",
+  "pos": "a.",
+  "cn": "空缺的，空的",
+  "coll": "a vacant position 空缺职位",
+  "chapter": "主题三工作·职场"
+ },
+ {
+  "no": "63",
+  "word": "access",
+  "pos": "n.",
+  "cn": "通道 v.访问",
+  "coll": "have access to 有权使用/接近",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "64",
+  "word": "appliance",
+  "pos": "n.",
+  "cn": "器具，电器",
+  "coll": "household appliances 家用电器",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "65",
+  "word": "automatic",
+  "pos": "a.",
+  "cn": "自动的\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "66",
+  "word": "breakthrough",
+  "pos": "n.",
+  "cn": "突破",
+  "coll": "make a breakthrough in 在…上取得突破",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "67",
+  "word": "device",
+  "pos": "n.",
+  "cn": "装置，设备\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "68",
+  "word": "digital",
+  "pos": "a.",
+  "cn": "数字的，数码的\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "69",
+  "word": "electronic",
+  "pos": "a.",
+  "cn": "电子的\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "70",
+  "word": "innovation",
+  "pos": "n.",
+  "cn": "创新",
+  "coll": "technological innovation 技术创新",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "71",
+  "word": "network",
+  "pos": "n.",
+  "cn": "网络\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "72",
+  "word": "online",
+  "pos": "a./ad.",
+  "cn": "在线的",
+  "coll": "online shopping 网购",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "73",
+  "word": "satellite",
+  "pos": "n.",
+  "cn": "卫星\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "74",
+  "word": "software",
+  "pos": "n.",
+  "cn": "软件",
+  "coll": "↔ hardware 硬件",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "75",
+  "word": "technology",
+  "pos": "n.",
+  "cn": "技术",
+  "coll": "with the development of technology 写作万能开头",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "76",
+  "word": "update",
+  "pos": "v.",
+  "cn": "更新 n.最新消息\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "77",
+  "word": "virtual",
+  "pos": "a.",
+  "cn": "虚拟的；实质上的\n  【主题五】环境·健康：\n",
+  "coll": "",
+  "chapter": "主题四科技·网络"
+ },
+ {
+  "no": "78",
+  "word": "balance",
+  "pos": "n./v.",
+  "cn": "平衡",
+  "coll": "keep a balance between A and B",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "79",
+  "word": "diet",
+  "pos": "n.",
+  "cn": "饮食 v.节食",
+  "coll": "go on a diet 节食",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "80",
+  "word": "disease",
+  "pos": "n.",
+  "cn": "疾病\n",
+  "coll": "",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "81",
+  "word": "energy",
+  "pos": "n.",
+  "cn": "能量，精力",
+  "coll": "energetic a.精力充沛的",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "82",
+  "word": "environment",
+  "pos": "n.",
+  "cn": "环境",
+  "coll": "environmental a.环境的",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "83",
+  "word": "exhaust",
+  "pos": "v.",
+  "cn": "耗尽 n.废气",
+  "coll": "exhausted a.筋疲力尽的",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "84",
+  "word": "harm",
+  "pos": "n./v.",
+  "cn": "伤害",
+  "coll": "do harm to / be harmful to 有害于",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "85",
+  "word": "immune",
+  "pos": "a.",
+  "cn": "免疫的",
+  "coll": "be immune to 对…免疫",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "86",
+  "word": "nutrition",
+  "pos": "n.",
+  "cn": "营养",
+  "coll": "nutritious a.有营养的",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "87",
+  "word": "pollute",
+  "pos": "v.",
+  "cn": "污染",
+  "coll": "pollution n.污染",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "88",
+  "word": "pressure",
+  "pos": "n.",
+  "cn": "压力",
+  "coll": "under pressure 在压力之下",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "89",
+  "word": "prevent",
+  "pos": "v.",
+  "cn": "阻止",
+  "coll": "prevent sb from doing 阻止某人做",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "90",
+  "word": "recycle",
+  "pos": "v.",
+  "cn": "回收利用\n",
+  "coll": "",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "91",
+  "word": "resource",
+  "pos": "n.",
+  "cn": "资源",
+  "coll": "natural resources 自然资源",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "92",
+  "word": "waste",
+  "pos": "n./v.",
+  "cn": "浪费",
+  "coll": "waste time (in) doing 浪费时间做",
+  "chapter": "主题五环境·健康"
+ },
+ {
+  "no": "93",
+  "word": "available",
+  "pos": "a.",
+  "cn": "可获得的；有空的\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "94",
+  "word": "benefit",
+  "pos": "n.",
+  "cn": "益处 v.受益",
+  "coll": "benefit from / be beneficial to 有益于",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "95",
+  "word": "campaign",
+  "pos": "n.",
+  "cn": "运动，活动\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "96",
+  "word": "celebrity",
+  "pos": "n.",
+  "cn": "名人\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "97",
+  "word": "charity",
+  "pos": "n.",
+  "cn": "慈善\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "98",
+  "word": "community",
+  "pos": "n.",
+  "cn": "社区，群体\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "99",
+  "word": "custom",
+  "pos": "n.",
+  "cn": "习俗\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "100",
+  "word": "generation",
+  "pos": "n.",
+  "cn": "一代人",
+  "coll": "from generation to generation 代代相传",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "101",
+  "word": "heritage",
+  "pos": "n.",
+  "cn": "遗产",
+  "coll": "cultural heritage 文化遗产",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "102",
+  "word": "influence",
+  "pos": "n./v.",
+  "cn": "影响",
+  "coll": "have an influence on 对…有影响",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "103",
+  "word": "participate",
+  "pos": "v.",
+  "cn": "参与",
+  "coll": "participate in 参加",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "104",
+  "word": "phenomenon",
+  "pos": "n.",
+  "cn": "现象",
+  "coll": "复数 phenomena",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "105",
+  "word": "population",
+  "pos": "n.",
+  "cn": "人口\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "106",
+  "word": "poverty",
+  "pos": "n.",
+  "cn": "贫困\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "107",
+  "word": "reform",
+  "pos": "n./v.",
+  "cn": "改革\n",
+  "coll": "",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "108",
+  "word": "rural",
+  "pos": "a.",
+  "cn": "农村的",
+  "coll": "↔ urban 城市的",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "109",
+  "word": "volunteer",
+  "pos": "n.",
+  "cn": "志愿者 v.自愿做",
+  "coll": "volunteer to do 自愿做",
+  "chapter": "主题六社会·文化"
+ },
+ {
+  "no": "110",
+  "word": "anxious",
+  "pos": "a.",
+  "cn": "焦虑的",
+  "coll": "be anxious about 为…担忧",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "111",
+  "word": "appreciate",
+  "pos": "v.",
+  "cn": "感激；欣赏",
+  "coll": "I'd appreciate it if… 如蒙…不胜感激",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "112",
+  "word": "attitude",
+  "pos": "n.",
+  "cn": "态度",
+  "coll": "attitude towards 对…的态度",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "113",
+  "word": "complain",
+  "pos": "v.",
+  "cn": "抱怨",
+  "coll": "complain about/of 抱怨…",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "114",
+  "word": "depressed",
+  "pos": "a.",
+  "cn": "沮丧的，抑郁的",
+  "coll": "depression n.",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "115",
+  "word": "embarrassed",
+  "pos": "a.",
+  "cn": "尴尬的\n",
+  "coll": "",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "116",
+  "word": "emotion",
+  "pos": "n.",
+  "cn": "情绪",
+  "coll": "emotional a.情绪化的",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "117",
+  "word": "envy",
+  "pos": "n./v.",
+  "cn": "羡慕，嫉妒",
+  "coll": "be envious of 羡慕",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "118",
+  "word": "frustration",
+  "pos": "n.",
+  "cn": "挫败，沮丧",
+  "coll": "frustrated a.沮丧的",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "119",
+  "word": "guilty",
+  "pos": "a.",
+  "cn": "内疚的；有罪的",
+  "coll": "be guilty of 犯…罪",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "120",
+  "word": "loneliness",
+  "pos": "n.",
+  "cn": "孤独\n",
+  "coll": "",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "121",
+  "word": "mood",
+  "pos": "n.",
+  "cn": "心情",
+  "coll": "be in a good mood 心情好",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "122",
+  "word": "overcome",
+  "pos": "v.",
+  "cn": "克服",
+  "coll": "overcome difficulties 克服困难",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "123",
+  "word": "relief",
+  "pos": "n.",
+  "cn": "宽慰，减轻",
+  "coll": "to one's relief 令某人欣慰的是",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "124",
+  "word": "satisfaction",
+  "pos": "n.",
+  "cn": "满足",
+  "coll": "to one's satisfaction 令某人满意的是",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "125",
+  "word": "stress",
+  "pos": "n.",
+  "cn": "压力 v.强调\n",
+  "coll": "",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "126",
+  "word": "sympathy",
+  "pos": "n.",
+  "cn": "同情",
+  "coll": "feel sympathy for 同情某人",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "127",
+  "word": "tolerate",
+  "pos": "v.",
+  "cn": "容忍",
+  "coll": "tolerance n.宽容",
+  "chapter": "主题七心理·情感"
+ },
+ {
+  "no": "128",
+  "word": "affordable",
+  "pos": "a.",
+  "cn": "买得起的\n",
+  "coll": "",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "129",
+  "word": "budget",
+  "pos": "n.",
+  "cn": "预算",
+  "coll": "on a tight budget 预算紧张",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "130",
+  "word": "consume",
+  "pos": "v.",
+  "cn": "消费，消耗",
+  "coll": "consumption n.消费",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "131",
+  "word": "discount",
+  "pos": "n.",
+  "cn": "折扣",
+  "coll": "at a discount 打折",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "132",
+  "word": "economy",
+  "pos": "n.",
+  "cn": "经济",
+  "coll": "economic 经济的 / economical 节约的",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "133",
+  "word": "expense",
+  "pos": "n.",
+  "cn": "费用",
+  "coll": "at the expense of 以…为代价",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "134",
+  "word": "income",
+  "pos": "n.",
+  "cn": "收入\n",
+  "coll": "",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "135",
+  "word": "invest",
+  "pos": "v.",
+  "cn": "投资",
+  "coll": "invest in 投资于",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "136",
+  "word": "luxury",
+  "pos": "n.",
+  "cn": "奢侈品 a.奢侈的\n",
+  "coll": "",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "137",
+  "word": "purchase",
+  "pos": "v./n.",
+  "cn": "购买（正式用语，替换 buy 提分）\n",
+  "coll": "",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "138",
+  "word": "quantity",
+  "pos": "n.",
+  "cn": "数量",
+  "coll": "a large quantity of 大量的",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "139",
+  "word": "rate",
+  "pos": "n.",
+  "cn": "比率，速度",
+  "coll": "at the rate of 以…的速度",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "140",
+  "word": "revenue",
+  "pos": "n.",
+  "cn": "收入，税收\n",
+  "coll": "",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "141",
+  "word": "shortage",
+  "pos": "n.",
+  "cn": "短缺",
+  "coll": "a shortage of 缺乏",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "142",
+  "word": "spend",
+  "pos": "v.",
+  "cn": "花费",
+  "coll": "spend time (in) doing 花时间做",
+  "chapter": "主题八经济·消费"
+ },
+ {
+  "no": "143",
+  "word": "achieve",
+  "pos": "v.",
+  "cn": "实现，达到",
+  "coll": "achieve one's goal 实现目标",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "144",
+  "word": "affect",
+  "pos": "v.",
+  "cn": "影响",
+  "coll": "effect n.影响；have an effect on",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "145",
+  "word": "attempt",
+  "pos": "n./v.",
+  "cn": "尝试",
+  "coll": "attempt to do 试图做",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "146",
+  "word": "avoid",
+  "pos": "v.",
+  "cn": "避免",
+  "coll": "avoid doing 避免做",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "147",
+  "word": "commit",
+  "pos": "v.",
+  "cn": "承诺；犯（错）",
+  "coll": "commit oneself to doing 致力于",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "148",
+  "word": "consider",
+  "pos": "v.",
+  "cn": "考虑",
+  "coll": "consider doing 考虑做",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "149",
+  "word": "contribute",
+  "pos": "v.",
+  "cn": "贡献；促成",
+  "coll": "contribute to doing 有助于",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "150",
+  "word": "convince",
+  "pos": "v.",
+  "cn": "使信服",
+  "coll": "convince sb of sth 使某人相信",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "151",
+  "word": "decline",
+  "pos": "v.",
+  "cn": "下降；婉拒 n.下降\n",
+  "coll": "",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "152",
+  "word": "demand",
+  "pos": "n./v.",
+  "cn": "要求，需求",
+  "coll": "in demand 需求量大",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "153",
+  "word": "emphasize",
+  "pos": "v.",
+  "cn": "强调",
+  "coll": "put emphasis on 重视",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "154",
+  "word": "ensure",
+  "pos": "v.",
+  "cn": "确保",
+  "coll": "ensure that… 务必…",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "155",
+  "word": "estimate",
+  "pos": "v./n.",
+  "cn": "估计\n",
+  "coll": "",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "156",
+  "word": "expand",
+  "pos": "v.",
+  "cn": "扩张，膨胀",
+  "coll": "expansion n.",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "157",
+  "word": "explore",
+  "pos": "v.",
+  "cn": "探索",
+  "coll": "exploration n.",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "158",
+  "word": "guarantee",
+  "pos": "v./n.",
+  "cn": "保证\n",
+  "coll": "",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "159",
+  "word": "ignore",
+  "pos": "v.",
+  "cn": "忽视",
+  "coll": "ignorance n.无知",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "160",
+  "word": "impress",
+  "pos": "v.",
+  "cn": "使印象深刻",
+  "coll": "be impressed by 被…打动",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "161",
+  "word": "improve",
+  "pos": "v.",
+  "cn": "改善",
+  "coll": "improvement n.",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "162",
+  "word": "increase",
+  "pos": "v./n.",
+  "cn": "增加",
+  "coll": "increase by/to 增加了/增加到",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "163",
+  "word": "indicate",
+  "pos": "v.",
+  "cn": "表明，指示\n",
+  "coll": "",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "164",
+  "word": "insist",
+  "pos": "v.",
+  "cn": "坚持",
+  "coll": "insist on doing 坚持做",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "165",
+  "word": "involve",
+  "pos": "v.",
+  "cn": "涉及；使参与",
+  "coll": "be involved in 参与/卷入",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "166",
+  "word": "maintain",
+  "pos": "v.",
+  "cn": "维持；主张\n",
+  "coll": "",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "167",
+  "word": "obtain",
+  "pos": "v.",
+  "cn": "获得（较正式，替换 get）\n",
+  "coll": "",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "168",
+  "word": "occur",
+  "pos": "v.",
+  "cn": "发生",
+  "coll": "it occurs to sb that… 某人突然想到",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "169",
+  "word": "prefer",
+  "pos": "v.",
+  "cn": "更喜欢",
+  "coll": "prefer A to B；prefer doing to doing",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "170",
+  "word": "promote",
+  "pos": "v.",
+  "cn": "促进；晋升",
+  "coll": "promote cooperation 促进合作",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "171",
+  "word": "reduce",
+  "pos": "v.",
+  "cn": "减少",
+  "coll": "reduce…to 把…降到",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "172",
+  "word": "reflect",
+  "pos": "v.",
+  "cn": "反映；反思",
+  "coll": "reflect on 反思",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "173",
+  "word": "regard",
+  "pos": "v.",
+  "cn": "认为",
+  "coll": "regard…as 把…视为",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "174",
+  "word": "remind",
+  "pos": "v.",
+  "cn": "提醒",
+  "coll": "remind sb of sth 使某人想起",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "175",
+  "word": "replace",
+  "pos": "v.",
+  "cn": "取代",
+  "coll": "replace A with B 用B替换A",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "176",
+  "word": "require",
+  "pos": "v.",
+  "cn": "需要，要求",
+  "coll": "require doing/to be done 需要被…",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "177",
+  "word": "restrict",
+  "pos": "v.",
+  "cn": "限制",
+  "coll": "restrict…to 把…限制在",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "178",
+  "word": "reveal",
+  "pos": "v.",
+  "cn": "揭示，透露\n",
+  "coll": "",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "179",
+  "word": "suggest",
+  "pos": "v.",
+  "cn": "建议；表明",
+  "coll": "suggest doing / suggest that sb (should) do",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "180",
+  "word": "tend",
+  "pos": "v.",
+  "cn": "倾向于",
+  "coll": "tend to do 往往会",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "181",
+  "word": "threaten",
+  "pos": "v.",
+  "cn": "威胁",
+  "coll": "threaten to do 威胁要做",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "182",
+  "word": "vary",
+  "pos": "v.",
+  "cn": "变化，不同",
+  "coll": "vary from…to 从…到…不同",
+  "chapter": "主题九高频动词（写作提分项）"
+ },
+ {
+  "no": "183",
+  "word": "appropriate",
+  "pos": "a.",
+  "cn": "恰当的",
+  "coll": "be appropriate for 适合于",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "184",
+  "word": "apparent",
+  "pos": "a.",
+  "cn": "明显的",
+  "coll": "it is apparent that… 显然…",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "185",
+  "word": "beneficial",
+  "pos": "a.",
+  "cn": "有益的",
+  "coll": "be beneficial to 有益于",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "186",
+  "word": "considerable",
+  "pos": "a.",
+  "cn": "相当大的\n",
+  "coll": "",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "187",
+  "word": "convenient",
+  "pos": "a.",
+  "cn": "方便的",
+  "coll": "at your convenience 在您方便时",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "188",
+  "word": "crucial",
+  "pos": "a.",
+  "cn": "至关重要的",
+  "coll": "play a crucial role in 在…中起关键作用",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "189",
+  "word": "evident",
+  "pos": "a.",
+  "cn": "明显的",
+  "coll": "evidence n.证据",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "190",
+  "word": "flexible",
+  "pos": "a.",
+  "cn": "灵活的",
+  "coll": "flexibility n.灵活性",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "191",
+  "word": "inevitable",
+  "pos": "a.",
+  "cn": "不可避免的\n",
+  "coll": "",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "192",
+  "word": "potential",
+  "pos": "a.",
+  "cn": "潜在的 n.潜力",
+  "coll": "realize one's potential 发挥潜能",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "193",
+  "word": "previous",
+  "pos": "a.",
+  "cn": "先前的\n",
+  "coll": "",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "194",
+  "word": "relevant",
+  "pos": "a.",
+  "cn": "相关的",
+  "coll": "be relevant to 与…有关",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "195",
+  "word": "significant",
+  "pos": "a.",
+  "cn": "重大的",
+  "coll": "significance n.意义",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "196",
+  "word": "similar",
+  "pos": "a.",
+  "cn": "相似的",
+  "coll": "be similar to 与…相似",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "197",
+  "word": "sufficient",
+  "pos": "a.",
+  "cn": "充足的",
+  "coll": "sufficient evidence 充分的证据",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "198",
+  "word": "typical",
+  "pos": "a.",
+  "cn": "典型的",
+  "coll": "be typical of 是…的典型",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "199",
+  "word": "gradually",
+  "pos": "ad.",
+  "cn": "逐渐地\n",
+  "coll": "",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "200",
+  "word": "eventually",
+  "pos": "ad.",
+  "cn": "最终\n",
+  "coll": "",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "201",
+  "word": "rarely",
+  "pos": "ad.",
+  "cn": "很少（放句首要倒装）",
+  "coll": "Rarely do we realize that…",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "202",
+  "word": "extremely",
+  "pos": "ad.",
+  "cn": "极其",
+  "coll": "替换 very 提分",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "203",
+  "word": "nowadays",
+  "pos": "ad.",
+  "cn": "如今",
+  "coll": "作文开头万能词",
+  "chapter": "主题十高频形容词·副词"
+ },
+ {
+  "no": "204",
+  "word": "acknowledge",
+  "pos": "v.",
+  "cn": "承认；致谢",
+  "coll": "acknowledge…as 承认…是",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "205",
+  "word": "alternative",
+  "pos": "n.",
+  "cn": "替代方案 a.备选的",
+  "coll": "have no alternative but to do 别无选择只能",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "206",
+  "word": "approve",
+  "pos": "v.",
+  "cn": "批准；赞成",
+  "coll": "approve of 赞成",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "207",
+  "word": "arise",
+  "pos": "v.",
+  "cn": "出现，产生（arose/arisen）",
+  "coll": "arise from 由…引起",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "208",
+  "word": "attach",
+  "pos": "v.",
+  "cn": "附上；重视",
+  "coll": "attach importance to 重视",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "209",
+  "word": "aware",
+  "pos": "a.",
+  "cn": "意识到的",
+  "coll": "be aware of 意识到",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "210",
+  "word": "claim",
+  "pos": "v./n.",
+  "cn": "声称；索取",
+  "coll": "claim to do 声称做了",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "211",
+  "word": "compete",
+  "pos": "v.",
+  "cn": "竞争",
+  "coll": "compete with/against 与…竞争",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "212",
+  "word": "consequence",
+  "pos": "n.",
+  "cn": "后果，结果",
+  "coll": "as a consequence 因此",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "213",
+  "word": "consist",
+  "pos": "v.",
+  "cn": "组成；在于",
+  "coll": "consist of 由…组成",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "214",
+  "word": "constant",
+  "pos": "a.",
+  "cn": "不断的；恒定的\n",
+  "coll": "",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "215",
+  "word": "contrast",
+  "pos": "n./v.",
+  "cn": "对比",
+  "coll": "in contrast (to) 与…形成对照",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "216",
+  "word": "convey",
+  "pos": "v.",
+  "cn": "传达，运送",
+  "coll": "convey one's feelings 表达情感",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "217",
+  "word": "cope",
+  "pos": "v.",
+  "cn": "应对",
+  "coll": "cope with 应付，处理",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "218",
+  "word": "demonstrate",
+  "pos": "v.",
+  "cn": "证明；演示",
+  "coll": "demonstrate that… 表明",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "219",
+  "word": "deny",
+  "pos": "v.",
+  "cn": "否认",
+  "coll": "deny doing 否认做过",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "220",
+  "word": "depend",
+  "pos": "v.",
+  "cn": "依赖，取决于",
+  "coll": "depend on 依靠；视…而定",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "221",
+  "word": "deserve",
+  "pos": "v.",
+  "cn": "值得，应得",
+  "coll": "deserve to be done 值得被…",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "222",
+  "word": "despite",
+  "pos": "prep.",
+  "cn": "尽管（后接名词，不接完整句子）\n",
+  "coll": "",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "223",
+  "word": "determine",
+  "pos": "v.",
+  "cn": "决定，下决心",
+  "coll": "be determined to do 决心做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "224",
+  "word": "devote",
+  "pos": "v.",
+  "cn": "投入，奉献",
+  "coll": "devote oneself to doing 致力于",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "225",
+  "word": "differ",
+  "pos": "v.",
+  "cn": "不同",
+  "coll": "differ from 与…不同",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "226",
+  "word": "eliminate",
+  "pos": "v.",
+  "cn": "消除，淘汰\n",
+  "coll": "",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "227",
+  "word": "enhance",
+  "pos": "v.",
+  "cn": "提高，增强",
+  "coll": "enhance efficiency 提高效率",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "228",
+  "word": "establish",
+  "pos": "v.",
+  "cn": "建立，创立",
+  "coll": "establish a system 建立制度",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "229",
+  "word": "familiar",
+  "pos": "a.",
+  "cn": "熟悉的",
+  "coll": "be familiar with 熟悉",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "230",
+  "word": "generate",
+  "pos": "v.",
+  "cn": "产生，创造",
+  "coll": "generate income 创造收入",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "231",
+  "word": "hesitate",
+  "pos": "v.",
+  "cn": "犹豫",
+  "coll": "hesitate to do 迟疑去做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "232",
+  "word": "impact",
+  "pos": "n./v.",
+  "cn": "影响，冲击",
+  "coll": "have an impact on 对…有影响",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "233",
+  "word": "impose",
+  "pos": "v.",
+  "cn": "强加；征收",
+  "coll": "impose…on 把…强加于",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "234",
+  "word": "intend",
+  "pos": "v.",
+  "cn": "打算，意图",
+  "coll": "be intended for 专为…而设",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "235",
+  "word": "lack",
+  "pos": "n./v.",
+  "cn": "缺乏",
+  "coll": "for lack of 因缺乏",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "236",
+  "word": "launch",
+  "pos": "v.",
+  "cn": "发起；发射",
+  "coll": "launch a campaign 发起活动",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "237",
+  "word": "measure",
+  "pos": "n.",
+  "cn": "措施 v.衡量",
+  "coll": "take measures to do 采取措施",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "238",
+  "word": "motivate",
+  "pos": "v.",
+  "cn": "激励，激发",
+  "coll": "motivate sb to do 激励某人做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "239",
+  "word": "neglect",
+  "pos": "v./n.",
+  "cn": "忽视，疏忽",
+  "coll": "neglect to do 疏于做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "240",
+  "word": "objective",
+  "pos": "n.",
+  "cn": "目标 a.客观的",
+  "coll": "an objective view 客观的看法",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "241",
+  "word": "oppose",
+  "pos": "v.",
+  "cn": "反对",
+  "coll": "be opposed to doing 反对做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "242",
+  "word": "persuade",
+  "pos": "v.",
+  "cn": "说服",
+  "coll": "persuade sb to do 说服某人做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "243",
+  "word": "pose",
+  "pos": "v.",
+  "cn": "造成；摆姿势",
+  "coll": "pose a threat to 对…构成威胁",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "244",
+  "word": "propose",
+  "pos": "v.",
+  "cn": "提议，建议",
+  "coll": "propose doing 提议做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "245",
+  "word": "pursue",
+  "pos": "v.",
+  "cn": "追求；从事",
+  "coll": "pursue a career 追求事业",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "246",
+  "word": "react",
+  "pos": "v.",
+  "cn": "反应",
+  "coll": "react to 对…作出反应",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "247",
+  "word": "recognize",
+  "pos": "v.",
+  "cn": "认出；承认",
+  "coll": "be recognized as 被公认为",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "248",
+  "word": "recover",
+  "pos": "v.",
+  "cn": "恢复，痊愈",
+  "coll": "recover from 从…中恢复",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "249",
+  "word": "regret",
+  "pos": "v./n.",
+  "cn": "后悔，遗憾",
+  "coll": "regret doing 后悔做过",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "250",
+  "word": "reluctant",
+  "pos": "a.",
+  "cn": "不情愿的",
+  "coll": "be reluctant to do 不愿做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "251",
+  "word": "respond",
+  "pos": "v.",
+  "cn": "回应，反应",
+  "coll": "respond to 响应，回应",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "252",
+  "word": "seek",
+  "pos": "v.",
+  "cn": "寻求，追求",
+  "coll": "seek to do 力图做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "253",
+  "word": "solution",
+  "pos": "n.",
+  "cn": "解决办法",
+  "coll": "a solution to …的解决办法",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "254",
+  "word": "strategy",
+  "pos": "n.",
+  "cn": "策略，战略",
+  "coll": "adopt a strategy 采取策略",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "255",
+  "word": "submit",
+  "pos": "v.",
+  "cn": "提交；服从",
+  "coll": "submit to 屈服于",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "256",
+  "word": "substitute",
+  "pos": "n.",
+  "cn": "替代品 v.代替",
+  "coll": "substitute A for B 用A代替B",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "257",
+  "word": "suffer",
+  "pos": "v.",
+  "cn": "遭受，受苦",
+  "coll": "suffer from 遭受…之苦",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "258",
+  "word": "suppose",
+  "pos": "v.",
+  "cn": "假设，认为",
+  "coll": "be supposed to do 应该做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "259",
+  "word": "survive",
+  "pos": "v.",
+  "cn": "幸存，存活",
+  "coll": "survive on 靠…生存",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "260",
+  "word": "tackle",
+  "pos": "v.",
+  "cn": "解决，处理",
+  "coll": "tackle the problem 解决问题",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "261",
+  "word": "temporary",
+  "pos": "a.",
+  "cn": "暂时的",
+  "coll": "↔ permanent 永久的",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "262",
+  "word": "transform",
+  "pos": "v.",
+  "cn": "转变，改造",
+  "coll": "transform…into 把…变成",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "263",
+  "word": "undergo",
+  "pos": "v.",
+  "cn": "经历，经受",
+  "coll": "undergo changes 经历变化",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "264",
+  "word": "urge",
+  "pos": "v.",
+  "cn": "敦促，力劝",
+  "coll": "urge sb to do 敦促某人做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "265",
+  "word": "utilize",
+  "pos": "v.",
+  "cn": "利用",
+  "coll": "utilize resources 利用资源",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "266",
+  "word": "vital",
+  "pos": "a.",
+  "cn": "至关重要的",
+  "coll": "be vital to 对…至关重要",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "267",
+  "word": "withdraw",
+  "pos": "v.",
+  "cn": "撤回；提款",
+  "coll": "withdraw money 取钱",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "268",
+  "word": "witness",
+  "pos": "n.",
+  "cn": "目击者 v.目睹",
+  "coll": "witness an accident 目击事故",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "269",
+  "word": "yield",
+  "pos": "v.",
+  "cn": "产生；屈服",
+  "coll": "yield to 屈服于",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "270",
+  "word": "variety",
+  "pos": "n.",
+  "cn": "多样性，种类",
+  "coll": "a variety of 各种各样的",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "271",
+  "word": "absorb",
+  "pos": "v.",
+  "cn": "吸收；使专心",
+  "coll": "be absorbed in 专心于",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "272",
+  "word": "accompany",
+  "pos": "v.",
+  "cn": "陪伴，伴随",
+  "coll": "be accompanied by 由…陪同",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "273",
+  "word": "accustom",
+  "pos": "v.",
+  "cn": "使习惯",
+  "coll": "be accustomed to doing 习惯于",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "274",
+  "word": "admit",
+  "pos": "v.",
+  "cn": "承认；准许进入",
+  "coll": "admit doing 承认做过",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "275",
+  "word": "adopt",
+  "pos": "v.",
+  "cn": "采纳；收养",
+  "coll": "adopt a measure 采取措施",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "276",
+  "word": "aggressive",
+  "pos": "a.",
+  "cn": "好斗的；积极进取的",
+  "coll": "an aggressive salesman 有闯劲的销售员",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "277",
+  "word": "allocate",
+  "pos": "v.",
+  "cn": "分配，拨给",
+  "coll": "allocate…to 把…分配给",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "278",
+  "word": "alter",
+  "pos": "v.",
+  "cn": "改变，改动",
+  "coll": "alter one’s plan 改变计划",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "279",
+  "word": "anticipate",
+  "pos": "v.",
+  "cn": "预料，预期",
+  "coll": "anticipate doing 预计做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "280",
+  "word": "appeal",
+  "pos": "v./n.",
+  "cn": "呼吁；吸引力",
+  "coll": "appeal to 吸引；呼吁",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "281",
+  "word": "argue",
+  "pos": "v.",
+  "cn": "争论；主张",
+  "coll": "argue for/against 赞成/反对",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "282",
+  "word": "assure",
+  "pos": "v.",
+  "cn": "使确信，保证",
+  "coll": "assure sb of sth 向某人保证",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "283",
+  "word": "attain",
+  "pos": "v.",
+  "cn": "达到，获得",
+  "coll": "attain one’s goal 实现目标",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "284",
+  "word": "attribute",
+  "pos": "v.",
+  "cn": "归因于 n.特质",
+  "coll": "attribute…to 把…归因于",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "285",
+  "word": "authority",
+  "pos": "n.",
+  "cn": "权威；当局",
+  "coll": "the local authorities 地方当局",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "286",
+  "word": "ban",
+  "pos": "v./n.",
+  "cn": "禁止",
+  "coll": "ban sb from doing 禁止某人做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "287",
+  "word": "barrier",
+  "pos": "n.",
+  "cn": "障碍，屏障",
+  "coll": "language barrier 语言障碍",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "288",
+  "word": "behalf",
+  "pos": "n.",
+  "cn": "代表，利益",
+  "coll": "on behalf of 代表…",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "289",
+  "word": "boost",
+  "pos": "v./n.",
+  "cn": "促进，提高",
+  "coll": "boost the economy 促进经济",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "290",
+  "word": "bother",
+  "pos": "v.",
+  "cn": "打扰 n.麻烦",
+  "coll": "bother to do 费心去做",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "291",
+  "word": "burden",
+  "pos": "n.",
+  "cn": "负担 v.使负重",
+  "coll": "be burdened with 背负着",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "292",
+  "word": "cancel",
+  "pos": "v.",
+  "cn": "取消，删去",
+  "coll": "cancel the flight 取消航班",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "293",
+  "word": "caution",
+  "pos": "n.",
+  "cn": "谨慎 v.警告",
+  "coll": "with caution 谨慎地",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "294",
+  "word": "characteristic",
+  "pos": "n.",
+  "cn": "特征 a.特有的",
+  "coll": "be characteristic of 是…的特征",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "295",
+  "word": "cite",
+  "pos": "v.",
+  "cn": "引用，举例",
+  "coll": "cite an example 举例",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "296",
+  "word": "comment",
+  "pos": "n./v.",
+  "cn": "评论",
+  "coll": "comment on 对…发表评论",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "297",
+  "word": "compensate",
+  "pos": "v.",
+  "cn": "补偿，弥补",
+  "coll": "compensate for 弥补",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "298",
+  "word": "conform",
+  "pos": "v.",
+  "cn": "遵守，符合",
+  "coll": "conform to 遵守，符合",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "299",
+  "word": "consistent",
+  "pos": "a.",
+  "cn": "一致的，始终如一的",
+  "coll": "be consistent with 与…一致",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "300",
+  "word": "contemporary",
+  "pos": "a.",
+  "cn": "当代的 n.同代人",
+  "coll": "contemporary society 当代社会",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "301",
+  "word": "contradict",
+  "pos": "v.",
+  "cn": "与…矛盾，反驳",
+  "coll": "contradict oneself 自相矛盾",
+  "chapter": "主题十一高频词·第二批"
+ },
+ {
+  "no": "302",
+  "word": "controversial",
+  "pos": "a.",
+  "cn": "有争议的",
+  "coll": "a controversial issue 争议性话题",
+  "chapter": "主题十一高频词·第二批"
+ }
+]
