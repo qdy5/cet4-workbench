@@ -68,9 +68,17 @@ def save_cache():
 
 
 def local_files():
-    out = subprocess.run(['git', 'ls-files', '-z'], cwd=ROOT, capture_output=True).stdout
-    paths = [p for p in out.decode('utf-8').split('\0') if p]
-    return paths
+    """返回 [(路径, git 模式)]。模式必须取索引里的值：
+    Windows 上 os.access(X_OK) 永远为真，否则会把所有文件标成可执行。"""
+    out = subprocess.run(['git', 'ls-files', '-s', '-z'], cwd=ROOT, capture_output=True).stdout
+    rows = []
+    for entry in out.decode('utf-8').split('\0'):
+        if not entry:
+            continue
+        meta, path = entry.split('\t', 1)
+        mode = meta.split()[0]
+        rows.append((path, '100755' if mode == '100755' else '100644'))
+    return rows
 
 
 def walk_tree(sha):
@@ -85,7 +93,9 @@ def main():
     base_tree = call('GET', f'/git/commits/{head}')['tree']['sha']
     print('远端 head', head[:8], 'tree', base_tree[:8])
 
-    paths = local_files()
+    files = local_files()
+    paths = [p for p, _m in files]
+    modes = dict(files)
     print('本地文件', len(paths))
 
     remote = walk_tree(base_tree)
@@ -98,10 +108,11 @@ def main():
         full = os.path.join(ROOT, p)
         local_sha = subprocess.run(['git', 'hash-object', p], cwd=ROOT,
                                    capture_output=True, text=True).stdout.strip()
-        mode = '100755' if os.access(full, os.X_OK) else '100644'
+        mode = modes.get(p, '100644')
         old = remote.get(p)
         key = f'{p}@{local_sha}'
-        if old and old.get('type') == 'blob' and old.get('sha') == local_sha and old.get('mode') == mode:
+        # 只比内容：模式变了不用重传，改 tree 里的 mode 就行
+        if old and old.get('type') == 'blob' and old.get('sha') == local_sha:
             blobs.append({'path': p, 'mode': mode, 'type': 'blob', 'sha': old['sha']})
             reused += 1
             continue
