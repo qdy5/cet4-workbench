@@ -8,3 +8,4 @@ workbench.db-wal
 workbench.db-shm
 .DS_Store
 .pushcache.json
+ai_config.json

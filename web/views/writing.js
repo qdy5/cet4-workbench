@@ -1,5 +1,6 @@
 import { $, $$, esc } from '../core/dom.js';
 import { analyzeWriting } from '../core/scoring.js';
+import { aiGrade, renderGrade } from './ai.js';
 
 let cur = 0;
 let timer = null;
@@ -98,20 +99,19 @@ async function open(ctx, id) {
         <div class="ref-head"><h4>范文</h4><div class="mini-note">自查清单过了 ${a.passed}/${a.total} 项</div></div>
         <div class="ref-text">${x.sample.split(/\n{2,}/).map(p => `<p>${esc(p)}</p>`).join('')}</div>
         <div class="ai-review">
-          <button class="btn ghost small" id="wai" ${ctx.store.canAsk ? '' : 'disabled title="离线版没有本地模型"'}>让 AI 按四级标准点评</button>
+          <button class="btn primary small" id="wai">AI 批改（评分 + 逐条点评）</button>
           <div id="waiout" class="ai-out"></div>
         </div>
       </div>`;
     const ai = $('#wai');
-    if (ai && ctx.store.canAsk) {
+    if (ai) {
       ai.addEventListener('click', async () => {
         ai.disabled = true;
         const out = $('#waiout');
-        out.textContent = '正在生成…';
-        const prompt = `你是四级写作阅卷老师。题目：${x.title}\n要求：${x.prompt}\n学生作文：\n${ta.value}\n`
-          + '用 150 字以内中文点评：分数档（满分 106.5 折算 15%）、最该改的一处语法、一个可替换的高级表达。不要寒暄。';
-        const text = await ctx.store.ask(prompt, (_d, all) => { out.textContent = all; });
-        out.textContent = text || '本地模型没启动（ollama serve）。';
+        out.innerHTML = '<div class="mini-note">AI 正在批改…（约 5-15 秒）</div>';
+        const g = await aiGrade('writing', { prompt: `${x.title}｜${x.prompt}`, answer: ta.value });
+        renderGrade(out, g, 15);
+        ai.disabled = false;
       });
     }
     await ctx.logAttempt({

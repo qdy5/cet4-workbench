@@ -1,5 +1,6 @@
 import { $, $$, esc } from '../core/dom.js';
 import { buildOptions } from '../core/quiz.js';
+import { aiGrade } from './ai.js';
 import { review, preview, RATING, describe } from '../core/fsrs.js';
 import { fmtInterval } from '../core/date.js';
 
@@ -133,11 +134,30 @@ async function paint(ctx) {
     <div class="opts" id="wopts">
       ${opts.opts.map((o, i) => `<button class="opt" data-i="${i}"><span class="k">${'ABCD'[i]}</span><span>${esc(o)}</span></button>`).join('')}
     </div>
+    <div class="submit-row">
+      <button class="btn primary" id="wsubmit" disabled>提交批改</button>
+      <span class="mini-note" id="whint">先选一个意思，再提交</span>
+    </div>
     <div id="wans"></div>
   </div>`;
 
   $('#w-speak').addEventListener('click', () => speak(word.w));
-  $$('#wopts .opt').forEach(el => el.addEventListener('click', () => answer(ctx, +el.dataset.i, opts.ans, item, extra)));
+  let pick = -1;
+  const submit = $('#wsubmit');
+  const hint = $('#whint');
+  $$('#wopts .opt').forEach(el => el.addEventListener('click', () => {
+    if (session.answered) return;
+    pick = +el.dataset.i;
+    $$('#wopts .opt').forEach((x, i) => x.classList.toggle('pick', i === pick));
+    submit.disabled = false;
+    hint.textContent = `已选 ${'ABCD'[pick]}，点提交批改`;
+  }));
+  submit.addEventListener('click', () => {
+    if (pick < 0 || session.answered) return;
+    answer(ctx, pick, opts.ans, item, extra);
+  });
+  session.submit = submit;
+  session.hint = hint;
 }
 
 function stateLabel(s) {
@@ -157,6 +177,8 @@ async function answer(ctx, pick, ans, item, extra) {
   if (session.answered) return;
   session.answered = true;
   const ok = pick === ans;
+  if (session.submit) session.submit.disabled = true;
+  if (session.hint) session.hint.textContent = ok ? '批改完成：答对' : '批改完成：答错';
   const { word } = item;
   const card = ctx.S.cards.get(word.id) || { state: 'new' };
   session.pending = ok ? RATING.good : RATING.again;
@@ -184,10 +206,32 @@ async function answer(ctx, pick, ans, item, extra) {
       ${extra.e ? `<div class="ans-ex">${esc(extra.e)}${extra.ec ? `<span>${esc(extra.ec)}</span>` : ''}</div>` : ''}
       <div class="ans-actions">
         <button class="btn primary small" id="wnext">下一个（回车）</button>
-        ${ok ? '<button class="btn ghost small" id="weasy">太简单（E）</button>' : ''}
+        ${ok ? '<button class="btn ghost small" id="weasy">太简单（E）</button>'
+             : '<button class="btn ghost small" id="wai">让 AI 讲讲</button>'}
       </div>
-    </div>`;
+    </div>
+    <div id="waiout"></div>`;
 
+  const aiBtn = $('#wai');
+  if (aiBtn) {
+    aiBtn.addEventListener('click', async () => {
+      aiBtn.disabled = true;
+      const out = $('#waiout');
+      out.innerHTML = '<div class="mini-note">AI 正在批改…</div>';
+      const opts = buildOptions(word, ctx.content.words, id => ctx.word(id));
+      const g = await aiGrade('word', {
+        word: word.w,
+        correct: word.c,
+        picked: opts.opts[pick],
+      });
+      if (g) {
+        out.innerHTML = `<div class="ai-card"><div class="ai-comment">${esc(g.comment || '')}</div></div>`;
+      } else {
+        out.innerHTML = '<div class="mini-note">AI 不可用，看上面的释义和例句。</div>';
+      }
+      aiBtn.disabled = false;
+    });
+  }
   $('#wnext').addEventListener('click', () => next(ctx));
   const easy = $('#weasy');
   if (easy) easy.addEventListener('click', () => { session.pending = RATING.easy; easy.textContent = '已标记：太简单'; easy.disabled = true; });

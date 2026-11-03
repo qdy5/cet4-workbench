@@ -1,5 +1,6 @@
 import { $, $$, esc } from '../core/dom.js';
 import { scoreTranslation, words } from '../core/scoring.js';
+import { aiGrade, renderGrade } from './ai.js';
 
 let cur = 0;
 
@@ -83,21 +84,20 @@ async function open(ctx, id) {
         <div class="ref-text">${esc(x.ref)}</div>
         <div class="mini-note" style="margin-top:10px">${esc(x.tip || '')}</div>
         <div class="ai-review">
-          <button class="btn ghost small" id="tai" ${ctx.store.canAsk ? '' : 'disabled title="离线版没有本地模型"'}>让 AI 点评这段译文</button>
+          <button class="btn primary small" id="tai">AI 批改（评分 + 逐条点评）</button>
           <div id="taiout" class="ai-out"></div>
         </div>
       </div>`;
 
     const ai = $('#tai');
-    if (ai && ctx.store.canAsk) {
+    if (ai) {
       ai.addEventListener('click', async () => {
         ai.disabled = true;
         const out = $('#taiout');
-        out.textContent = '正在生成…';
-        const prompt = `你是四级翻译阅卷老师。原文：${x.zh}\n参考译文：${x.ref}\n学生译文：${ta.value}\n`
-          + '用 120 字以内中文点评：1) 意思有没有漏 2) 语法错误指出来 3) 一句可替换的高级表达。不要寒暄。';
-        const text = await ctx.store.ask(prompt, (_d, all) => { out.textContent = all; });
-        out.textContent = text || '本地模型没启动（ollama serve）。';
+        out.innerHTML = '<div class="mini-note">AI 正在批改…（约 5-15 秒）</div>';
+        const g = await aiGrade('translation', { zh: x.zh, ref: x.ref, answer: ta.value });
+        renderGrade(out, g, 15);
+        ai.disabled = false;
       });
     }
 

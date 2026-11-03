@@ -19,6 +19,7 @@ DB = os.environ.get('CET4_DB') or os.path.join(ROOT, 'workbench.db')
 sys.path.insert(0, os.path.join(ROOT, 'tools'))
 
 from enrich import enrich  # noqa: E402
+from ai_grade import grade as ai_grade  # noqa: E402
 
 app = Flask(__name__, static_folder=None)
 app.json.ensure_ascii = False
@@ -351,6 +352,31 @@ def ask():
 
     return Response(stream_with_context(gen()), mimetype='text/event-stream',
                     headers={'Cache-Control': 'no-store', 'X-Accel-Buffering': 'no'})
+
+
+
+# ---------------- AI 批改 ----------------
+
+@app.post('/api/ai/grade')
+def api_ai_grade():
+    body = request.get_json(silent=True) or {}
+    kind = (body.get('kind') or '').strip()
+    payload = body.get('payload') or {}
+    if not kind:
+        return jsonify({'ok': False, 'error': 'kind_required'}), 400
+    try:
+        return jsonify(ai_grade(kind, payload))
+    except Exception as exc:
+        return jsonify({'ok': False, 'error': f'{type(exc).__name__}: {exc}'}), 500
+
+
+@app.get('/api/ai/status')
+def api_ai_status():
+    from ai_grade import load_config
+    cfg = load_config()
+    return jsonify({'model': cfg['model'], 'base_url': cfg['base_url'],
+                    'has_key': bool(cfg.get('api_key')),
+                    'fallback': cfg['fallback_model']})
 
 
 # ---------------- 静态文件 ----------------
