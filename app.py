@@ -399,8 +399,21 @@ def static_file(name):
 def main():
     init_db()
     port = int(os.environ.get('CET4_PORT', 5173))
+    host = os.environ.get('CET4_HOST', '0.0.0.0')
     url = f'http://127.0.0.1:{port}'
+    lan = ''
+    if host == '0.0.0.0':
+        import socket
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.connect(('8.8.8.8', 80))
+            lan = f'http://{s.getsockname()[0]}:{port}'
+            s.close()
+        except OSError:
+            lan = ''
     print(f'CET4 工作台: {url}')
+    if lan:
+        print(f'手机（同一 WiFi）: {lan}')
     if '--open' in sys.argv:
         # 起服务之后再开浏览器，避免首屏 ERR_CONNECTION_REFUSED
         import threading
@@ -408,10 +421,10 @@ def main():
         threading.Timer(1.5, lambda: webbrowser.open(url)).start()
     try:
         from waitress import serve
-        serve(app, host='127.0.0.1', port=port, threads=8)
+        serve(app, host=host, port=port, threads=8)
     except ImportError:
         print('（没装 waitress，用 Flask 自带服务器，仅适合临时用：pip install waitress）')
-        app.run(host='127.0.0.1', port=port, threaded=True)
+        app.run(host=host, port=port, threaded=True)
 
 
 if __name__ == '__main__':
