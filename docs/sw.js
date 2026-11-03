@@ -1,5 +1,5 @@
-/* 自动生成，勿手改。hash 94c916a756 */
-const VER = 'cet4-94c916a756';
+/* 自动生成，勿手改。hash 7311cc35fc strategy v3-network-first */
+const VER = 'cet4-7311cc35fc';
 const ASSETS = [
   "./adapters/api.js",
   "./adapters/idb.js",
@@ -55,17 +55,27 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  // 接口和音频走网络优先，避免离线缓存把批改结果也缓存住
   const url = new URL(req.url);
-  if (url.pathname.includes('/api/') || url.pathname.endsWith('.mp3')) {
-    e.respondWith(fetch(req).catch(() => caches.match(req)));
+  const isCode = /\.(js|css|html|json|webmanifest)$/.test(url.pathname) || url.pathname.endsWith('/');
+
+  if (isCode) {
+    // 代码/页面：网络优先，在线永远拿最新的，断网才回退缓存
+    e.respondWith(
+      fetch(req, { cache: 'no-store' }).then(res => {
+        const copy = res.clone();
+        caches.open(VER).then(c => c.put(req, copy)).catch(() => {});
+        return res;
+      }).catch(() => caches.match(req).then(hit => hit || caches.match('./index.html')))
+    );
     return;
   }
+
+  // 音频/图片：缓存优先，省流量
   e.respondWith(
     caches.match(req).then(hit => hit || fetch(req).then(res => {
       const copy = res.clone();
       caches.open(VER).then(c => c.put(req, copy)).catch(() => {});
       return res;
-    }).catch(() => caches.match('./index.html')))
+    }))
   );
 });

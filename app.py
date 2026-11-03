@@ -393,7 +393,11 @@ def audio(name):
 
 @app.get('/<path:name>')
 def static_file(name):
-    return send_from_directory(WEB, name, conditional=True)
+    resp = send_from_directory(WEB, name, conditional=True)
+    if name.endswith(('.js', '.css', '.json', '.webmanifest', '.html')) or '.' not in name:
+        resp.headers['Cache-Control'] = 'no-store, must-revalidate'
+        resp.headers['Pragma'] = 'no-cache'
+    return resp
 
 
 def main():

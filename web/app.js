@@ -190,8 +190,18 @@ async function main() {
     Object.assign(views, mod.default);
     await ctx.reload();
     go('home');
-    if (store.mode === 'local' && 'serviceWorker' in navigator && location.protocol.startsWith('http')) {
-      navigator.serviceWorker.register('sw.js').catch(() => {});
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      // 主动检查更新；新 SW 接管后自动刷新一次，避免手机上一直是旧界面
+      navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' }).then(reg => {
+        reg.update().catch(() => {});
+        setInterval(() => reg.update().catch(() => {}), 60 * 60 * 1000);
+      }).catch(() => {});
+      let reloaded = false;
+      navigator.serviceWorker.addEventListener('controllerchange', () => {
+        if (reloaded) return;
+        reloaded = true;
+        location.reload();
+      });
     }
   } catch (e) {
     console.error(e);
