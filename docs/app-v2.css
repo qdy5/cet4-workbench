@@ -112,3 +112,29 @@
 .ai-better b{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-bottom:3px}
 .opt.pick{outline:2px solid var(--accent);outline-offset:1px}
 .submit-row{display:flex;gap:10px;align-items:center;margin-top:14px}
+
+/* 正确答案 / 解析 / 原文定位 */
+.sent{transition:background .25s}
+.sent.hl{background:#fff1b8;box-shadow:0 0 0 3px #fff1b8;border-radius:4px}
+.line.hl{background:#fff1b8;color:#1a2b32;opacity:1}
+.explain.okx{border-left:3px solid #6aa88f}
+.explain.nox{border-left:3px solid #c9736a}
+.explain-head{font-weight:600;margin-bottom:4px}
+.ev-btn{margin-top:8px}
+
+/* 修复：sticky 的题目区会把下面的提交按钮盖住，导致点不到 */
+.qs{position:static}
+#rsubmit,#lsubmit{position:relative;z-index:8;margin-top:16px}
+@media (max-width:1100px){
+  #rsubmit,#lsubmit{bottom:72px}
+}
+
+/* 浅色卡片里的听力原文：深色字 + 清晰高亮 */
+.card .script{color:var(--ink)}
+.card .script .line{color:var(--ink);opacity:1}
+.card .script .line .sp{color:var(--muted)}
+.card .script .line.hl{background:#fff1b8;box-shadow:0 0 0 3px #fff1b8;border-radius:6px}
+.card .script.blurred .line{filter:blur(5px)}
+.card .script.blurred:hover .line{filter:none}
+/* 提交按钮悬浮时别压住最后一道题 */
+.qs{padding-bottom:8px}

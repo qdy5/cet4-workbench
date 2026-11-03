@@ -55,7 +55,8 @@
      "One month"
     ],
     "ans": 1,
-    "why": "you can keep it for another two weeks"
+    "why": "you can keep it for another two weeks",
+    "ev": "The first one is due today, so you can keep it for another two weeks."
    },
    {
     "q": "Why does the student need to pay six yuan?",
@@ -66,7 +67,8 @@
      "Because the book is damaged"
     ],
     "ans": 2,
-    "why": "it's already overdue by three days ... a fine of six yuan"
+    "why": "it's already overdue by three days ... a fine of six yuan",
+    "ev": "I'm afraid it's already overdue by three days."
    },
    {
     "q": "How can the student pay the fine?",
@@ -77,7 +79,8 @@
      "By bank transfer"
     ],
     "ans": 1,
-    "why": "the machine only takes campus cards"
+    "why": "the machine only takes campus cards",
+    "ev": "Sorry, the machine only takes campus cards."
    }
   ],
   "blanks": [
@@ -147,7 +150,8 @@
      "Sunday morning"
     ],
     "ans": 2,
-    "why": "I have classes on Friday afternoons"
+    "why": "I have classes on Friday afternoons",
+    "ev": "I can work Saturdays and Sundays, but I have classes on Friday afternoons."
    },
    {
     "q": "What experience does the student have?",
@@ -158,7 +162,8 @@
      "Selling clothes"
     ],
     "ans": 1,
-    "why": "I helped in my uncle's restaurant last summer"
+    "why": "I helped in my uncle's restaurant last summer",
+    "ev": "Not in a cafe, but I helped in my uncle's restaurant last summer, so I know how to take orders."
    },
    {
     "q": "What will the student bring next Saturday?",
@@ -169,7 +174,8 @@
      "A meal"
     ],
     "ans": 2,
-    "why": "Bring your student card and ID"
+    "why": "Bring your student card and ID",
+    "ev": "Bring your student card and ID."
    }
   ],
   "blanks": [
@@ -237,7 +243,8 @@
      "The ticket was too expensive"
     ],
     "ans": 1,
-    "why": "my exam has been moved"
+    "why": "my exam has been moved",
+    "ev": "I booked a train to Guilin for Friday, but my exam has been moved."
    },
    {
     "q": "Which train does the student choose?",
@@ -248,7 +255,8 @@
      "The four o'clock"
     ],
     "ans": 0,
-    "why": "The morning one, please"
+    "why": "The morning one, please",
+    "ev": "The morning one, please."
    },
    {
     "q": "What does the student need to show at the gate?",
@@ -259,7 +267,8 @@
      "A booking code"
     ],
     "ans": 2,
-    "why": "your passport works. Just show it at the gate"
+    "why": "your passport works. Just show it at the gate",
+    "ev": "No, your passport works."
    }
   ],
   "blanks": [
@@ -327,7 +336,8 @@
      "A week"
     ],
     "ans": 2,
-    "why": "I've had a headache for three days"
+    "why": "I've had a headache for three days",
+    "ev": "I've had a headache for three days, and I can't fall asleep at night."
    },
    {
     "q": "What does the doctor think is the cause?",
@@ -338,7 +348,8 @@
      "Bad food"
     ],
     "ans": 1,
-    "why": "Too much coffee and too little sleep"
+    "why": "Too much coffee and too little sleep",
+    "ev": "Too much coffee and too little sleep make the headache worse."
    },
    {
     "q": "What is the doctor's advice?",
@@ -349,7 +360,8 @@
      "Drink more coffee"
     ],
     "ans": 2,
-    "why": "Stop coffee after noon, go to bed before eleven"
+    "why": "Stop coffee after noon, go to bed before eleven",
+    "ev": "Stop coffee after noon, go to bed before eleven, and come back if it continues."
    }
   ],
   "blanks": [
@@ -421,7 +433,8 @@
      "Friday"
     ],
     "ans": 2,
-    "why": "It's due on Thursday"
+    "why": "It's due on Thursday",
+    "ev": "It's due on Thursday, isn't it?"
    },
    {
     "q": "Why does the student ask for more time?",
@@ -432,7 +445,8 @@
      "He has a part-time job"
     ],
     "ans": 0,
-    "why": "I've been ill since Monday"
+    "why": "I've been ill since Monday",
+    "ev": "Yes, but I've been ill since Monday."
    },
    {
     "q": "What does the professor ask the student to do?",
@@ -443,7 +457,8 @@
      "Submit it by email"
     ],
     "ans": 1,
-    "why": "Narrow it down to one city"
+    "why": "Narrow it down to one city",
+    "ev": "Narrow it down to one city."
    }
   ],
   "blanks": [

@@ -86,7 +86,8 @@
      "End the nine-to-five job"
     ],
     "ans": 1,
-    "why": "第一段：machines would cut the working week to fifteen hours。"
+    "why": "第一段：machines would cut the working week to fifteen hours。",
+    "ev": "A century ago, economists promised that machines would cut the working week to fifteen hours; in the 1970s, futurologists said robots would take over all the repetitive jobs while we relaxed by the pool."
    },
    {
     "q": "What is Professor Burchell's attitude towards today's bold predictions?",
@@ -97,7 +98,8 @@
      "He believes they will come true within five years"
     ],
     "ans": 2,
-    "why": "他 takes such claims with a large pinch of salt，并指出经济学家的预测记录很差。"
+    "why": "他 takes such claims with a large pinch of salt，并指出经济学家的预测记录很差。",
+    "ev": "He points out that the track record of economists is poor: for a hundred years they have predicted dramatic reductions in working time, and those predictions simply have not come to pass."
    },
    {
     "q": "What is Andrew Palmer's main worry?",
@@ -108,7 +110,8 @@
      "Companies will stop offering full pay"
     ],
     "ans": 2,
-    "why": "sequencing risk：一些职业会在新工作出现之前很久就被打乱，两者不一定对齐。"
+    "why": "sequencing risk：一些职业会在新工作出现之前很久就被打乱，两者不一定对齐。",
+    "ev": "His worry is a sequencing risk: some professions will be disrupted long before the new jobs crop up, and the two will not necessarily be aligned."
    },
    {
     "q": "Why did 92% of the companies keep the four-day week?",
@@ -119,7 +122,8 @@
      "They could not find enough workers"
     ],
     "ans": 2,
-    "why": "第二段：not only because staff were happier, but because productivity held up and fewer people resigned。"
+    "why": "第二段：not only because staff were happier, but because productivity held up and fewer people resigned。",
+    "ev": "When the trial ended, 92% of them chose to keep it — not only because staff were happier, but because productivity held up and fewer people resigned."
    },
    {
     "q": "What is the author's main point?",
@@ -130,7 +134,8 @@
      "Working hours have never changed"
     ],
     "ans": 2,
-    "why": "结尾：The lesson is not that a three-day weekend is inevitable; it is that we can choose which parts of the future to adopt。"
+    "why": "结尾：The lesson is not that a three-day weekend is inevitable; it is that we can choose which parts of the future to adopt。",
+    "ev": "The lesson is not that a three-day weekend is inevitable; it is that we can choose which parts of the future to adopt."
    }
   ]
  },
@@ -221,7 +226,8 @@
      "It should be banned for children"
     ],
     "ans": 1,
-    "why": "The more entertainment we surround ourselves with, the more bored we seem to become。"
+    "why": "The more entertainment we surround ourselves with, the more bored we seem to become。",
+    "ev": "The more entertainment we surround ourselves with, the more bored we seem to become, because we grow addicted to stimulation and to novelty."
    },
    {
     "q": "According to Manoush Zomorodi, what comes first during mind-wandering?",
@@ -232,7 +238,8 @@
      "A sudden desire to sleep"
     ],
     "ans": 2,
-    "why": "first comes an uncomfortable stretch in which the mind turns to things we would rather avoid。"
+    "why": "first comes an uncomfortable stretch in which the mind turns to things we would rather avoid。",
+    "ev": "Mind-wandering, she points out, does not lead straight to brilliant ideas; first comes an uncomfortable stretch in which the mind turns to things we would rather avoid."
    },
    {
     "q": "Why is boredom valuable, according to the passage?",
@@ -243,7 +250,8 @@
      "It reduces the time spent on screens"
     ],
     "ans": 1,
-    "why": "drifting is how unrelated memories meet and new connections form。"
+    "why": "drifting is how unrelated memories meet and new connections form。",
+    "ev": "When nothing is happening, the mind is free to drift, and drifting is how unrelated memories meet and new connections form."
    },
    {
     "q": "What did the telephone-directory experiment find?",
@@ -254,7 +262,8 @@
      "The test itself was too difficult"
     ],
     "ans": 0,
-    "why": "The bored volunteers produced more original answers。"
+    "why": "The bored volunteers produced more original answers。",
+    "ev": "The bored volunteers produced more original answers."
    },
    {
     "q": "Which sentence best sums up the author's view?",
@@ -265,7 +274,8 @@
      "Screens have made us smarter"
     ],
     "ans": 2,
-    "why": "boredom is better treated as an ingredient than as a fault。"
+    "why": "boredom is better treated as an ingredient than as a fault。",
+    "ev": "The lesson is not that we should stare at walls for hours; it is that boredom is better treated as an ingredient than as a fault."
    }
   ]
  },
@@ -356,7 +366,8 @@
      "Damage in the language regions"
     ],
     "ans": 1,
-    "why": "她原以为语言区会 hyperactive，比单语儿童更大更忙。"
+    "why": "她原以为语言区会 hyperactive，比单语儿童更大更忙。",
+    "ev": "Their language areas, she assumed, would be hyperactive — busier and larger than those of a child raised on one language alone."
    },
    {
     "q": "What does a smaller language area actually indicate?",
@@ -367,7 +378,8 @@
      "Early signs of dementia"
     ],
     "ans": 1,
-    "why": "What the scans measured was efficiency, not damage。"
+    "why": "What the scans measured was efficiency, not damage。",
+    "ev": "What the scans measured was efficiency, not damage."
    },
    {
     "q": "How does the brain achieve this compression?",
@@ -378,7 +390,8 @@
      "Through listening only"
     ],
     "ans": 1,
-    "why": "this compression arrives only through repetition。"
+    "why": "this compression arrives only through repetition。",
+    "ev": "It is that this compression arrives only through repetition, and a learner who never repeats never earns it."
    },
    {
     "q": "What did Frederique Liegeois find about bilingual adults?",
@@ -389,7 +402,8 @@
      "They have smaller brains overall"
     ],
     "ans": 2,
-    "why": "bilingual adults with dementia tend to show symptoms later。"
+    "why": "bilingual adults with dementia tend to show symptoms later。",
+    "ev": "Frederique Liegeois, a cognitive neuroscientist at University College London, has found that bilingual adults with dementia tend to show symptoms later than those who speak a single language."
    },
    {
     "q": "What is the useful conclusion for exam learners?",
@@ -400,7 +414,8 @@
      "Eleven languages are necessary for success"
     ],
     "ans": 1,
-    "why": "It is a habit that keeps the machine tuned。"
+    "why": "It is a habit that keeps the machine tuned。",
+    "ev": "It is a habit that keeps the machine tuned."
    }
   ]
  },
@@ -491,7 +506,8 @@
      "It is unique to humans"
     ],
     "ans": 1,
-    "why": "lose consciousness and leave ourselves vulnerable for hours。"
+    "why": "lose consciousness and leave ourselves vulnerable for hours。",
+    "ev": "Every night we lie down, lose consciousness and leave ourselves vulnerable for hours; an animal that slept like this in the open would have been eaten."
    },
    {
     "q": "What is the comfortable but wrong answer about sleep?",
@@ -502,7 +518,8 @@
      "Sleep stores memories"
     ],
     "ans": 1,
-    "why": "第二种：the body shuts down to save energy ... sleep would be a pause。"
+    "why": "第二种：the body shuts down to save energy ... sleep would be a pause。",
+    "ev": "The comfortable answer was that the body shuts down to save energy — that the brain, like a laptop, goes into standby and does nothing until morning."
    },
    {
     "q": "How does sleep deprivation cause damage?",
@@ -513,7 +530,8 @@
      "By making people eat more"
     ],
     "ans": 1,
-    "why": "It triggers the fight-or-flight response ... such a response never stands down。"
+    "why": "It triggers the fight-or-flight response ... such a response never stands down。",
+    "ev": "A chronic shortage is not, because such a response never stands down: the immune system is slowly undermined, and the damage arrives later, as heart disease rather than as a cough."
    },
    {
     "q": "How much longer do people who regularly get enough sleep live?",
@@ -524,7 +542,8 @@
      "About ten years"
     ],
     "ans": 2,
-    "why": "live about five years longer than those who do not。"
+    "why": "live about five years longer than those who do not。",
+    "ev": "People who regularly get enough sleep live about five years longer than those who do not, and the average person passes a third of life asleep — some 229,000 hours."
    },
    {
     "q": "What does the author advise a student before an exam?",
@@ -535,7 +554,8 @@
      "Study in the morning instead"
     ],
     "ans": 1,
-    "why": "three hours of extra revision bought with three hours of lost sleep may cancel each other out; a full night restores the machine。"
+    "why": "three hours of extra revision bought with three hours of lost sleep may cancel each other out; a full night restores the machine。",
+    "ev": "For a student, three hours of extra revision bought with three hours of lost sleep may cancel each other out; a full night is what restores the machine for the morning."
    }
   ]
  }

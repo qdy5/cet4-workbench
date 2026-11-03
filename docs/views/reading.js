@@ -1,5 +1,30 @@
 import { $, $$, esc } from '../core/dom.js';
 
+
+const norm = s => String(s || '').replace(/\s+/g, ' ').trim().toLowerCase();
+
+function locateSent(ev, scope = '.passage .sent') {
+  const target = norm(ev).slice(0, 70);
+  const nodes = [...document.querySelectorAll(scope)];
+  let hit = nodes.find(n => norm(n.textContent).includes(target));
+  if (!hit) {
+    const words = new Set(target.split(' ').filter(w => w.length > 3));
+    let best = null, bestScore = 0;
+    for (const n of nodes) {
+      const text = norm(n.textContent);
+      let sc = 0;
+      for (const w of words) if (text.includes(w)) sc += 1;
+      if (sc > bestScore) { best = n; bestScore = sc; }
+    }
+    if (bestScore >= 2) hit = best;
+  }
+  document.querySelectorAll('.hl').forEach(n => n.classList.remove('hl'));
+  if (!hit) return false;
+  hit.classList.add('hl');
+  hit.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  return true;
+}
+
 const fmt = s => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 
 export default {
@@ -39,7 +64,7 @@ function open(ctx, id) {
   </div>
   <div class="reader">
     <div class="card card-pad passage">
-      ${x.paras.map(p => `<p>${esc(p)}</p>`).join('')}
+      ${x.paras.map(p => `<p>${p.split(/(?<=[.!?])\s+/).map(s => `<span class="sent">${esc(s)}</span>`).join(' ')}</p>`).join('')}
       <div class="mini-note" style="margin-top:12px">重点词</div>
       <div class="vocab">${x.vocab.map(v => `<span><b>${esc(v[0])}</b> ${esc(v[1])}</span>`).join('')}</div>
     </div>
@@ -62,6 +87,9 @@ function open(ctx, id) {
     $$('.opt', qEl).forEach(o => o.classList.remove('on'));
     opt.classList.add('on');
     answers[Number(qEl.dataset.q)] = Number(opt.dataset.i);
+    const done = answers.filter(a => a >= 0).length;
+    const sb = $('#rsubmit');
+    if (sb && !sb.disabled) sb.textContent = `提交（已答 ${done}/x.questions.length）`;
   }));
 
   $('#rread').addEventListener('click', () => {
@@ -91,8 +119,14 @@ function open(ctx, id) {
         else if (oi === answers[i]) o.classList.add('no');
       });
       if (answers[i] === q.ans) correct += 1;
-      qEl.insertAdjacentHTML('beforeend', `<div class="explain">正确答案 ${'ABCD'[q.ans]} · ${esc(q.why)}</div>`);
+      qEl.insertAdjacentHTML('beforeend', `
+        <div class="explain ${answers[i] === q.ans ? 'okx' : 'nox'}">
+          <div class="explain-head">正确答案 ${'ABCD'[q.ans]}${answers[i] === q.ans ? ' · 你答对了' : answers[i] >= 0 ? ` · 你选了 ${'ABCD'[answers[i]]}` : ' · 未作答'}</div>
+          <div>${esc(q.why || '')}</div>
+          ${q.ev ? `<button class="btn ghost small ev-btn" data-ev="${esc(q.ev)}">定位原文</button>` : ''}
+        </div>`);
     });
+    $$('.ev-btn').forEach(btn => btn.addEventListener('click', () => locateSent(btn.dataset.ev)));
     $('#rsubmit').disabled = true;
     $('#rsubmit').textContent = `已提交：${correct} / ${x.questions.length}`;
     await ctx.logAttempt({

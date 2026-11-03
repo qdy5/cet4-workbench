@@ -1,6 +1,30 @@
 import { $, $$, esc } from '../core/dom.js';
 
-const pref = { rate: 1, loop: false, hideScript: true };
+const norm = s => String(s || '').replace(/\s+/g, ' ').trim().toLowerCase();
+
+function locateSent(ev, scope = '.passage .sent') {
+  const target = norm(ev).slice(0, 70);
+  const nodes = [...document.querySelectorAll(scope)];
+  let hit = nodes.find(n => norm(n.textContent).includes(target));
+  if (!hit) {
+    const words = new Set(target.split(' ').filter(w => w.length > 3));
+    let best = null, bestScore = 0;
+    for (const n of nodes) {
+      const text = norm(n.textContent);
+      let sc = 0;
+      for (const w of words) if (text.includes(w)) sc += 1;
+      if (sc > bestScore) { best = n; bestScore = sc; }
+    }
+    if (bestScore >= 2) hit = best;
+  }
+  document.querySelectorAll('.hl').forEach(n => n.classList.remove('hl'));
+  if (!hit) return false;
+  hit.classList.add('hl');
+  hit.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  return true;
+}
+
+const pref = { rate: 1, loop: false, hideScript: false };
 let active = null;
 
 const fmt = s => (isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '--:--');
@@ -182,6 +206,9 @@ function open(ctx, id) {
     $$('.opt', qEl).forEach(o => o.classList.remove('on'));
     opt.classList.add('on');
     answers[Number(qEl.dataset.q)] = Number(opt.dataset.i);
+    const done = answers.filter(a => a >= 0).length;
+    const sb = $('#lsubmit');
+    if (sb && !sb.disabled) sb.textContent = `提交（已答 ${done}/x.qs.length）`;
   }));
 
   $('#lsubmit').addEventListener('click', async () => {
@@ -196,8 +223,14 @@ function open(ctx, id) {
         else if (oi === answers[i]) o.classList.add('no');
       });
       if (answers[i] === q.ans) correct += 1;
-      qEl.insertAdjacentHTML('beforeend', `<div class="explain">正确答案 ${'ABCD'[q.ans]} · ${esc(q.why)}</div>`);
+      qEl.insertAdjacentHTML('beforeend', `
+        <div class="explain ${answers[i] === q.ans ? 'okx' : 'nox'}">
+          <div class="explain-head">正确答案 ${'ABCD'[q.ans]}${answers[i] === q.ans ? ' · 你答对了' : answers[i] >= 0 ? ` · 你选了 ${'ABCD'[answers[i]]}` : ' · 未作答'}</div>
+          <div>${esc(q.why || '')}</div>
+          ${q.ev ? `<button class="btn ghost small ev-btn" data-ev="${esc(q.ev)}">定位原文</button>` : ''}
+        </div>`);
     });
+    $$('.ev-btn').forEach(b => b.addEventListener('click', () => locateSent(b.dataset.ev, '#script .line')));
     $('#lsubmit').disabled = true;
     $('#lsubmit').textContent = `已提交：${correct} / ${x.qs.length}`;
     await ctx.logAttempt({
