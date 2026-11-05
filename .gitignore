@@ -9,3 +9,10 @@ workbench.db-shm
 .DS_Store
 .pushcache.json
 ai_config.json
+
+*.log
+*.bak
+*.bak-*
+_cards/
+_timg/
+micro_out*/

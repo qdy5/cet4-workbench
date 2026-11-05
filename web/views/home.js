@@ -12,6 +12,14 @@ export default {
     const pct = Math.round((learned / total) * 1000) / 10;
     const max = Math.max(1, ...s.days.map(d => d.count));
     const mods = s.modules;
+    const ck = S.checkin || { checkedToday: false, streak: 0, monthCount: 0, total: 0, recent: [] };
+    const ckSet = new Set((ck.recent || []).map(x => x.date));
+    const todayK = dayKey(new Date());
+    const last7 = Array.from({ length: 7 }, (_, i) => {
+      const d = new Date(); d.setDate(d.getDate() - (6 - i));
+      const k = dayKey(d);
+      return { date: k, on: ckSet.has(k), today: k === todayK };
+    });
     const tasks = [
       ['单词', due ? `${due} 个到期` : (ctx.newWordsLeft() ? `新词 ${ctx.newWordsLeft()} 个额度` : '今日已清空'), !!mods.word, 'words'],
       ['听力', s.today.total && mods.listening ? '今天练过' : '先听一组', !!mods.listening, 'listening'],
@@ -45,6 +53,24 @@ export default {
         <div class="progress-line">
           <div class="progress"><i style="width:${pct}%"></i></div>
           <div class="mini-note">已学 ${learned} / ${total} 词（${pct}%）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-pad checkin-card">
+      <div class="section-head">
+        <div><b>每日打卡</b> <span class="mini-note">点一下就算数，断了从 1 重新数</span></div>
+        <span class="mini-note">累计 ${ck.total} 天 · 本月 ${ck.monthCount} 天</span>
+      </div>
+      <div class="checkin-row">
+        <button class="checkin-btn ${ck.checkedToday ? 'is-done' : ''}"
+                data-act="checkin" ${ck.checkedToday ? 'disabled' : ''}>
+          ${ck.checkedToday ? '✓ 今日已打卡' : '今日打卡'}
+        </button>
+        <div class="checkin-num"><b>${ck.streak}</b><span>天连续</span></div>
+        <div class="checkin-dots">
+          ${last7.map(d => `<i class="${d.on ? 'on' : ''} ${d.today ? 'today' : ''}" title="${d.date}"></i>`).join('')}
+          <span class="mini-note">最近 7 天</span>
         </div>
       </div>
     </div>

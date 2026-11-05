@@ -100,6 +100,14 @@ export function createApiAdapter() {
       await jpost(`drafts/${encodeURIComponent(key)}`, { text });
     },
 
+    async checkins() {
+      return jget('checkins');
+    },
+
+    async checkin() {
+      return jpost('checkin', {});
+    },
+
     async exportAll() {
       return jget('export');
     },

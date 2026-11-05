@@ -138,3 +138,29 @@
 .card .script.blurred:hover .line{filter:none}
 /* 提交按钮悬浮时别压住最后一道题 */
 .qs{padding-bottom:8px}
+
+/* ── 每日打卡（按钮抖动效果来自 uiverse.io / Botwe-Felix5820，MIT；选择器收进 .checkin-btn 不污染全局 button） ── */
+.checkin-card{margin-bottom:16px}
+.checkin-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:14px}
+.checkin-btn{height:3em;width:8em;border:none;border-radius:10em;background:#016DD9;font-size:15px;
+  color:#fff;font-family:inherit;font-weight:500;cursor:pointer;transition:background .2s,transform .15s}
+.checkin-btn:hover:not(:disabled){animation:shake3856 .3s linear infinite both}
+.checkin-btn:active:not(:disabled){transform:scale(.96)}
+.checkin-btn.is-done{background:#2f8f5b;width:auto;padding:0 1.5em;cursor:default}
+.checkin-btn.just{animation:checkinPop .9s ease both}
+@keyframes shake3856{
+ 0%{-webkit-transform:translate(0);transform:translate(0)}
+ 20%{-webkit-transform:translate(-2px,2px);transform:translate(-2px,2px)}
+ 40%{-webkit-transform:translate(-2px,-2px);transform:translate(-2px,-2px)}
+ 60%{-webkit-transform:translate(2px,2px);transform:translate(2px,2px)}
+ 80%{-webkit-transform:translate(2px,-2px);transform:translate(2px,-2px)}
+ 100%{-webkit-transform:translate(0);transform:translate(0)}
+}
+@keyframes checkinPop{0%{transform:scale(1)}30%{transform:scale(1.14)}100%{transform:scale(1)}}
+.checkin-num{display:flex;align-items:baseline;gap:6px}
+.checkin-num b{font-size:30px;font-weight:700;line-height:1}
+.checkin-num span{font-size:13px;opacity:.6}
+.checkin-dots{display:flex;align-items:center;gap:6px;margin-left:auto}
+.checkin-dots i{width:13px;height:13px;border-radius:50%;background:rgba(0,0,0,.1);display:block}
+.checkin-dots i.on{background:#2f8f5b}
+.checkin-dots i.today{box-shadow:0 0 0 2px rgba(47,143,91,.3)}

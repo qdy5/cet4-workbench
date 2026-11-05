@@ -40,6 +40,7 @@ export const S = {
   events: [],
   stats: null,
   info: null,
+  checkin: { checkedToday: false, streak: 0, monthCount: 0, recent: [] },
   busy: false,
 };
 
@@ -168,7 +169,24 @@ function buildNav() {
 
 async function main() {
   buildNav();
-  document.addEventListener('click', e => {
+  document.addEventListener('click', async e => {
+    const ck = e.target.closest('[data-act="checkin"]');
+    if (ck) {
+      e.preventDefault();
+      if (ck.disabled || ck.dataset.busy) return;
+      ck.dataset.busy = '1';
+      ck.textContent = '打卡中…';
+      try {
+        S.checkin = await store.checkin();
+        go('home');
+        const b = document.querySelector('[data-act="checkin"]');
+        if (b) { b.classList.add('just'); setTimeout(() => b.classList.remove('just'), 900); }
+      } catch (err) {
+        ck.textContent = '失败了，再点一次';
+        delete ck.dataset.busy;
+      }
+      return;
+    }
     const go_ = e.target.closest('[data-go]');
     if (go_) { e.preventDefault(); go(go_.dataset.go); return; }
     const back = e.target.closest('[data-back]');
@@ -181,6 +199,7 @@ async function main() {
     const saved = await store.getConfig().catch(() => ({}));
     S.cfg = { ...S.cfg, ...(meta.schedule || {}), ...(saved || {}) };
     S.content = await store.content();
+    S.checkin = await store.checkins().catch(() => S.checkin);
     for (const w of S.content.words) byId.set(Number(w.id), w);
     document.getElementById('brand-mode').textContent = store.mode === 'api' ? 'SQLITE' : 'OFFLINE';
     document.getElementById('sf-mode').textContent = store.mode === 'api'

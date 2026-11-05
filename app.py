@@ -8,7 +8,7 @@ import json
 import os
 import sqlite3
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from flask import Flask, Response, g, jsonify, request, send_from_directory, stream_with_context
 
@@ -50,6 +50,9 @@ CREATE TABLE IF NOT EXISTS events(
 );
 CREATE TABLE IF NOT EXISTS drafts(key TEXT PRIMARY KEY, text TEXT DEFAULT '', ts INTEGER DEFAULT 0);
 CREATE TABLE IF NOT EXISTS settings(k TEXT PRIMARY KEY, v TEXT);
+CREATE TABLE IF NOT EXISTS checkins(
+  date TEXT PRIMARY KEY, ts INTEGER DEFAULT 0, note TEXT DEFAULT ''
+);
 CREATE INDEX IF NOT EXISTS idx_events_ts ON events(ts DESC);
 CREATE INDEX IF NOT EXISTS idx_cards_due ON cards(due);
 CREATE INDEX IF NOT EXISTS idx_cards_state ON cards(state);
@@ -238,6 +241,46 @@ def settings_put():
                      'ON CONFLICT(k) DO UPDATE SET v=excluded.v', (k, json.dumps(v)))
     db().commit()
     return jsonify(read_settings())
+
+
+# ---------------- 每日打卡 ----------------
+
+def _checkin_state():
+    """今天的打卡状态 + 连续天数（从今天/昨天往前数）+ 本月次数。"""
+    rows = db().execute('SELECT date, ts FROM checkins ORDER BY date DESC').fetchall()
+    dates = {r['date'] for r in rows}
+    now = datetime.now()
+    today = now.strftime('%Y-%m-%d')
+    streak, d = 0, now
+    if today not in dates:          # 今天还没打卡，连续天数从昨天算起
+        d = now - timedelta(days=1)
+    while d.strftime('%Y-%m-%d') in dates:
+        streak += 1
+        d -= timedelta(days=1)
+    return {
+        'checkedToday': today in dates,
+        'today': today,
+        'streak': streak,
+        'monthCount': sum(1 for x in dates if x.startswith(today[:7])),
+        'total': len(dates),
+        'recent': [{'date': r['date'], 'ts': r['ts']} for r in rows[:90]],
+    }
+
+
+@app.get('/api/checkins')
+def checkins_get():
+    return jsonify(_checkin_state())
+
+
+@app.post('/api/checkin')
+def checkin_post():
+    now = datetime.now()
+    conn = db()
+    if not conn.execute('SELECT 1 FROM checkins WHERE date=?', (now.strftime('%Y-%m-%d'),)).fetchone():
+        conn.execute('INSERT INTO checkins(date, ts) VALUES(?,?)',
+                     (now.strftime('%Y-%m-%d'), int(now.timestamp() * 1000)))
+        conn.commit()
+    return jsonify(_checkin_state())
 
 
 # ---------------- 备份 ----------------

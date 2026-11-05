@@ -113,6 +113,33 @@ export function createLocalAdapter() {
       await idb.put('drafts', { key, text, ts: Date.now() });
     },
 
+    async checkins() {
+      // 离线模式：打卡记录也只存在浏览器里，跟 API 模式同一个形状
+      const rec = (await idb.get('meta', 'checkins')) || { recent: [] };
+      const dates = new Set(rec.recent.map(x => x.date));
+      const tk = new Date().toISOString().slice(0, 10);
+      let streak = 0, d = new Date();
+      if (!dates.has(tk)) d.setDate(d.getDate() - 1);
+      for (;;) {
+        const k = d.toISOString().slice(0, 10);
+        if (!dates.has(k)) break;
+        streak++; d.setDate(d.getDate() - 1);
+      }
+      return { checkedToday: dates.has(tk), today: tk, streak,
+               monthCount: [...dates].filter(x => x.startsWith(tk.slice(0, 7))).length,
+               total: dates.size, recent: rec.recent };
+    },
+
+    async checkin() {
+      const cur = await this.checkins();
+      if (!cur.checkedToday) {
+        const rec = (await idb.get('meta', 'checkins')) || { recent: [] };
+        rec.recent.unshift({ date: cur.today, ts: Date.now() });
+        await idb.put('meta', { key: 'checkins', ...rec });
+      }
+      return this.checkins();
+    },
+
     async exportAll() {
       const [cards, events, drafts] = await Promise.all([idb.all('cards'), idb.all('events'), idb.all('drafts')]);
       return { version: 2, mode: 'local', exportedAt: Date.now(), cards, events, drafts };
