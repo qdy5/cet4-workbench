@@ -106,6 +106,14 @@ export function createApiAdapter() {
       await jpost(`drafts/${encodeURIComponent(key)}`, { text });
     },
 
+    async annotations(articleId) {
+      return jget('annotations/' + articleId);
+    },
+
+    async saveAnnotations(articleId, strokes) {
+      return jpost('annotations/' + articleId, { strokes });
+    },
+
     async lookup(q) {
       return jget('lookup?q=' + encodeURIComponent(q));
     },

@@ -1,5 +1,5 @@
-/* 自动生成，勿手改。assets 1b5cc9d472 (data build dd3a8fe979) */
-const VER = 'cet4-1b5cc9d472';
+/* 自动生成，勿手改。assets e84412bc16 (data build dd3a8fe979) */
+const VER = 'cet4-e84412bc16';
 const ASSETS = [
  "./adapters/api.js",
  "./adapters/idb.js",
@@ -33,6 +33,7 @@ const ASSETS = [
  "./index.html",
  "./manifest.webmanifest",
  "./views/ai.js",
+ "./views/annotate.js",
  "./views/dict.js",
  "./views/home.js",
  "./views/index.js",

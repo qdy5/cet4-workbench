@@ -113,6 +113,16 @@ export function createLocalAdapter() {
       await idb.put('drafts', { key, text, ts: Date.now() });
     },
 
+    async annotations(articleId) {
+      const r = (await idb.get('meta', 'anno-' + articleId)) || { strokes: [] };
+      return { strokes: r.strokes || [] };
+    },
+
+    async saveAnnotations(articleId, strokes) {
+      await idb.put('meta', { key: 'anno-' + articleId, strokes });
+      return { ok: true };
+    },
+
     async lookup(q) {
       // 离线模式没有后端词表，直接说查不到（不让用户等一个假结果）
       return { ok: false, kind: 'word', word: q, cn: '离线模式下查词不可用' };

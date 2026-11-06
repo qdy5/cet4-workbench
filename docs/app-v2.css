@@ -215,3 +215,35 @@
   .dict-pop{width:min(300px,calc(100vw - 24px));font-size:13.5px}
   .fav-row{padding:11px 13px}
 }
+
+/* ── 阅读标注：画笔/橡皮工具栏 + canvas 层（2026-11-06）── */
+.mark-bar{
+  display:none;align-items:center;gap:8px;flex-wrap:wrap;
+  margin:0 0 12px;padding:9px 14px;border-radius:12px;
+  background:#fff;border:1px solid rgba(0,0,0,.07);
+  box-shadow:0 2px 10px rgba(16,32,28,.05);
+}
+.mark-bar.on{display:flex}
+.mb-btn{
+  border:0;background:rgba(0,0,0,.045);color:#41504a;font-size:12.5px;
+  padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:500;font-family:inherit;
+}
+.mb-btn:hover{background:rgba(0,0,0,.09)}
+.mb-btn.on{background:#0a7a5c;color:#fff}
+.mb-sep{width:1px;height:18px;background:rgba(0,0,0,.09)}
+.mb-color{
+  width:20px;height:20px;border-radius:50%;border:2px solid transparent;
+  background:var(--c);cursor:pointer;padding:0;
+}
+.mb-color.on{border-color:#1f2d29;box-shadow:0 0 0 2px #fff inset}
+.mb-note{margin-left:auto;font-size:11.5px;color:#9aa8a2}
+.passage.marking{user-select:none}
+.passage.marking .sent{user-select:none}
+.anno-canvas{display:block}
+#rdict.on{background:#0a7a5c;color:#fff;border-color:transparent}
+#rmark.on{background:#0a7a5c;color:#fff;border-color:transparent}
+@media (max-width:760px){
+  .mark-bar{padding:8px 10px;gap:6px}
+  .mb-btn{font-size:11.5px;padding:5px 9px}
+  .mb-note{display:none}
+}

@@ -5,6 +5,7 @@ const SEL_SCOPE = '.passage, .reader, .q-text, .sent, .article-body';
 let pop = null;
 let hideTimer = 0;
 let lastText = '';
+let enabled = false;   // 默认关：只有点了「划词」按钮才响应选中
 
 function ensurePop() {
   if (pop) return pop;
@@ -104,8 +105,18 @@ async function lookup(text, rect, store) {
   p.querySelector('.dp-say').onclick = () => speak(r.word || text);
 }
 
+export function setDictEnabled(v) {
+  enabled = !!v;
+  if (!enabled) hide();
+}
+
+export function isDictEnabled() {
+  return enabled;
+}
+
 export function installDict(store) {
   const onUp = e => {
+    if (!enabled) return;            // 没点「划词」按钮就不干预选中
     if (pop && pop.contains(e.target)) return;   // 点浮层自己不重新查
     window.setTimeout(async () => {
       const sel = window.getSelection();

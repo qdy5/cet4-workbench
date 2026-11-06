@@ -152,6 +152,12 @@ export const ctx = {
     paintChrome();
     if (!soft && views[S.view] && views[S.view].refresh) views[S.view].refresh(ctx);
   },
+  async annotations(aid) {
+    return store.annotations(aid).catch(() => ({ strokes: [] }));
+  },
+  async saveAnnotations(aid, strokes) {
+    return store.saveAnnotations(aid, strokes);
+  },
   async removeFavorite(id) {
     await store.removeFavorite(id);
   },
