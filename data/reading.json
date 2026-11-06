@@ -558,5 +558,344 @@
     "ev": "For a student, three hours of extra revision bought with three hours of lost sleep may cancel each other out; a full night is what restores the machine for the morning."
    }
   ]
+ },
+ {
+  "title_en": "From Expo Booths to Everyday Shops",
+  "title_zh": "从展台到货架",
+  "topic": "CIIE imports Shanghai market",
+  "paras": [
+   "On the fourth floor of a mall on Nanjing East Road, Shanghai's busiest shopping street, there is a small market. It sells products from more than 20 countries and regions. Almost all of these products first appeared at the China International Import Expo (CIIE). The expo is held at the National Exhibition and Convention Center, a huge building shaped like a four-leaf clover. This is the ninth CIIE. The world's first national expo focused on imports is now judged less by its size than by what ends up on Shanghai dinner tables. Products shown at the expo keep appearing in ordinary shops. The expo calls this \"turning exhibits into goods.\"",
+   "Take fresh food as an example. In the first nine months of this year, Norway sent 98,376 tonnes of salmon to China, 42% more than a year earlier. According to the Norwegian Seafood Council, this makes China Norway's second-largest salmon market. Chile contributed cherries. The Chilean Cherry Committee says that of about 550,000 tonnes exported last season, more than nine in ten went to China. Direct sea routes brought them in as little as 23 days. The large volume showed up in prices: wholesale prices fell by as much as a quarter.",
+   "Medicine has followed a quieter path. Boston Scientific first exhibited in 2019. Since then, 24 of its products shown at the expo have been approved in China. Its intravascular ultrasound system was once purely imported. Now it is made in Shanghai's Lingang area and shipped to other markets. In 2025, Sanofi brought aficamten, a heart medication, to its global debut at the expo. China approved it the following month, ahead of Europe and the United States. This year, Sanofi will present the global debut of rovadicitinib, a Class 1 new drug developed in China for myelofibrosis, a rare bone marrow disorder. Class 1 is China's category for a drug never marketed anywhere before.",
+   "What China imports is changing too. According to the General Administration of Customs, imports grew by 22.3% in the first three quarters of this year. They have grown faster than exports for seven straight months. In September, they passed 2 trillion yuan in a single month for the first time. Much of this is factories buying parts. Imports of memory components alone rose by 150%, as firms stock up on the parts that go into what they make and sell. For foreign suppliers, the expo has become a way into this supply chain, not just a place to show goods."
+  ],
+  "vocab": [
+   [
+    "pedestrian",
+    "行人；步行者"
+   ],
+   [
+    "exhibit",
+    "展品；展出"
+   ],
+   [
+    "approve",
+    "批准；认可"
+   ],
+   [
+    "debut",
+    "首次亮相；首秀"
+   ],
+   [
+    "component",
+    "零部件；组成部分"
+   ],
+   [
+    "supplier",
+    "供应商"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "What does the small market on Nanjing East Road mainly sell?",
+    "opts": [
+     "Products that first appeared at the CIIE",
+     "Local goods made in Shanghai",
+     "Cheap clothes from nearby factories",
+     "Food only from Norway and Chile"
+    ],
+    "ans": 0,
+    "why": "第1段：该市场出售的产品几乎都首先出现在进博会上。"
+   },
+   {
+    "q": "What happened to cherry wholesale prices after large imports from Chile?",
+    "opts": [
+     "They stayed the same",
+     "They fell by up to a quarter",
+     "They rose by 42%",
+     "They doubled in one season"
+    ],
+    "ans": 1,
+    "why": "第2段：大量进口使批发价最多下降四分之一。"
+   },
+   {
+    "q": "What is special about Sanofi's rovadicitinib?",
+    "opts": [
+     "It is made only in Europe",
+     "It was first sold in the United States",
+     "It is a Class 1 new drug developed in China",
+     "It treats salmon allergies"
+    ],
+    "ans": 2,
+    "why": "第3段：该药是在中国研发的1类新药，用于骨髓纤维化。"
+   },
+   {
+    "q": "Why did imports of memory components rise by 150%?",
+    "opts": [
+     "Factories are buying parts for their products",
+     "Shops are selling more memory cards to tourists",
+     "The government banned exports",
+     "Cherry prices dropped"
+    ],
+    "ans": 0,
+    "why": "第4段：工厂为生产备货，大量购买零部件。"
+   },
+   {
+    "q": "What is the main idea of the passage?",
+    "opts": [
+     "The CIIE helps turn exhibits into goods and links foreign suppliers to China's supply chain",
+     "Norway is now China's largest salmon market",
+     "Shanghai malls are closing because of online shopping",
+     "China has stopped importing medicine from abroad"
+    ],
+    "ans": 0,
+    "why": "全文：进博会推动展品变商品，并让外国供应商进入中国供应链。"
+   }
+  ],
+  "id": 5,
+  "source": "CGTN",
+  "source_url": "https://news.cgtn.com/news/2026-11-04/From-shopping-carts-to-vast-market-The-CIIE-in-everyday-life-1RNtNsV6cCY/p.html",
+  "difficulty": {
+   "words": 388,
+   "sents": 30,
+   "avg_sent": 12.9,
+   "hard_rate": 10.8,
+   "hard_sample": [
+    "busiest",
+    "shopping",
+    "street",
+    "countries",
+    "shaped",
+    "four-leaf",
+    "clover",
+    "world's"
+   ]
+  }
+ },
+ {
+  "title_en": "Shenzhen Attracts Global Investment",
+  "title_zh": "深圳吸引全球投资",
+  "topic": "Shenzhen foreign investment growth",
+  "paras": [
+   "Siemens Healthineers, a German health tech company, runs a bonded maintenance center in Qianhai, Shenzhen. It provides global after-sales support for MRI equipment. At the same time, Finnish manufacturer KONE is bringing its new digital elevator technology to markets across the Greater Bay Area. Foreign banks from the UK, Singapore and other places are also setting up operations in Qianhai. With its high openness and strong economic energy, Shenzhen continues to strengthen its appeal as a global investment destination.",
+   "During the 14th Five-Year Plan period (2021-2025), Shenzhen registered 44,000 new foreign-invested enterprises. The foreign investment actually used in the city surpassed 300 billion yuan (about $45.05 billion). More than 340 Fortune Global 500 companies have invested in the city. The latest figures show that Shenzhen's actual use of foreign investment exceeded 44 billion yuan in the first nine months of this year. That was up more than 60 percent year on year.",
+   "Zhang Hongliang is vice president of operations for Flex's Industrial Products business in Asia-Pacific. Standing beside an automated production line at Flextronics Electronics Technology (Shenzhen) Co., Ltd., he recalled the past. \"When I first came here more than a decade ago, workers were still lining the production lines,\" he said. Today, the facility is the company's only pilot \"future factory\" in Asia. Automated equipment, integrated digital systems and AI algorithms drive its production lines, doubling productivity per employee.",
+   "In the early years of reform and opening-up, Shenzhen's flexible policies as a special economic zone and convenient port access attracted many foreign manufacturers. In 1987, Flex, a tech company founded in Silicon Valley, set up its first mainland factory in Shekou, Shenzhen. It has kept expanding its investment there since. Zhang said Shenzhen's efficient supply chains, strong digital ecosystem and active government support for tech upgrades have laid a solid foundation for the move to intelligent manufacturing. These achievements are now being copied across Flex's factories worldwide."
+  ],
+  "vocab": [
+   [
+    "bonded",
+    "保税的"
+   ],
+   [
+    "surpass",
+    "超过"
+   ],
+   [
+    "algorithm",
+    "算法"
+   ],
+   [
+    "productivity",
+    "生产率"
+   ],
+   [
+    "ecosystem",
+    "生态系统"
+   ],
+   [
+    "replicate",
+    "复制；重复"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "What does Siemens Healthineers do at its Qianhai center?",
+    "opts": [
+     "It sells MRI equipment to local hospitals.",
+     "It offers global after-sales support for MRI equipment.",
+     "It builds digital elevators for the Greater Bay Area.",
+     "It provides banking services for foreign companies."
+    ],
+    "ans": 1,
+    "why": "第1段：西门子医疗在深圳前海设保税维修中心，为MRI设备提供全球售后支持。"
+   },
+   {
+    "q": "How much foreign investment did Shenzhen actually use in the first nine months of this year?",
+    "opts": [
+     "Over 300 billion yuan.",
+     "About 45.05 billion dollars.",
+     "More than 44 billion yuan.",
+     "Exactly 60 billion yuan."
+    ],
+    "ans": 2,
+    "why": "第2段：最新数据显示今年前九个月深圳实际使用外资超过440亿元，同比增长超60%。"
+   },
+   {
+    "q": "What change does Zhang Hongliang describe at the Shenzhen facility?",
+    "opts": [
+     "Workers now line the production lines as before.",
+     "The factory has moved from Shenzhen to Silicon Valley.",
+     "Production lines are driven by automation and AI, doubling productivity per employee.",
+     "The company has stopped using digital systems."
+    ],
+    "ans": 2,
+    "why": "第3段：张宏亮说过去工人排满生产线，如今自动化设备和AI算法驱动生产线，人均生产率翻倍。"
+   },
+   {
+    "q": "Why did Flex first choose Shenzhen for its mainland factory in 1987?",
+    "opts": [
+     "Because Shenzhen offered free land to tech firms.",
+     "Because of flexible special-zone policies and convenient port access.",
+     "Because the city had the most Fortune 500 companies.",
+     "Because KONE invited Flex to share its elevator technology."
+    ],
+    "ans": 1,
+    "why": "第4段：改革开放初期，深圳作为经济特区的灵活政策和便利港口吸引了大量外国制造商。"
+   },
+   {
+    "q": "What is the main idea of the passage?",
+    "opts": [
+     "Shenzhen's growing appeal as a global investment destination.",
+     "How to build a future factory with AI algorithms.",
+     "The history of Silicon Valley tech companies in China.",
+     "Why foreign banks are leaving the Greater Bay Area."
+    ],
+    "ans": 0,
+    "why": "全文：第1段点明深圳吸引力增强，第2段列外资数据，第3、4段以企业案例说明，主旨是深圳作为全球投资目的地吸引力持续增强。"
+   }
+  ],
+  "id": 6,
+  "source": "PeoplesDaily",
+  "source_url": "https://en.people.cn/n3/2026/1105/c98649-20515955.html",
+  "difficulty": {
+   "words": 301,
+   "sents": 20,
+   "avg_sent": 15.1,
+   "hard_rate": 9.6,
+   "hard_sample": [
+    "after-sales",
+    "places",
+    "openness",
+    "strong",
+    "continues",
+    "registered",
+    "foreign-invested",
+    "enterprises"
+   ]
+  }
+ },
+ {
+  "title_en": "Guilin: More Than Scenery",
+  "title_zh": "桂林不止山水",
+  "topic": "Guilin tourism culture technology",
+  "paras": [
+   "Guilin in Guangxi has long been famous for its natural beauty. The flowing hair of Red Yao women, the terraced slopes of Longji town and the limestone peaks along the Lijiang River have drawn travelers for years. Mani Lamichhane, a senior director at the Nepal Tourism Board, recently visited the city. He said the Longji Rice Terraces were fascinating. But he took away more than memories of the landscape. He also praised the performances at Huangluo Red Yao village and local people's efforts to protect the environment while developing tourism. He added that he would surely return and that travelers from around the world would enjoy the place.",
+   "Lamichhane was among over 300 tourism professionals from the Asia-Pacific region and beyond. They met in Guilin in late October for the 20th UN Tourism/PATA Forum on Tourism Trends and Outlook. The city first hosted the forum in 2007. This year, the event explored new tourism trends and how artificial intelligence and digital technology are changing travel. Guilin has long attracted visitors with its karst landscape and terraced fields. Today, local tourism businesses offer cultural activities on river cruises, in scenic areas and at hotels, giving guests richer choices than before.",
+   "On selected Lijiang River cruises, visitors can enjoy a Song Dynasty tea-making experience as the karst peaks drift past. On sightseeing boats in the Two Rivers and Four Lakes scenic area, performers present cai diao, a traditional folk opera that mixes local songs, dance and comic acting. Based on everyday life, romance and local customs, the shows invite visitors to listen, join call-and-response activities and even try on costumes. Tang Hongling, a general manager at Guilin Tourism Corp, says visitors' needs are shifting from group sightseeing toward immersive experiences and deeper exploration.",
+   "Technology is also adding new dimensions to well-known attractions. At Yinzi Cave, also called Silver Cave, 3D mapping projects images onto rock formations. Some scenes are inspired by A Panorama of Rivers and Mountains, a famous landscape painting by Song Dynasty artist Wang Ximeng. Colored lighting highlights the shapes and textures of the stalactites. Augmented-reality features offer visitors an interactive experience. Together, culture and technology are helping Guilin offer more than a beautiful view, and the city is working to keep its natural environment safe at the same time."
+  ],
+  "vocab": [
+   [
+    "terrace",
+    "梯田；阶地"
+   ],
+   [
+    "forum",
+    "论坛"
+   ],
+   [
+    "immersive",
+    "沉浸式的"
+   ],
+   [
+    "augmented reality",
+    "增强现实"
+   ],
+   [
+    "stalactite",
+    "钟乳石"
+   ],
+   [
+    "texture",
+    "质地；纹理"
+   ]
+  ],
+  "questions": [
+   {
+    "q": "What did Lamichhane praise besides the natural scenery?",
+    "opts": [
+     "The performances at a local village and environmental protection efforts",
+     "The city's new airport and high-speed railway system",
+     "The low prices of hotels along the Lijiang River",
+     "The large number of foreign tourists in Guilin"
+    ],
+    "ans": 0,
+    "why": "第1段：他称赞了黄洛红瑶村的表演和当地居民在发展旅游的同时保护环境的努力。"
+   },
+   {
+    "q": "What did the 20th UN Tourism/PATA forum in Guilin explore?",
+    "opts": [
+     "How to reduce the number of group tours",
+     "New tourism trends and the role of AI and digital technology",
+     "The history of tea-making in the Song Dynasty",
+     "How to build more hotels in scenic areas"
+    ],
+    "ans": 1,
+    "why": "第2段：论坛探讨了新兴旅游趋势以及人工智能和数字技术如何改变旅行。"
+   },
+   {
+    "q": "What can visitors do on sightseeing boats in the Two Rivers and Four Lakes area?",
+    "opts": [
+     "Paint landscapes with local artists",
+     "Watch a traditional folk opera and try on costumes",
+     "Learn 3D mapping from engineers",
+     "Plant rice in the terraced fields"
+    ],
+    "ans": 1,
+    "why": "第3段：游客可以观看彩调这一传统民间戏曲，参与对唱活动，甚至试穿戏服。"
+   },
+   {
+    "q": "According to Tang Hongling, how are visitors' needs changing?",
+    "opts": [
+     "From immersive experiences to group sightseeing",
+     "From group sightseeing to immersive experiences and deeper exploration",
+     "From river cruises to cave visits only",
+     "From cultural shows to shopping activities"
+    ],
+    "ans": 1,
+    "why": "第3段：唐红玲说，游客需求正从团队观光转向沉浸式体验和更深入的探索。"
+   },
+   {
+    "q": "What technology is used at Yinzi Cave?",
+    "opts": [
+     "Virtual reality headsets and robot guides",
+     "3D mapping, colored lighting and augmented-reality features",
+     "Online ticket booking and face recognition",
+     "Drone shows above the cave"
+    ],
+    "ans": 1,
+    "why": "第4段：银子岩使用3D投影、彩色灯光和增强现实功能为游客提供互动体验。"
+   }
+  ],
+  "id": 7,
+  "source": "ChinaDaily",
+  "source_url": "https://www.chinadaily.com.cn/a/202611/06/WS6aed1e22e4b03ebf8519aa65.html",
+  "difficulty": {
+   "words": 371,
+   "sents": 23,
+   "avg_sent": 16.1,
+   "hard_rate": 15.9,
+   "hard_sample": [
+    "terraced",
+    "slopes",
+    "limestone",
+    "travelers",
+    "visited",
+    "memories",
+    "praised",
+    "performances"
+   ]
+  }
  }
 ]
