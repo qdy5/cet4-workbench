@@ -1,5 +1,5 @@
-/* 自动生成，勿手改。assets 60eaf0145b (data build ef2202a7f3) */
-const VER = 'cet4-60eaf0145b';
+/* 自动生成，勿手改。assets 907e49c3b0 (data build dd3a8fe979) */
+const VER = 'cet4-907e49c3b0';
 const ASSETS = [
  "./adapters/api.js",
  "./adapters/idb.js",
@@ -33,6 +33,7 @@ const ASSETS = [
  "./index.html",
  "./manifest.webmanifest",
  "./views/ai.js",
+ "./views/dict.js",
  "./views/home.js",
  "./views/index.js",
  "./views/listening.js",

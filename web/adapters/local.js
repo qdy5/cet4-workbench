@@ -113,6 +113,26 @@ export function createLocalAdapter() {
       await idb.put('drafts', { key, text, ts: Date.now() });
     },
 
+    async lookup(q) {
+      // 离线模式没有后端词表，直接说查不到（不让用户等一个假结果）
+      return { ok: false, kind: 'word', word: q, cn: '离线模式下查词不可用' };
+    },
+
+    async favorites() {
+      return (await idb.all('favorites')) || [];
+    },
+
+    async addFavorite(f) {
+      const id = Date.now();
+      await idb.put('favorites', { id, ts: id, ...f });
+      return { ok: true, id };
+    },
+
+    async removeFavorite(id) {
+      await idb.del('favorites', id);
+      return { ok: true };
+    },
+
     async checkins() {
       // 离线模式：打卡记录也只存在浏览器里，跟 API 模式同一个形状
       const rec = (await idb.get('meta', 'checkins')) || { recent: [] };

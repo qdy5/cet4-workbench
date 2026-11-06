@@ -41,6 +41,7 @@ export const S = {
   stats: null,
   info: null,
   checkin: { checkedToday: false, streak: 0, monthCount: 0, recent: [] },
+  favorites: [],
   busy: false,
 };
 
@@ -121,8 +122,12 @@ export const ctx = {
     S.cards = new Map(cards.map(c => [c.wordId, c]));
     S.events = events;
     S.stats = summarize(S.events, [...S.cards.values()], Date.now());
+    S.favorites = await store.favorites().catch(() => S.favorites);
     paintChrome();
     if (!soft && views[S.view] && views[S.view].refresh) views[S.view].refresh(ctx);
+  },
+  async removeFavorite(id) {
+    await store.removeFavorite(id);
   },
   go,
   toast,
@@ -200,6 +205,7 @@ async function main() {
     S.cfg = { ...S.cfg, ...(meta.schedule || {}), ...(saved || {}) };
     S.content = await store.content();
     S.checkin = await store.checkins().catch(() => S.checkin);
+    S.favorites = await store.favorites().catch(() => []);
     for (const w of S.content.words) byId.set(Number(w.id), w);
     document.getElementById('brand-mode').textContent = store.mode === 'api' ? 'SQLITE' : 'OFFLINE';
     document.getElementById('sf-mode').textContent = store.mode === 'api'
@@ -207,6 +213,8 @@ async function main() {
       : '离线模式 · 进度存在这台设备';
     const mod = await import('./views/index.js');
     Object.assign(views, mod.default);
+    const dict = await import('./views/dict.js');
+    dict.installDict({ addFavorite: (f) => store.addFavorite(f) });
     await ctx.reload();
     go('home');
     if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {

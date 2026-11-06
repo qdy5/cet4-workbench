@@ -67,10 +67,14 @@ def build_distractors(words):
                     continue
                 if not _length_ok(x['c'], w['c'], tol):
                     continue
-                if _jaccard(x['c'], w['c']) > 0.5:
+                if _jaccard(x['c'], w['c']) > 0.34:
+                    continue
+                if x['c'] in w['c'] or w['c'] in x['c']:
                     continue
                 cands.append(x)
-            cands.sort(key=lambda x: (-_shared(x['c'], w['c']), abs(len(x['c']) - len(w['c'])), x['id']))
+            # 共享字越多越像，但完全一样的不能要：目标是有区分度的「1 个字重叠」
+            cands.sort(key=lambda x: (abs(_shared(x['c'], w['c']) - 1),
+                                      abs(len(x['c']) - len(w['c'])), x['id']))
             for x in cands:
                 if x['id'] not in picked:
                     picked.append(x['id'])
@@ -108,6 +112,7 @@ def enrich():
             'p': (w.get('pos') or '').strip(),
             'c': (w.get('cn') or '').strip(),
             'ch': (w.get('chapter') or '').strip(),
+            'co': (w.get('coll') or '').strip(),   # 常用搭配，划词浮层要显示
         })
 
     dz = build_distractors(words)

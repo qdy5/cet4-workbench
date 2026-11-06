@@ -44,14 +44,67 @@ function current() {
   return session.list[session.i] || null;
 }
 
+// 收藏夹：只做「回顾 + 朗读 + 删除」，不掺进 FSRS 练习队列
+function renderFav(ctx) {
+  const favs = (ctx.S.favorites || []);
+  const words = favs.filter(f => f.kind === 'word');
+  const sents = favs.filter(f => f.kind !== 'word');
+  document.getElementById('app').innerHTML = `
+    <div class="section-head">
+      <div class="tabs" id="wmodes">
+        ${[['due', '待复习'], ['new', '新词'], ['wrong', '错词'], ['all', '随机 80'], ['fav', '★ 收藏']]
+          .map(([m, t]) => `<button data-m="${m}" class="${m === session.mode ? 'on' : ''}">${t}</button>`).join('')}
+      </div>
+      <span class="mini-note">单词 ${words.length} 个 · 句子 ${sents.length} 条 · 在阅读里划词就能收藏</span>
+    </div>
+    <div class="card card-pad fav-wrap">
+      ${favs.length ? favs.map(f => `
+        <div class="fav-row" data-fid="${f.id}">
+          <div class="fav-main">
+            <b class="fav-word">${esc(f.text)}</b>
+            ${f.pos ? `<span class="fav-pos">${esc(f.pos)}</span>` : ''}
+            <span class="fav-cn">${esc(f.cn || '')}</span>
+            ${f.ctx ? `<div class="fav-ctx">…${esc(f.ctx)}…</div>` : ''}
+          </div>
+          <div class="fav-ops">
+            <button class="fav-say" data-say="${esc(f.text)}" title="朗读">🔊</button>
+            <button class="fav-del" data-del="${f.id}" title="删除">×</button>
+          </div>
+        </div>`).join('')
+      : '<div class="mini-note" style="padding:16px 0">还没收藏。<br>去「阅读」里用鼠标选中一个单词或一句话，弹出来的小浮层里点「☆ 收藏」。</div>'}
+    </div>`;
+
+  const bindModes = () => $$('#wmodes button').forEach(b => b.addEventListener('click', () => {
+    session.mode = b.dataset.m;
+    rebuild(ctx);
+    ctx.go('words');   // go 会重新 render，练习模式自然接上
+  }));
+  bindModes();
+
+  $$('.fav-say').forEach(b => b.addEventListener('click', () => {
+    try {
+      const u = new SpeechSynthesisUtterance(b.dataset.say);
+      u.lang = 'en-US'; u.rate = 0.9;
+      speechSynthesis.cancel(); speechSynthesis.speak(u);
+    } catch (_) {}
+  }));
+  $$('.fav-del').forEach(b => b.addEventListener('click', async () => {
+    const id = Number(b.dataset.del);
+    await ctx.removeFavorite(id);
+    ctx.S.favorites = (ctx.S.favorites || []).filter(x => x.id !== id);
+    renderFav(ctx);
+  }));
+}
+
 export default {
   render(ctx) {
     activeCtx = ctx;
+    if (session.mode === 'fav') return renderFav(ctx);
     const chapters = [...new Set(ctx.content.words.map(w => w.ch).filter(Boolean))];
     document.getElementById('app').innerHTML = `
     <div class="section-head">
       <div class="tabs" id="wmodes">
-        ${[['due', '待复习'], ['new', '新词'], ['wrong', '错词'], ['all', '随机 80']]
+        ${[['due', '待复习'], ['new', '新词'], ['wrong', '错词'], ['all', '随机 80'], ['fav', '★ 收藏']]
           .map(([m, t]) => `<button data-m="${m}" class="${m === session.mode ? 'on' : ''}">${t}</button>`).join('')}
       </div>
       <select id="wchap" class="select">
@@ -76,6 +129,8 @@ export default {
       $$('#wmodes button').forEach(x => x.classList.remove('on'));
       b.classList.add('on');
       session.mode = b.dataset.m;
+      // 收藏夹是独立视图（不是练习队列），要走整个 render
+      if (session.mode === 'fav') { ctx.go('words'); return; }
       rebuild(ctx);
       paint(ctx);
     }));

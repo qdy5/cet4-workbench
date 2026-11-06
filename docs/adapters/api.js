@@ -14,6 +14,12 @@ async function jget(path) {
   return r.json();
 }
 
+async function jdelete(path) {
+  const r = await api(path, { method: 'DELETE' });
+  if (!r.ok) throw new Error('DELETE ' + path + ' -> ' + r.status);
+  return r.json().catch(() => ({}));
+}
+
 async function jpost(path, body) {
   const r = await api(path, { method: 'POST', body: JSON.stringify(body) });
   if (!r.ok) throw new Error(`接口 ${path} 返回 ${r.status}`);
@@ -98,6 +104,22 @@ export function createApiAdapter() {
 
     async saveDraft(key, text) {
       await jpost(`drafts/${encodeURIComponent(key)}`, { text });
+    },
+
+    async lookup(q) {
+      return jget('lookup?q=' + encodeURIComponent(q));
+    },
+
+    async favorites() {
+      return jget('favorites');
+    },
+
+    async addFavorite(f) {
+      return jpost('favorites', f);
+    },
+
+    async removeFavorite(id) {
+      return jdelete('favorites/' + id);
     },
 
     async checkins() {
