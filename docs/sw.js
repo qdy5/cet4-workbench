@@ -1,5 +1,5 @@
-/* 自动生成，勿手改。assets 9b168b7813 (data build 3f3ff5756d) */
-const VER = 'cet4-9b168b7813';
+/* 自动生成，勿手改。assets 9be840fe94 (data build 3f3ff5756d) */
+const VER = 'cet4-9be840fe94';
 const ASSETS = [
  "./adapters/api.js",
  "./adapters/idb.js",
@@ -17,6 +17,7 @@ const ASSETS = [
  "./core/date.js",
  "./core/dom.js",
  "./core/fsrs.js",
+ "./core/fsrs.js.bak",
  "./core/quiz.js",
  "./core/scoring.js",
  "./core/stats.js",

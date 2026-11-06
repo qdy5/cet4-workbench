@@ -51,7 +51,7 @@ export function newCard(now = Date.now()) {
 
 /** 归一化，兼容旧数据与后端返回 */
 export function normalizeCard(c = {}, now = Date.now()) {
-  return {
+  const out = {
     s: Number(c.s) || 0,
     d: Number(c.d) || 0,
     state: c.state || (Number(c.s) > 0 ? 'review' : 'new'),
@@ -60,6 +60,10 @@ export function normalizeCard(c = {}, now = Date.now()) {
     due: Number(c.due) || now,
     last: Number(c.last) || 0,
   };
+  // 2026-11-06 修：原来这里把 wordId 丢了，导致 S.cards 的 key 全是 undefined，
+  // get(w.id) 永远拿不到 → 每个词都被当成新词 → 每次打开都从第一个词重新刷。
+  if (c.wordId !== undefined && c.wordId !== null) out.wordId = Number(c.wordId);
+  return out;
 }
 
 /**
