@@ -6,7 +6,7 @@ export default {
     const meta = S.meta;
     const s = S.stats;
     const left = daysUntil(meta.exam.date);
-    const due = ctx.dueWords().length;
+    const due = ctx.wrongWords().length;
     const learned = [...S.cards.values()].filter(c => c.state !== 'new').length;
     const total = S.content.words.length;
     const pct = Math.round((learned / total) * 1000) / 10;
@@ -21,7 +21,7 @@ export default {
       return { date: k, on: ckSet.has(k), today: k === todayK };
     });
     const tasks = [
-      ['单词', due ? `${due} 个到期` : (ctx.newWordsLeft() ? `新词 ${ctx.newWordsLeft()} 个额度` : '今日已清空'), !!mods.word, 'words'],
+      ['单词', due ? `${due} 个待复习` : (ctx.newWordsLeft() ? `新词 ${ctx.newWordsLeft()} 个额度` : '今日已清空'), !!mods.word, 'words'],
       ['听力', s.today.total && mods.listening ? '今天练过' : '先听一组', !!mods.listening, 'listening'],
       ['阅读', mods.reading ? '今天练过' : '一篇 15 分钟', !!mods.reading, 'reading'],
       ['翻译', mods.translation ? '今天练过' : '一句 10 分钟', !!mods.translation, 'translation'],
@@ -37,7 +37,7 @@ export default {
           <div><b>${meta.exam.target}</b><span>目标分（425 过线）</span></div>
           <div><b>${s.streak}</b><span>连续天数</span></div>
         </div>
-        <h2>${due ? `先把 ${due} 个到期的词清掉，<br>再谈别的。` : (ctx.newWordsLeft() ? `今天的新词还有 ${ctx.newWordsLeft()} 个额度。` : '今天的词清完了，<br>去拿一篇阅读。')}</h2>
+        <h2>${due ? `先把 ${due} 个答错的词清掉，<br>再谈别的。` : (ctx.newWordsLeft() ? `今天的新词还有 ${ctx.newWordsLeft()} 个额度。` : '今天的词清完了，<br>去拿一篇阅读。')}</h2>
         <p>四级 710 分：写作 15%、听力 35%、阅读 35%、翻译 15%，125 分钟。每天推进一点，比周末突击有效。</p>
         <div class="hero-actions">
           <button class="btn light" data-go="${due || ctx.newWordsLeft() ? 'words' : 'reading'}">${due ? '开始复习' : '开始单词'}</button>

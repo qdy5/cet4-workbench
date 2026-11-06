@@ -27,9 +27,9 @@ function poolFor(ctx, mode) {
     }
     return arr.slice(0, 80);
   }
-  // 待复习空了就自动接新词：新用户第一次打开不会看到一片空白
-  const due = ctx.dueWords().filter(x => keep(x.word));
-  if (due.length) return due;
+  // 待复习 = 答错的词（跟新词严格分开）；错词清完才接新词
+  const wrong = ctx.wrongWords().filter(x => keep(x.word));
+  if (wrong.length) return wrong;
   return ctx.newWords().filter(x => keep(x.word));
 }
 
@@ -117,10 +117,10 @@ export default {
       <div class="card card-pad side-list">
         <div class="stat-row"><span>本轮答对</span><b id="w-right">${session.right}</b></div>
         <div class="stat-row"><span>本轮已答</span><b id="w-total">${session.total}</b></div>
-        <div class="stat-row"><span>剩余到期</span><b id="w-left">${ctx.dueWords().length}</b></div>
+        <div class="stat-row"><span>待复习</span><b id="w-left">${ctx.wrongWords().length}</b></div>
         <div class="stat-row"><span>今日新词</span><b id="w-newleft">${ctx.newWordsLeft()}</b></div>
         <div class="mini-note" style="margin-top:8px">
-          键盘 1-4 选答案，回车下一题，E 标记太简单。答错 1 分钟后重来，答对按 FSRS 排到几天后。
+          键盘 1-4 选答案，回车下一题，E 标记太简单。答错的进「待复习」，答对就出队、按间隔复习排期。
         </div>
       </div>
     </div>`;

@@ -1,5 +1,5 @@
-/* 自动生成，勿手改。assets 907e49c3b0 (data build dd3a8fe979) */
-const VER = 'cet4-907e49c3b0';
+/* 自动生成，勿手改。assets 1b5cc9d472 (data build dd3a8fe979) */
+const VER = 'cet4-1b5cc9d472';
 const ASSETS = [
  "./adapters/api.js",
  "./adapters/idb.js",

@@ -88,6 +88,32 @@ export const ctx = {
     out.sort((a, b) => a.card.due - b.card.due);
     return out;
   },
+
+  /**
+   * 待复习 = 我答错的词（最近一次评分 ≤ 2）。
+   * 2026-11-06 按老板的口径改：和新词严格分开，答对过的词不再回到这个队列里。
+   * 越早答错的排越前面，先把陈账清掉。
+   */
+  wrongWords() {
+    const last = new Map();            // wordId -> {ts, r}
+    for (const e of S.events) {
+      if (e.type !== 'word') continue;
+      const id = Number(e.ref);
+      if (!id) continue;
+      const r = Number((e.detail && e.detail.rating) || 0);
+      const cur = last.get(id);
+      if (!cur || e.ts > cur.ts) last.set(id, { ts: e.ts, r });
+    }
+    const out = [];
+    for (const [id, v] of last) {
+      if (v.r > 2) continue;           // 最近一次答对 → 出队
+      const w = byId.get(id);
+      if (!w) continue;
+      out.push({ word: w, card: S.cards.get(id) || normalizeCard({}, Date.now()), _ts: v.ts });
+    }
+    out.sort((a, b) => a._ts - b._ts);
+    return out;
+  },
   newWordsLeft(now = Date.now()) {
     return Math.max(0, S.cfg.newPerDay - newWordsToday(S.events, now));
   },
@@ -137,7 +163,7 @@ export const ctx = {
 function paintChrome() {
   const s = S.stats;
   if (!s) return;
-  const due = ctx.dueWords().length;
+  const due = ctx.wrongWords().length;
   const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
   set('sf-streak', s.streak);
   set('sf-due', due);
